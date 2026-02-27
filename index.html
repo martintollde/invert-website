@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invert &mdash; Invertera, alltid invertera</title>
+  <title>Invert &mdash; E-retail Growth driven av realtidsdata</title>
+  <meta name="description" content="Invert hj&auml;lper varum&auml;rken att v&auml;xa p&aring; Sveriges st&ouml;rsta e-retailers &mdash; med realtidsdata om priser, lager och konkurrenters agerande.">
+  <meta property="og:title" content="Invert &mdash; E-retail Growth driven av realtidsdata">
+  <meta property="og:description" content="Vi hj&auml;lper varum&auml;rken som s&auml;ljer via Apotea, Apotek Hj&auml;rtat och Meds att ta kontroll &ouml;ver sin digitala hyllplats.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://invert.se">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -59,6 +64,22 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--black); }
+    .nav-product {
+      color: var(--black) !important;
+      font-weight: 600 !important;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.03em;
+      display: inline-flex !important;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .nav-product-badge {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
     .nav-cta {
       background: var(--black); color: var(--white) !important;
       padding: 0.55rem 1.5rem; border-radius: 100px;
@@ -106,7 +127,7 @@
       min-height: auto;
       display: flex; flex-direction: column; justify-content: center;
       align-items: center; text-align: center;
-      padding: 9rem 2rem 5rem;
+      padding: 9rem 2rem 4rem;
       background: linear-gradient(165deg, #1a1b2e 0%, #12132a 50%, #1a1b2e 100%);
       color: var(--white);
       position: relative;
@@ -128,14 +149,69 @@
     }
     .hero-sub {
       font-size: 1.05rem; color: rgba(255,255,255,0.5);
-      max-width: 460px; margin-bottom: 2.5rem;
+      max-width: 520px; margin-bottom: 2.5rem;
       line-height: 1.75;
     }
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
-    /* ---- MARQUEE ---- */
-    .marquee-section {
+    /* ---- HERO TICKER ---- */
+    .hero-ticker {
+      margin-top: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.04em;
+      min-height: 1.5rem;
+    }
+    .hero-ticker-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    .hero-ticker-text {
+      transition: opacity 0.5s ease;
+    }
+
+    /* ---- SOCIAL PROOF ---- */
+    .social-proof {
       border-bottom: 1px solid var(--border);
+    }
+    .proof-clients {
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 3rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .proof-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--light-grey);
+      margin-bottom: 1.25rem;
+    }
+    .proof-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .proof-pill {
+      padding: 0.5rem 1.25rem;
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      color: var(--grey);
+      font-weight: 500;
+    }
+    .proof-retailers {
       padding: 1.25rem 0;
       overflow: hidden;
     }
@@ -190,7 +266,7 @@
     }
     .section-sub {
       color: var(--grey); font-size: 1rem;
-      max-width: 480px; margin-bottom: 2.75rem;
+      max-width: 520px; margin-bottom: 2.75rem;
       line-height: 1.75;
     }
 
@@ -227,8 +303,14 @@
     .service-card h3 {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.25rem; font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       letter-spacing: -0.01em;
+    }
+    .service-tagline {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
     }
     .service-card p {
       color: var(--grey); font-size: 0.9rem; line-height: 1.7;
@@ -260,215 +342,46 @@
       color: var(--grey); font-size: 0.95rem;
       line-height: 1.8; margin-bottom: 1.25rem;
     }
-    .split-text .accent-line {
-      color: var(--black); font-weight: 600;
-      font-size: 0.9rem; line-height: 1.6;
-      border-left: 3px solid var(--accent);
-      padding-left: 1.25rem;
-      margin-top: 2rem;
-    }
 
-    /* ---- INTEL MOCKUP ---- */
-    .intel-card {
-      background: #141524;
-      border-radius: 16px;
-      padding: 2rem;
-      color: var(--white);
-      box-shadow: 0 25px 60px rgba(20, 21, 36, 0.25);
+    /* ---- INSIGHT BOX ---- */
+    .insight-box {
+      margin-top: 1.75rem;
+      padding: 1.25rem 1.5rem;
+      background: rgba(61, 70, 251, 0.04);
+      border: 1px solid rgba(61, 70, 251, 0.12);
+      border-radius: 10px;
+      position: relative;
+      min-height: 120px;
     }
-    .intel-header {
-      display: flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      font-family: 'Space Grotesk', monospace;
-      font-size: 0.65rem;
-      text-transform: uppercase; letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.3);
-    }
-    .intel-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--green);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-    .intel-row {
-      display: grid; grid-template-columns: 1fr auto auto;
-      gap: 1rem; align-items: center;
-      padding: 0.75rem 0;
-      font-size: 0.82rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .intel-row:last-of-type { border: none; }
-    .intel-product { font-weight: 500; color: rgba(255,255,255,0.85); }
-    .intel-retailer { font-size: 0.68rem; color: rgba(255,255,255,0.3); margin-top: 0.15rem; }
-    .intel-price { font-family: 'Space Grotesk', monospace; text-align: right; color: rgba(255,255,255,0.6); }
-    .intel-change { font-family: 'Space Grotesk', monospace; text-align: right; font-weight: 600; font-size: 0.78rem; }
-    .c-up { color: var(--red); }
-    .c-down { color: var(--green); }
-    .c-neutral { color: rgba(255,255,255,0.2); }
-    .oos-badge {
-      background: rgba(220,38,38,0.12); color: var(--red);
-      padding: 0.15rem 0.5rem; border-radius: 3px;
-      font-size: 0.68rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.06em;
-    }
-    .intel-footer {
-      text-align: center; padding-top: 1.25rem; margin-top: 0.75rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      font-size: 0.6rem; color: rgba(255,255,255,0.2);
-      text-transform: uppercase; letter-spacing: 0.12em;
-    }
-
-    /* ---- PROCESS ---- */
-    .process-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--border);
-    }
-    .process-step {
-      padding: 2.25rem 1.5rem 2.25rem 0;
-      border-right: 1px solid var(--border);
-    }
-    .process-step:last-child { border-right: none; }
-    .process-num {
+    .insight-box-label {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem; font-weight: 700;
-      color: var(--border);
-      margin-bottom: 1rem;
-      line-height: 1;
-    }
-    .process-step h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1rem; font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-    .process-step p { color: var(--grey); font-size: 0.85rem; line-height: 1.7; }
-
-    /* ---- METRICS ---- */
-    .section-blue { background: var(--light-blue); }
-    .metrics-row {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      max-width: 1200px; margin: 0 auto;
-    }
-    .metric { text-align: center; padding: 1rem; }
-    .metric-value {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 3.8rem);
-      font-weight: 700; line-height: 1;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.6rem;
-    }
-    .metric-label {
-      font-size: 0.72rem; color: var(--grey);
-      text-transform: uppercase; letter-spacing: 0.12em;
+      font-size: 0.6rem;
       font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
     }
-
-    /* ---- FIT ---- */
-    .fit-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+    .insight-item {
+      position: absolute;
+      left: 1.5rem; right: 1.5rem;
+      top: 2.75rem;
+      opacity: 0;
+      transition: opacity 0.8s ease;
     }
-    .fit-card {
-      padding: 1.75rem;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .fit-card:hover {
-      border-color: #ccc;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
-    }
-    .fit-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1rem; font-weight: 600;
+    .insight-item.active { opacity: 1; }
+    .insight-text {
+      color: var(--grey);
+      line-height: 1.7;
+      font-size: 0.88rem;
+      font-style: italic;
       margin-bottom: 0.5rem;
     }
-    .fit-card p { color: var(--grey); font-size: 0.88rem; line-height: 1.65; }
-    .fit-card.yes { border-left: 3px solid var(--green); }
-    .fit-card.no { border-left: 3px solid var(--border); opacity: 0.4; }
-
-    /* ---- STATEMENT ---- */
-    .statement {
-      text-align: center;
-      padding: 5.5rem 3rem;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .statement h2 { max-width: 700px; margin: 0 auto 1.75rem; }
-    .statement p {
-      color: var(--grey); font-size: 1.05rem;
-      max-width: 480px; margin: 0 auto;
-      line-height: 1.8;
-    }
-
-    /* ---- CTA ---- */
-    .cta-dark {
-      background: linear-gradient(175deg, #1a1b2e 0%, #141524 100%);
-      color: var(--white);
-      text-align: center;
-      padding: 6rem 3rem;
-    }
-    .cta-dark .section-label { color: rgba(255,255,255,0.25); }
-    .cta-dark h2 { color: var(--white); max-width: 550px; margin: 0 auto 1.25rem; }
-    .cta-dark p {
-      color: rgba(255,255,255,0.4); font-size: 1rem;
-      max-width: 1200px; margin: 0 auto 2.5rem; line-height: 1.75;
-    }
-
-    /* ---- FOOTER ---- */
-    footer {
-      background: #111222; color: rgba(255,255,255,0.3);
-      padding: 3rem 3rem 2.5rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-    }
-    .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer-brand .footer-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700; font-size: 1.2rem;
-      color: rgba(255,255,255,0.6);
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .footer-brand p {
-      font-size: 0.82rem; line-height: 1.65;
-      color: rgba(255,255,255,0.25);
-      max-width: 280px;
-    }
-    .footer-col h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.68rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 1.25rem;
-    }
-    .footer-col a {
-      display: block;
-      color: rgba(255,255,255,0.3);
-      text-decoration: none;
-      font-size: 0.85rem;
-      margin-bottom: 0.6rem;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: rgba(255,255,255,0.7); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      padding-top: 2rem;
+    .insight-action {
       font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
     }
-    .footer-bottom a {
-      color: rgba(255,255,255,0.25); text-decoration: none;
-      margin-left: 1.5rem; transition: color 0.2s;
-    }
-    .footer-bottom a:hover { color: rgba(255,255,255,0.5); }
 
     /* ---- FLOW DIAGRAM ---- */
     .flow-card {
@@ -616,6 +529,389 @@
       letter-spacing: 0.12em;
     }
 
+    /* ---- RESULTS ---- */
+    .results-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .result-metric {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .result-metric-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .result-metric-label {
+      font-size: 0.72rem;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .testimonial-card {
+      padding: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .testimonial-card:hover {
+      border-color: #ccc;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    }
+    .testimonial-quote {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--black);
+      font-style: italic;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .testimonial-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--sand);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .testimonial-role {
+      font-size: 0.75rem;
+      color: var(--grey);
+    }
+    .mini-case {
+      padding: 2rem;
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      border-left: 3px solid var(--accent);
+    }
+    .mini-case-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .mini-case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .mini-case-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--light-grey);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .mini-case-item p {
+      font-size: 0.88rem;
+      color: var(--black);
+      line-height: 1.6;
+    }
+    .mini-case-quote {
+      font-style: italic;
+      color: var(--grey);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .mini-case-author {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-top: 0.4rem;
+    }
+
+    /* ---- PROCESS ---- */
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    .process-step {
+      padding: 2.25rem 1.5rem 2.25rem 0;
+      border-right: 1px solid var(--border);
+    }
+    .process-step:last-child { border-right: none; }
+    .process-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem; font-weight: 700;
+      color: var(--border);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+    .process-step h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .process-step p { color: var(--grey); font-size: 0.85rem; line-height: 1.7; }
+    .process-step .process-highlight {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    /* ---- METRICS ---- */
+    .section-blue { background: var(--light-blue); }
+    .metrics-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      max-width: 1200px; margin: 0 auto;
+    }
+    .metric { text-align: center; padding: 1rem; }
+    .metric-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700; line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+    .metric-label {
+      font-size: 0.72rem; color: var(--grey);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+
+    /* ---- FIT ---- */
+    .fit-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .fit-card {
+      padding: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .fit-card:hover {
+      border-color: #ccc;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    }
+    .fit-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .fit-card p { color: var(--grey); font-size: 0.88rem; line-height: 1.65; }
+    .fit-card.yes { border-left: 3px solid var(--green); }
+    .fit-card.no { border-left: 3px solid var(--border); opacity: 0.4; }
+
+    /* ---- STATEMENT + VS TABLE ---- */
+    .statement {
+      text-align: center;
+      padding: 5.5rem 3rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .statement h2 { max-width: 700px; margin: 0 auto 1.75rem; }
+    .statement p {
+      color: var(--grey); font-size: 1.05rem;
+      max-width: 480px; margin: 0 auto;
+      line-height: 1.8;
+    }
+    .vs-table {
+      max-width: 800px;
+      margin: 2.5rem auto 0;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      text-align: left;
+    }
+    .vs-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .vs-header-cell {
+      padding: 1rem 1.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .vs-header-cell.vs-them {
+      background: var(--sand);
+      color: var(--light-grey);
+    }
+    .vs-header-cell.vs-us {
+      background: rgba(61, 70, 251, 0.06);
+      color: var(--accent);
+    }
+    .vs-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .vs-row:last-child { border-bottom: none; }
+    .vs-cell {
+      padding: 0.85rem 1.5rem;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .vs-cell.vs-them {
+      color: var(--light-grey);
+      background: rgba(0,0,0,0.01);
+    }
+    .vs-cell.vs-us {
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    /* ---- CTA ---- */
+    .cta-dark {
+      background: linear-gradient(175deg, #1a1b2e 0%, #141524 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 6rem 3rem;
+    }
+    .cta-dark .section-label { color: rgba(255,255,255,0.25); }
+    .cta-dark h2 { color: var(--white); max-width: 550px; margin: 0 auto 1.25rem; }
+    .cta-dark p {
+      color: rgba(255,255,255,0.4); font-size: 1rem;
+      max-width: 520px; margin: 0 auto 1.5rem; line-height: 1.75;
+    }
+    .cta-details {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.02em;
+    }
+    .cta-form {
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      text-align: left;
+    }
+    .cta-form input, .cta-form select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .cta-form input::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+    .cta-form input:focus {
+      border-color: rgba(61, 70, 251, 0.5);
+    }
+    .cta-form .full-width { grid-column: 1 / -1; }
+    .cta-form button {
+      grid-column: 1 / -1;
+      padding: 0.9rem 2.25rem;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .cta-form button:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: #111222; color: rgba(255,255,255,0.3);
+      padding: 3rem 3rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1.2rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 0.82rem; line-height: 1.65;
+      color: rgba(255,255,255,0.25);
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: rgba(255,255,255,0.7); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2rem;
+      font-size: 0.75rem;
+    }
+    .footer-bottom a {
+      color: rgba(255,255,255,0.25); text-decoration: none;
+      margin-left: 1.5rem; transition: color 0.2s;
+    }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.5); }
+
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
     /* ---- RESPONSIVE ---- */
     @media (max-width: 900px) {
       nav { padding: 0 1.5rem; }
@@ -641,21 +937,33 @@
       .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
       .footer-bottom a { margin-left: 0; margin-right: 1rem; }
       footer { padding: 2.5rem 1.5rem 2rem; }
+      .results-metrics { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .mini-case-grid { grid-template-columns: 1fr; }
+      .proof-clients { padding: 1.5rem 1.5rem 1.25rem; }
+      .proof-pills { gap: 0.5rem; }
+      .proof-pill { font-size: 0.7rem; padding: 0.4rem 1rem; }
+      .vs-table { margin: 2rem auto 0; }
+      .vs-header-cell, .vs-cell { padding: 0.75rem 1rem; font-size: 0.8rem; }
+      .cta-form { grid-template-columns: 1fr; }
+      .insight-box { min-height: 130px; }
     }
   </style>
 </head>
 <body>
 
+<!-- ============================================================ -->
 <!-- NAV -->
+<!-- ============================================================ -->
 <nav>
   <div class="logo">Invert</div>
   <div class="nav-links">
-    <a href="#services">Tj&auml;nster</a>
-    <a href="#edge">Vår filosofi</a>
-    <a href="#approach">Vår approach</a>
-    <a href="#fit">För vem</a>
-    <a href="https://app.invert.se" target="_blank" style="color:var(--black);text-decoration:none;font-size:0.8rem;font-weight:600;margin-left:2.5rem;letter-spacing:0.03em;">Growth OS &rarr;</a>
-    <a href="#cta" class="nav-cta">Kontakt</a>
+    <a href="#services">Vad vi g&ouml;r</a>
+    <a href="#growth-os">S&aring; fungerar det</a>
+    <a href="#results">Resultat</a>
+    <a href="#fit">Passar vi ihop?</a>
+    <a href="https://app.invert.se" target="_blank" class="nav-product"><span class="nav-product-badge"></span> Growth OS &rarr;</a>
+    <a href="#cta" class="nav-cta">Prata med oss</a>
   </div>
 </nav>
 
@@ -663,26 +971,47 @@
 <!-- HERO -->
 <!-- ============================================================ -->
 <section class="hero">
-  <div class="hero-label">Vi älskar att leverera resultat</div>
-  <h1>Vi är Sveriges främsta<br>experter på E-retail Growth</h1>
+  <div class="hero-label">F&ouml;r varum&auml;rken som s&auml;ljer via e-retailers</div>
+  <h1>Era konkurrenter &auml;ndrade<br>pris ig&aring;r. Ni m&auml;rkte det inte.</h1>
   <p class="hero-sub">
-    Vi hjälper varumärkesägare växa den digitala affären - alltid baserart på realtidsinsikter från E-retail Growth OS.
+    Vi hj&auml;lper varum&auml;rken som s&auml;ljer via Apotea, Apotek Hj&auml;rtat
+    och Meds att ta kontroll &ouml;ver sin digitala hyllplats &mdash; med
+    realtidsdata om priser, lager och konkurrenters agerande.
   </p>
   <div class="hero-ctas">
-    <a href="#cta" class="btn-primary">Prata med oss</a>
-    <a href="#edge" class="btn-outline">Vår approach</a>
+    <a href="#cta" class="btn-primary">Boka ett samtal</a>
+    <a href="#growth-os" class="btn-outline">Se hur det fungerar</a>
+  </div>
+  <div class="hero-ticker">
+    <span class="hero-ticker-dot"></span>
+    <span class="hero-ticker-text" id="heroTicker">Pris&auml;ndring: +3.2% Apotea &mdash; 14:32</span>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-section">
-  <div class="marquee-label">Vi bevakar</div>
-  <div style="overflow:hidden;">
-    <div class="marquee-track">
-      <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
-      <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
-      <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
-      <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
+<!-- ============================================================ -->
+<!-- SOCIAL PROOF -->
+<!-- ============================================================ -->
+<div class="social-proof">
+  <div class="proof-clients">
+    <div class="proof-label">Vi jobbar med</div>
+    <div class="proof-pills">
+      <!-- TODO: Ers&auml;tt med riktiga kundlogotyper n&auml;r tillg&auml;ngliga -->
+      <span class="proof-pill">Ledande varum&auml;rke inom h&auml;lsa</span>
+      <span class="proof-pill">Topp 3 inom vitaminer Sverige</span>
+      <span class="proof-pill">Nordiskt kosttillskottsm&auml;rke</span>
+      <span class="proof-pill">Snabbv&auml;xande skincarem&auml;rke</span>
+      <span class="proof-pill">Etablerat h&auml;lsovarum&auml;rke</span>
+    </div>
+  </div>
+  <div class="proof-retailers">
+    <div class="marquee-label">Vi bevakar era konkurrenter p&aring;</div>
+    <div style="overflow:hidden;">
+      <div class="marquee-track">
+        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
+        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
+        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
+        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
+      </div>
     </div>
   </div>
 </div>
@@ -692,19 +1021,23 @@
 <!-- ============================================================ -->
 <div class="section" id="services">
   <div class="section-label">Vad vi g&ouml;r</div>
-  <h2>En partner som hjälper er<br>över alla delar i tillväxtresan</h2>
+  <h2>Tre lager av tillv&auml;xt &mdash;<br>alla drivna av realtidsdata</h2>
   <p class="section-sub">
-    Vi är experter på att driva datadriven tillväxt där era kunder faktiskt handalar - bland E-retailers. 
-    Genom E-retail Growth OS har vi även starkt underlag för att stötta er i D2C-affären och driva optimering av hela den digitala affären.
+    De flesta byr&aring;er hanterar er mediabudget. Vi hanterar hela
+    er e-retail-aff&auml;r &mdash; fr&aring;n priss&auml;ttning och synlighet till
+    var varje annonskrona g&ouml;r mest nytta.
   </p>
 
   <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01</div>
-      <h3>E-retail-strategi &amp;<br>konkurrentinsikter</h3>
+      <h3>E-retail Intelligence</h3>
+      <div class="service-tagline">Se vad era konkurrenter inte kan se.</div>
       <p>
-        Vi analyserar er totala närvaro på varje e-retailer - pris, synlighet,
-        konkurrenter, lagerstatus &mdash; och levererar en konkret handlingsplan för flertal nyckeltal med stark inverkan på er digital affär.
+        Priser &auml;ndras. Produkter tar slut. Konkurrenter h&ouml;jer eller
+        s&auml;nker. Det mesta sker utan att ni m&auml;rker det. Vi samlar
+        realtidsdata fr&aring;n alla stora e-retailers och omvandlar den
+        till konkreta handlingar: priss&auml;ttning, sortiment, synlighet.
       </p>
       <a href="#cta" class="service-link">
         L&auml;s mer
@@ -714,11 +1047,13 @@
 
     <div class="service-card">
       <div class="service-num">02</div>
-      <h3>Mediastrategi<br>Retail Media &amp; Paid Social</h3>
+      <h3>Retail Media &amp; Paid Social</h3>
+      <div class="service-tagline">Styr trafiken dit den g&ouml;r b&auml;st nytta. Just nu.</div>
       <p>
-        Andra byr&aring; s&auml;tter upp en kampanj och v&auml;ljer e-retailer p&aring;
-        magk&auml;nsla. Vi börjar i andra änden - vilka förutsättningar har vi hos respektive e-retailer för stunden
-        och styr trafiken dit den gör bäst nytta för stunden. Flexibelt. Baserat på realtidsdata.
+        Andra byr&aring;er v&auml;ljer kanal p&aring; magk&auml;nsla. Vi b&ouml;rjar med data:
+        vilken e-retailer har b&auml;st f&ouml;ruts&auml;ttningar just nu? Var &auml;r ni
+        i lager? Var har konkurrenten slut? Vi styr mediaspend i realtid
+        dit den ger mest f&ouml;rs&auml;ljning.
       </p>
       <a href="#cta" class="service-link">
         L&auml;s mer
@@ -728,10 +1063,13 @@
 
     <div class="service-card">
       <div class="service-num">03</div>
-      <h3>D2C &amp;<br>totalaff&auml;r</h3>
+      <h3>D2C &amp; Totalaff&auml;r</h3>
+      <div class="service-tagline">Kanaler som f&ouml;rst&auml;rker varandra, inte kannibaliserar.</div>
       <p>
-        För varumärken som även driver egen D2C nyttjar vi E-retail Growth OS för att skapa oss en helhetsbild och navigerar så att samtliga aktörer förstärker
-        istället för att kanibalisera på varandra.
+        S&auml;ljer ni b&aring;de via egna kanaler och via e-retailers?
+        D&aring; vet ni att det &auml;r en balansg&aring;ng. Vi anv&auml;nder Growth OS
+        f&ouml;r att skapa en helhetsbild och navigera s&aring; att alla kanaler
+        drar &aring;t samma h&aring;ll.
       </p>
       <a href="#cta" class="service-link">
         L&auml;s mer
@@ -742,31 +1080,40 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- OUR EDGE -->
+<!-- GROWTH OS -->
 <!-- ============================================================ -->
-<div class="section-sand section-full" id="edge">
+<div class="section-sand section-full" id="growth-os">
   <div class="split">
     <div class="split-text">
-      <div class="section-label">Vår Filosofi</div>
-      <h2>Insikter är endast värdefulla<br>om vi har förmågan att agera på dem</h2>
+      <div class="section-label">Growth OS</div>
+      <h2>Insikter &auml;r bara v&auml;rdefulla<br>om ni kan agera p&aring; dem</h2>
       <p>
-        Vi skapade E-retail Growth OS för att ge varumärkesägare en edge genom insikter kring vilka faktorer som påverkar utfallet i den digitala affären. 
-        Vårt mål att samla in och strukturera svåråtkomlig data för att sedan omvandla den till agerbara insikter för våra kunder. 
-        De agerbara insikterna ligger till grund för nyckeltal som vi löpande nyttjar för att optimera och växa våra kunders afär.
+        Vi byggde Growth OS f&ouml;r att omvandla sv&aring;r&aring;tkomlig data &mdash;
+        priser, lagerstatus, konkurrentr&ouml;relser, synlighet &mdash; till
+        insikter ni kan agera p&aring; idag. Inte n&auml;sta m&aring;nad. Idag.
       </p>
-      <p>
-        Konkret inneb&auml;r det att vi har byggt en propriet&auml;r plattform
-        som kontinuerligt samlar priser, lagerstatus och konkurrentdata
-        fr&aring;n alla stora svenska e-retailers. Den ger oss underlag för att tänka strategiskt och agera taktiskt - utan att behöva gissa. 
-      </p>
-      <div class="accent-line">
-        "De enda insikterna vi fått från våra E-retailers är försäljningsdata på månadsbasis. Thats it!""
+
+      <!-- Roterande insiktsexempel -->
+      <div class="insight-box">
+        <div class="insight-box-label">Insiktsexempel</div>
+        <div class="insight-item active" data-insight="0">
+          <div class="insight-text">&ldquo;Er huvudkonkurrent h&ouml;jde priset med 8% p&aring; Apotea ig&aring;r. Ni har inte justerat. Era marginaler sjunker medan de tar marknadsandel.&rdquo;</div>
+          <div class="insight-action">&rarr; Growth OS flaggade detta automatiskt kl 08:12</div>
+        </div>
+        <div class="insight-item" data-insight="1">
+          <div class="insight-text">&ldquo;Er b&auml;sts&auml;ljare &auml;r OOS hos Apotek Hj&auml;rtat sedan 3 dagar. Konkurrenten har tagit &ouml;ver er position i kategorin.&rdquo;</div>
+          <div class="insight-action">&rarr; Growth OS notifierade er direkt vid lager&auml;ndringen</div>
+        </div>
+        <div class="insight-item" data-insight="2">
+          <div class="insight-text">&ldquo;Ni ligger 12% under konkurrentens pris p&aring; Meds. Marginalm&ouml;jlighet: h&ouml;j med 8% och beh&aring;ll b&auml;sta-pris-positionen.&rdquo;</div>
+          <div class="insight-action">&rarr; Growth OS identifierade prisoptimeringen idag kl 07:45</div>
+        </div>
       </div>
     </div>
 
     <div class="flow-card">
       <div class="flow-card-label">
-        <span class="intel-dot"></span>
+        <span class="intel-dot" style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></span>
         Invert Intelligence
       </div>
       <div class="flow-container" id="flowContainer">
@@ -775,7 +1122,7 @@
           <div class="flow-col-label">Input data</div>
           <div class="flow-input" data-input="0">Priser &bull; 5 retailers</div>
           <div class="flow-input" data-input="1">Lagerstatus &bull; realtid</div>
-          <div class="flow-input" data-input="2">Konkurrentdata &bull; edge </div>
+          <div class="flow-input" data-input="2">Konkurrentdata &bull; l&ouml;pande</div>
           <div class="flow-input" data-input="3">Synlighet &bull; position</div>
         </div>
         <div class="flow-hub">
@@ -799,9 +1146,100 @@
         </div>
       </div>
       <div class="flow-card-footer">
-        Data in &rarr; analys &rarr; handlingsbara insikter ut
+        Data in &rarr; analys &rarr; agerbara insikter ut
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- RESULTS & TESTIMONIALS -->
+<!-- ============================================================ -->
+<div class="section" id="results">
+  <div class="section-label">Resultat</div>
+  <h2>Det &auml;r v&aring;ra kunders framg&aring;ngar<br>som definierar oss</h2>
+  <p class="section-sub">
+    Vi m&auml;ts p&aring; utfall, inte aktivitet. H&auml;r &auml;r n&aring;gra av de siffror vi &auml;r stolta &ouml;ver.
+  </p>
+
+  <!-- Nyckeltal -->
+  <div class="results-metrics">
+    <div class="result-metric">
+      <!-- TODO: Fyll i faktisk siffra -->
+      <div class="result-metric-value">[XX]+</div>
+      <div class="result-metric-label">Varum&auml;rken</div>
+    </div>
+    <div class="result-metric">
+      <!-- TODO: Fyll i faktisk siffra -->
+      <div class="result-metric-value">[XX]%</div>
+      <div class="result-metric-label">Snitt&ouml;kning i synlighet</div>
+    </div>
+    <div class="result-metric">
+      <div class="result-metric-value">48h</div>
+      <div class="result-metric-label">Till f&ouml;rsta insikt</div>
+    </div>
+    <div class="result-metric">
+      <!-- TODO: Fyll i faktisk siffra -->
+      <div class="result-metric-value">[XX]</div>
+      <div class="result-metric-label">mkr hanterad mediaspend</div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="testimonials-grid">
+    <!-- TODO: Ers&auml;tt med riktiga kundcitat -->
+    <div class="testimonial-card">
+      <p class="testimonial-quote">&ldquo;[Kundcitat &mdash; 1-2 meningar om samarbetet och konkreta resultat]&rdquo;</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar"></div>
+        <div>
+          <div class="testimonial-name">[Namn Efternamn]</div>
+          <div class="testimonial-role">[Titel], [F&ouml;retag]</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">&ldquo;[Kundcitat &mdash; 1-2 meningar om vad de hade missat utan Invert]&rdquo;</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar"></div>
+        <div>
+          <div class="testimonial-name">[Namn Efternamn]</div>
+          <div class="testimonial-role">[Titel], [F&ouml;retag]</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">&ldquo;[Kundcitat &mdash; 1-2 meningar om hur insikterna p&aring;verkade deras aff&auml;r]&rdquo;</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar"></div>
+        <div>
+          <div class="testimonial-name">[Namn Efternamn]</div>
+          <div class="testimonial-role">[Titel], [F&ouml;retag]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mini-case -->
+  <!-- TODO: Ers&auml;tt med riktigt kundcase -->
+  <div class="mini-case">
+    <div class="mini-case-label">Case: [Kundnamn / Anonym beskrivning]</div>
+    <div class="mini-case-grid">
+      <div class="mini-case-item">
+        <h4>Utmaning</h4>
+        <p>[1 mening som beskriver kundens utmaning]</p>
+      </div>
+      <div class="mini-case-item">
+        <h4>Approach</h4>
+        <p>[1 mening som beskriver Inverts approach]</p>
+      </div>
+      <div class="mini-case-item">
+        <h4>Resultat</h4>
+        <p>[1-2 meningar med kvantifierade resultat]</p>
+      </div>
+    </div>
+    <p class="mini-case-quote">&ldquo;[Kort citat fr&aring;n kunden]&rdquo;</p>
+    <p class="mini-case-author">&mdash; [Namn], [Titel]</p>
   </div>
 </div>
 
@@ -809,32 +1247,33 @@
 <!-- PROCESS -->
 <!-- ============================================================ -->
 <div class="section" id="approach">
-  <div class="section-label">S&aring; jobbar vi</div>
-  <h2>Vi älskar att gå rakt på sak</h2>
+  <div class="section-label">S&aring; fungerar det</div>
+  <h2>Rakt p&aring; sak.<br>Inga PowerPoints som aldrig genomf&ouml;rs.</h2>
   <p class="section-sub">
-    Inga långdragna processer som resulterar i Powerpoints som presenteras men aldrig genomförs. Vi börjar direkt titta på er data, skapar oss en bild av marknaden och agerar utifrån vad som faktisk sker. 
+    Vi b&ouml;rjar i er data &mdash; inte i ett strategidokument.
+    Inom 48 timmar har vi en bild av era verkliga f&ouml;ruts&auml;ttningar.
   </p>
 
   <div class="process-grid">
     <div class="process-step">
       <div class="process-num">01</div>
-      <h3>Marknadsscan</h3>
-      <p>Vi kopplar p&aring; era produkter och konkurrenter. Inom 48h har vi en komplett bild av era verkliga förutsättnignar &mdash; priser, lager, synlighet och faktiska konkurrenter.</p>
+      <h3>Marknadsscan <span class="process-highlight">(48h)</span></h3>
+      <p>Vi kopplar p&aring; era produkter och konkurrenter. Inom 48 timmar ser vi vad som faktiskt p&aring;g&aring;r: priser, lagerstatus, synlighet, konkurrenternas positioner.</p>
     </div>
     <div class="process-step">
       <div class="process-num">02</div>
-      <h3>Diagnos & Baseline</h3>
-      <p>Vad är utgångsläget? Var l&auml;cker ni marginal? Var &auml;r ni osynliga? Vilka konkurrenter &auml;r OOS utan att ni agerar? Vi identifierar vad som hämmar tillväxt. Och vart ni har möjlighet att ta mark.</p>
+      <h3>Diagnos &amp; Baseline</h3>
+      <p>Var l&auml;cker ni marginal? Var &auml;r ni osynliga? Vilka konkurrenter har slut i lager utan att ni utnyttjar det? Vi identifierar hindren &mdash; och m&ouml;jligheterna ni missar.</p>
     </div>
     <div class="process-step">
       <div class="process-num">03</div>
-      <h3>Strategi &amp; exekvering</h3>
-      <p>Konkret handlingsplan: priss&auml;ttning, mediak&ouml;p, kampanjer, förbättrad hyllplats. Vi hjälper er både strategiskt och taktiskt för att nå våra uppsatta mål!</p>
+      <h3>Strategi &amp; Exekvering</h3>
+      <p>En konkret handlingsplan: prisjusteringar, mediak&ouml;p, kampanjer, hyllplatsoptimering. Vi exekverar &mdash; inte bara rekommenderar.</p>
     </div>
     <div class="process-step">
       <div class="process-num">04</div>
-      <h3>L&ouml;pande optimering</h3>
-      <p>Marknaden f&ouml;r&auml;ndras löpande. Veckovisa datadrivna rapporter och kontinuerlig insatser baserat på realtidsdata - vad som faktiskt h&auml;nder i den digitala hyllan.</p>
+      <h3>L&ouml;pande Optimering</h3>
+      <p>Marknaden f&ouml;r&auml;ndras dagligen. Vi agerar dagligen. Veckovisa rapporter och kontinuerliga insatser baserade p&aring; vad som faktiskt h&auml;nder i den digitala hyllan.</p>
     </div>
   </div>
 </div>
@@ -845,16 +1284,18 @@
 <div class="section-blue section-full">
   <div class="metrics-row">
     <div class="metric">
-      <div class="metric-value">5+</div>
-      <div class="metric-label">E-retailers</div>
+      <!-- TODO: Fyll i faktisk siffra -->
+      <div class="metric-value">[XX]+</div>
+      <div class="metric-label">Varum&auml;rken</div>
     </div>
     <div class="metric">
-      <div class="metric-value">24/7</div>
-      <div class="metric-label">Realtidsdata</div>
+      <div class="metric-value">48h</div>
+      <div class="metric-label">Till f&ouml;rsta insikt</div>
     </div>
     <div class="metric">
-      <div class="metric-value">100%</div>
-      <div class="metric-label">Datadriven</div>
+      <!-- TODO: Fyll i faktisk siffra -->
+      <div class="metric-value">[XX]</div>
+      <div class="metric-label">mkr hanterad mediaspend</div>
     </div>
     <div class="metric">
       <div class="metric-value">0%</div>
@@ -867,10 +1308,11 @@
 <!-- FIT -->
 <!-- ============================================================ -->
 <div class="section" id="fit">
-  <div class="section-label">R&auml;tt fit</div>
-  <h2>Vi jobbar med varumärken som</h2>
+  <div class="section-label">Passar vi ihop?</div>
+  <h2>Vi jobbar med varum&auml;rken som</h2>
   <p class="section-sub">
-    Vår expertis ligger i att driva tillväxt för varumärken där e-retail är motorn.
+    V&aring;r expertis ligger i att driva tillv&auml;xt d&auml;r e-retail
+    &auml;r motorn. Om det st&auml;mmer p&aring; er &mdash; l&auml;s vidare.
   </p>
 
   <div class="fit-grid">
@@ -880,30 +1322,53 @@
     </div>
     <div class="fit-card yes">
       <h3>Vill fatta databaserade beslut</h3>
-      <p>Ni s&ouml;ker en erfaren och driven partner med egen tech-plattform &mdash; inte en traditionell byr&aring; som levererar slides och mediaköp på magkänsla och tar procent p&aring; budgeten.</p>
+      <p>Ni vill ha en partner med egen tech-plattform &mdash; inte en byr&aring; som levererar slides och tar procent p&aring; budgeten utan att kunna f&ouml;rklara varf&ouml;r.</p>
     </div>
     <div class="fit-card yes">
       <h3>Saknar egen kassa men vill v&auml;xa</h3>
-      <p>Mediabyråer kräver höga budgetar. Performancebyr&aring;er kräver D2C-konvertering. Ni beh&ouml;ver en partner som till 100% förstår spelplanen när E-retailers äger kassa och konvertering.</p>
+      <p>Mediabyr&aring;er kr&auml;ver h&ouml;ga budgetar. Performancebyr&aring;er kr&auml;ver D2C-konvertering. Ni beh&ouml;ver en partner som till 100% f&ouml;rst&aring;r spelplanen n&auml;r e-retailers &auml;ger kassa och konvertering.</p>
     </div>
     <div class="fit-card no">
       <h3>S&auml;ljer prim&auml;rt via egen webshop</h3>
-      <p>Om e-retail &auml;r en liten del av er oms&auml;ttning finns det b&auml;ttre partners. Vi fokuserar d&auml;r e-retail &auml;r kungen. Vi rekommenderar g&auml;rna vassa byr&aring;er h&auml;r.</p>
+      <p>Om e-retail &auml;r en liten del av er oms&auml;ttning finns det b&auml;ttre partners. Vi fokuserar d&auml;r e-retail &auml;r motorn. Vi rekommenderar g&auml;rna vassa byr&aring;er h&auml;r.</p>
     </div>
   </div>
 </div>
 
 <!-- ============================================================ -->
-<!-- STATEMENT -->
+<!-- DIFFERENTIATOR -->
 <!-- ============================================================ -->
 <hr class="divider">
 <div class="statement">
   <h2>Andra byr&aring;er ger &aring;sikter.<br>Vi ger agerbara insikter.</h2>
   <p>
-    V&aring;r plattform ser varje pris&auml;ndring, varje lagerförändring,
-    varje konkurrentr&ouml;relse - i realtid. Och kommer med det som grund med förslag på 
-    hur ni bör agera för bästa möjliga utfall. 
+    V&aring;r plattform ser varje pris&auml;ndring, varje lagerf&ouml;r&auml;ndring,
+    varje konkurrentr&ouml;relse &mdash; i realtid. Baserat p&aring; det ger vi
+    er konkreta f&ouml;rslag p&aring; hur ni b&ouml;r agera f&ouml;r b&auml;sta m&ouml;jliga utfall.
   </p>
+
+  <div class="vs-table">
+    <div class="vs-header">
+      <div class="vs-header-cell vs-them">Traditionell byr&aring;</div>
+      <div class="vs-header-cell vs-us">Invert</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-them">M&aring;nadsrapporter i PDF</div>
+      <div class="vs-cell vs-us">Realtidsinsikter dagligen</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-them">Mediak&ouml;p baserat p&aring; budget</div>
+      <div class="vs-cell vs-us">Mediak&ouml;p baserat p&aring; data</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-them">Gissar var budgeten g&ouml;r b&auml;st nytta</div>
+      <div class="vs-cell vs-us">Ser var budgeten g&ouml;r b&auml;st nytta</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-them">Vet inte konkurrenters priss&auml;ttning</div>
+      <div class="vs-cell vs-us">Ser varje pris&auml;ndring hos era konkurrenter</div>
+    </div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -911,13 +1376,24 @@
 <!-- ============================================================ -->
 <div class="cta-dark" id="cta">
   <div class="section-label">N&auml;sta steg</div>
-  <h2>Nyfiken p&aring; vilka insikter<br>vi kan ta fram för ert varum&auml;rke?</h2>
+  <h2>Vi visar er vad ni<br>inte kan se idag</h2>
   <p>
-    Berätta vilka e-retailers ni säljer via, och vilka kategorier som är viktigast. Vi visar er marknadsposition och var vi se de 
-    största möjligheterna att växa hos respektive e-retailer. 30 min, ingen f&ouml;rpliktelse.
+    Ber&auml;tta vilka e-retailers ni s&auml;ljer via och vilka kategorier
+    som &auml;r viktigast. Inom 30 minuter visar vi er marknadsposition
+    och var de st&ouml;rsta m&ouml;jligheterna finns.
   </p>
-  <div class="hero-ctas">
-    <a href="mailto:hello@invert.se" class="btn-primary">Boka ett samtal</a>
+  <div class="cta-details">30 min &bull; Ingen f&ouml;rpliktelse &bull; Vi visar konkret data</div>
+
+  <!-- TODO: Koppla formul&auml;ret till Formspree (formspree.io) eller annan tj&auml;nst -->
+  <form class="cta-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="text" name="name" placeholder="Namn" required>
+    <input type="text" name="company" placeholder="F&ouml;retag" required>
+    <input type="text" name="retailers" placeholder="E-retailers ni s&auml;ljer via" class="full-width">
+    <input type="email" name="email" placeholder="E-post" class="full-width" required>
+    <button type="submit">Boka ett samtal</button>
+  </form>
+
+  <div class="hero-ctas" style="margin-top: 1rem;">
     <a href="mailto:hello@invert.se" class="btn-outline">hello@invert.se</a>
   </div>
 </div>
@@ -930,20 +1406,19 @@
     <div class="footer-top">
       <div class="footer-brand">
         <span class="footer-logo">Invert</span>
-        <p>Vi är experter på E-retail Growth och hjälper våra kunder med strategi, mediaköp och rådgivning - grundat i data, inte magkänsla.</p>
+        <p>Vi hj&auml;lper varum&auml;rken att v&auml;xa p&aring; Sveriges st&ouml;rsta e-retailers &mdash; grundat i data, inte magk&auml;nsla.</p>
       </div>
       <div class="footer-col">
-        <h4>Tj&auml;nster</h4>
-        <a href="#services">Retail-strategi</a>
-        <a href="#services">Retail Media</a>
-        <a href="#services">Paid Social</a>
-        <a href="#services">D2C &amp; totalaff&auml;r</a>
+        <h4>Vad vi g&ouml;r</h4>
+        <a href="#services">E-retail Intelligence</a>
+        <a href="#services">Retail Media &amp; Paid Social</a>
+        <a href="#services">D2C &amp; Totalaff&auml;r</a>
       </div>
       <div class="footer-col">
-        <h4>Byrån</h4>
-        <a href="#edge">V&aring;rt t&auml;nk</a>
-        <a href="#approach">Arbetss&auml;tt</a>
-        <a href="#fit">F&ouml;r vem</a>
+        <h4>Om oss</h4>
+        <a href="#growth-os">S&aring; fungerar det</a>
+        <a href="#fit">Passar vi ihop?</a>
+        <a href="https://app.invert.se" target="_blank">Growth OS &rarr;</a>
       </div>
       <div class="footer-col">
         <h4>Kontakt</h4>
@@ -962,6 +1437,7 @@
 </footer>
 
 <script>
+/* ---- FLOW DIAGRAM ANIMATION ---- */
 (function() {
   var svg = document.getElementById('flowSvg');
   var box = document.getElementById('flowContainer');
@@ -990,7 +1466,6 @@
     svg.style.width = br.width + 'px';
     svg.style.height = br.height + 'px';
 
-    // Glow filter
     var defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
     var f = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
     f.setAttribute('id', 'fg');
@@ -1007,7 +1482,6 @@
     var inputs = box.querySelectorAll('.flow-input');
     var outputs = box.querySelectorAll('.flow-output');
 
-    // Input paths (right edge of input → hub center)
     inputs.forEach(function(el, i) {
       var p = rel(el, box);
       var x1 = p.right;
@@ -1035,7 +1509,6 @@
       }
     });
 
-    // Output paths (hub center → left edge of output)
     outputs.forEach(function(el, i) {
       var p = rel(el, box);
       var x2 = p.left;
@@ -1104,6 +1577,40 @@
     clearTimeout(rt);
     rt = setTimeout(init, 300);
   });
+})();
+
+/* ---- HERO TICKER ANIMATION ---- */
+(function() {
+  var el = document.getElementById('heroTicker');
+  if (!el) return;
+  var messages = [
+    'Pris\u00e4ndring: +3.2% Apotea \u2014 14:32',
+    'Lager\u00e4ndring: OOS Apotek Hj\u00e4rtat \u2014 09:15',
+    'Konkurrent: \u22125% underpris Meds \u2014 11:48',
+    'Synlighet: Position 1 \u2192 3 Apohem \u2014 16:04',
+    'Pris\u00e4ndring: \u22128.1% Apoteket \u2014 07:22'
+  ];
+  var idx = 0;
+  setInterval(function() {
+    el.style.opacity = '0';
+    setTimeout(function() {
+      idx = (idx + 1) % messages.length;
+      el.textContent = messages[idx];
+      el.style.opacity = '1';
+    }, 500);
+  }, 4000);
+})();
+
+/* ---- INSIGHT BOX ROTATION ---- */
+(function() {
+  var items = document.querySelectorAll('.insight-item');
+  if (!items.length) return;
+  var idx = 0;
+  setInterval(function() {
+    items[idx].classList.remove('active');
+    idx = (idx + 1) % items.length;
+    items[idx].classList.add('active');
+  }, 6000);
 })();
 </script>
 </body>
