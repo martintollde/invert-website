@@ -912,6 +912,134 @@
 
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
+    /* ---- PRICING ---- */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem 1.75rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .pricing-card:hover {
+      border-color: #ccc;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    }
+    .pricing-card.popular {
+      border: 2px solid var(--accent);
+    }
+    .pricing-card.premium {
+      background: var(--sand);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pricing-tier {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--light-grey);
+      margin-bottom: 0.5rem;
+    }
+    .pricing-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+    .pricing-tagline {
+      font-size: 0.88rem;
+      color: var(--grey);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .pricing-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .pricing-price span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--grey);
+    }
+    .pricing-divider-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      margin-top: 0.25rem;
+    }
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .pricing-features li {
+      position: relative;
+      padding-left: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--grey);
+      line-height: 1.65;
+      margin-bottom: 0.4rem;
+    }
+    .pricing-features li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+    .pricing-features li.section-break {
+      margin-top: 1rem;
+    }
+    .pricing-features li.section-break::before {
+      display: none;
+    }
+    .pricing-cta {
+      margin-top: auto;
+    }
+    .pricing-footnote {
+      text-align: center;
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      font-size: 0.78rem;
+      color: var(--light-grey);
+    }
+
     /* ---- RESPONSIVE ---- */
     @media (max-width: 900px) {
       nav { padding: 0 1.5rem; }
@@ -947,6 +1075,8 @@
       .vs-header-cell, .vs-cell { padding: 0.75rem 1rem; font-size: 0.8rem; }
       .cta-form { grid-template-columns: 1fr; }
       .insight-box { min-height: 130px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.popular { order: -1; }
     }
   </style>
 </head>
@@ -960,6 +1090,7 @@
   <div class="nav-links">
     <a href="#services">Vad vi g&ouml;r</a>
     <a href="#growth-os">S&aring; fungerar det</a>
+    <a href="#priser">Priser</a>
     <a href="#fit">Passar vi ihop?</a>
     <a href="https://app.invert.se" target="_blank" class="nav-product"><span class="nav-product-badge"></span> Growth OS &rarr;</a>
     <a href="#cta" class="nav-cta">Prata med oss</a>
@@ -981,7 +1112,7 @@
   </div>
   <div class="hero-ticker">
     <span class="hero-ticker-dot"></span>
-    <span class="hero-ticker-text" id="heroTicker">Pris&auml;ndring: +3.2% Apotea &mdash; 14:32</span>
+    <span class="hero-ticker-text" id="heroTicker">Pris&auml;ndring: +3.2% Lyko &mdash; 14:32</span>
   </div>
 </section>
 
@@ -1000,13 +1131,13 @@
     </div>
   </div>
   <div class="proof-retailers">
-    <div class="marquee-label">Vi bevakar era konkurrenter p&aring;</div>
+    <div class="marquee-label">Vi bevakar den digitala hyllan p&aring;</div>
     <div style="overflow:hidden;">
       <div class="marquee-track">
-        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
-        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
-        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
-        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span>
+        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span><span>Lyko</span><span>Stadium</span><span>Care of Carl</span><span>Ica</span>
+        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span><span>Lyko</span><span>Stadium</span><span>Care of Carl</span><span>Ica</span>
+        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span><span>Lyko</span><span>Stadium</span><span>Care of Carl</span><span>Ica</span>
+        <span>Apotea</span><span>Apotek Hj&auml;rtat</span><span>Meds</span><span>Apohem</span><span>Apoteket</span><span>Lyko</span><span>Stadium</span><span>Care of Carl</span><span>Ica</span>
       </div>
     </div>
   </div>
@@ -1030,10 +1161,7 @@
       <h3>E-retail Intelligence</h3>
       <div class="service-tagline">Se vad era konkurrenter inte kan se.</div>
       <p>
-        Priser &auml;ndras. Produkter tar slut. Konkurrenter h&ouml;jer eller
-        s&auml;nker. Det mesta sker utan att ni m&auml;rker det. Vi samlar
-        realtidsdata fr&aring;n alla stora e-retailers och omvandlar den
-        till konkreta handlingar: priss&auml;ttning, sortiment, synlighet.
+        Priser &auml;ndras. Produkter tar slut. Konkurrenter styr om. Det mesta sker utan att ni m&auml;rker det. Vi bevakar lagerstatus, priss&auml;ttning, hyllandel, hyllposition och produktsideinne&aring;ll &mdash; &ouml;ver alla era e-retailers. Insikterna landar i Growth OS, redo att agera p&aring;.
       </p>
       <a href="#cta" class="service-link">
         L&auml;s mer
@@ -1046,10 +1174,7 @@
       <h3>Retail Media &amp; Paid Social</h3>
       <div class="service-tagline">Styr trafiken dit den g&ouml;r b&auml;st nytta. Just nu.</div>
       <p>
-        Andra byr&aring;er v&auml;ljer kanal p&aring; magk&auml;nsla. Vi b&ouml;rjar med data:
-        vilken e-retailer har b&auml;st f&ouml;ruts&auml;ttningar just nu? Var &auml;r ni
-        i lager? Var har konkurrenten slut? Vi styr mediaspend i realtid
-        dit den ger mest f&ouml;rs&auml;ljning.
+        Varf&ouml;r aktivera p&aring; en retailer d&auml;r er produkt &auml;r sluts&aring;ld? Varf&ouml;r k&ouml;pa media n&auml;r konkurrenten har ett b&auml;ttre pris? Vi styr mediaspend baserat p&aring; realtidsdata: lager, pris, konkurrentl&auml;ge. Varje krona hamnar d&auml;r den ger mest f&ouml;rs&auml;ljning.
       </p>
       <a href="#cta" class="service-link">
         L&auml;s mer
@@ -1084,9 +1209,7 @@
       <div class="section-label">Growth OS</div>
       <h2>Insikter &auml;r bara v&auml;rdefulla<br>om ni kan agera p&aring; dem</h2>
       <p>
-        Vi byggde Growth OS f&ouml;r att omvandla sv&aring;r&aring;tkomlig data &mdash;
-        priser, lagerstatus, konkurrentr&ouml;relser, synlighet &mdash; till
-        insikter ni kan agera p&aring; idag. Inte n&auml;sta m&aring;nad. Idag.
+        Mellan era insatser och er m&aring;nadsf&ouml;rs&auml;ljning h&auml;nder det saker ni aldrig ser &mdash; pris&auml;ndringar, lagersvinn, konkurrentr&ouml;relser, synlighetsf&ouml;r&auml;ndringar. Growth OS g&ouml;r det osynliga synligt och agerbart. Idag, inte n&auml;sta m&aring;nad.
       </p>
 
       <!-- Roterande insiktsexempel -->
@@ -1104,6 +1227,10 @@
           <div class="insight-text">&ldquo;Ni ligger 12% under konkurrentens pris p&aring; Meds. Marginalm&ouml;jlighet: h&ouml;j med 8% och beh&aring;ll b&auml;sta-pris-positionen.&rdquo;</div>
           <div class="insight-action">&rarr; Growth OS identifierade prisoptimeringen idag kl 07:45</div>
         </div>
+        <div class="insight-item" data-insight="3">
+          <div class="insight-text">&ldquo;Er konkurrent har lanserat 3 nya SKU:er p&aring; Lyko denna m&aring;nad. Ni har bara 60% sortimentst&auml;ckning i kategorin.&rdquo;</div>
+          <div class="insight-action">&rarr; Growth OS identifierade sortimentsgapet automatiskt</div>
+        </div>
       </div>
     </div>
 
@@ -1116,7 +1243,7 @@
         <svg class="flow-svg" id="flowSvg"></svg>
         <div class="flow-inputs">
           <div class="flow-col-label">Input data</div>
-          <div class="flow-input" data-input="0">Priser &bull; 5 retailers</div>
+          <div class="flow-input" data-input="0">Priser &bull; realtid</div>
           <div class="flow-input" data-input="1">Lagerstatus &bull; realtid</div>
           <div class="flow-input" data-input="2">Konkurrentdata &bull; l&ouml;pande</div>
           <div class="flow-input" data-input="3">Synlighet &bull; position</div>
@@ -1254,7 +1381,7 @@
     <div class="process-step">
       <div class="process-num">01</div>
       <h3>Marknadsscan <span class="process-highlight">(48h)</span></h3>
-      <p>Vi kopplar p&aring; era produkter och konkurrenter. Inom 48 timmar ser vi vad som faktiskt p&aring;g&aring;r: priser, lagerstatus, synlighet, konkurrenternas positioner.</p>
+      <p>Vi kopplar p&aring; era produkter och konkurrenter. Inom 48 timmar ser vi vad som faktiskt p&aring;g&aring;r: priser, lagerstatus, sortiment, synlighet, produktsidor, konkurrenternas positioner.</p>
     </div>
     <div class="process-step">
       <div class="process-num">02</div>
@@ -1296,6 +1423,103 @@
       <div class="metric-label">Magk&auml;nsla</div>
     </div>
   </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PRICING -->
+<!-- ============================================================ -->
+<div class="section" id="priser">
+  <div class="section-label">Paket &amp; priser</div>
+  <h2>Tech-plattform + byr&aring;-expertis i ett</h2>
+  <p class="section-sub">
+    Growth OS ger er realtidsdata. V&aring;rt team ger er strategin och exekveringen.
+    V&auml;lj den niv&aring; som passar &mdash; fr&aring;n insikt till fullskalig tillv&auml;xtpartner.
+  </p>
+
+  <div class="pricing-grid">
+    <!-- Tier 1: Bevaka -->
+    <div class="pricing-card">
+      <div class="pricing-tier">Tier 1</div>
+      <h3>Bevaka</h3>
+      <div class="pricing-tagline">Se vad som h&auml;nder p&aring; hyllan. Varje dag.</div>
+      <div class="pricing-price">Fr&aring;n 20 000 <span>kr/m&aring;n</span></div>
+
+      <div class="pricing-divider-label">Tech (Growth OS)</div>
+      <ul class="pricing-features">
+        <li>Prisbevakning per e-retailer</li>
+        <li>Lagerstatus per produkt</li>
+        <li>Produktsideinne&aring;ll &mdash; &auml;ndringsbevakning</li>
+        <li>Hyllandel i era kategorier</li>
+        <li>Hyllposition per retailer</li>
+        <li>Tillg&aring;ng till Growth OS dashboard</li>
+        <li>Upp till 3 e-retailers</li>
+        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Byr&aring;</strong></li>
+        <li>M&aring;natlig genomg&aring;ng med Invert-r&aring;dgivare</li>
+        <li>Veckorapporter med sammanfattning och rekommendationer</li>
+      </ul>
+      <div class="pricing-cta">
+        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;">B&ouml;rja bevaka</a>
+      </div>
+    </div>
+
+    <!-- Tier 2: Optimera (POPULAR) -->
+    <div class="pricing-card popular">
+      <div class="pricing-badge">Mest vald</div>
+      <div class="pricing-tier">Tier 2</div>
+      <h3>Optimera</h3>
+      <div class="pricing-tagline">F&ouml;rst&aring; hela marknaden. Agera f&ouml;re konkurrenterna.</div>
+      <div class="pricing-price">Fr&aring;n 40 000 <span>kr/m&aring;n</span></div>
+
+      <div class="pricing-divider-label">Tech (Growth OS)</div>
+      <ul class="pricing-features">
+        <li>Allt i Bevaka, plus:</li>
+        <li>Alla tillg&auml;ngliga e-retailers</li>
+        <li>Konkurrentbevakning &mdash; priser, sortiment, synlighet</li>
+        <li>Marknadsandelsanalys per kategori</li>
+        <li>Sortimentslucksanalys vs konkurrenter</li>
+        <li>Automatiska alerts vid pris- och lager&auml;ndringar</li>
+        <li>Obegr&auml;nsat antal produkter</li>
+        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Byr&aring;</strong></li>
+        <li>Veckovis strategim&ouml;te med dedikerad r&aring;dgivare</li>
+        <li>Prisoptimeringsrekommendationer</li>
+        <li>Handlingsplaner baserade p&aring; insikter</li>
+        <li>L&ouml;pande r&aring;dgivning via Slack/mail</li>
+        <li><em>Tillval: Mediahantering (Paid Social + Retail Media)</em></li>
+      </ul>
+      <div class="pricing-cta">
+        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;background:var(--accent);">B&ouml;rja optimera</a>
+      </div>
+    </div>
+
+    <!-- Tier 3: Växa -->
+    <div class="pricing-card premium">
+      <div class="pricing-tier">Tier 3</div>
+      <h3>V&auml;xa</h3>
+      <div class="pricing-tagline">Er e-retail-tillv&auml;xtpartner. Data, strategi och exekvering.</div>
+      <div class="pricing-price">Fr&aring;n 80 000 <span>kr/m&aring;n</span></div>
+
+      <div class="pricing-divider-label">Tech (Growth OS)</div>
+      <ul class="pricing-features">
+        <li>Allt i Optimera, plus:</li>
+        <li>Custom-rapporter och integrationer</li>
+        <li>Baseline &rarr; delta-tracking av er totala e-retail-aff&auml;r</li>
+        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Byr&aring; &amp; Exekvering</strong></li>
+        <li>Dedikerad account lead</li>
+        <li><strong>Sortiment:</strong> Kategoritrender, lanserings-timing, sortimentsstrategi</li>
+        <li><strong>Priss&auml;ttning:</strong> Cross-retailer prisstrategi, trafikstyrning, demand-analys</li>
+        <li><strong>Mediaexekvering:</strong> Vi hanterar er Paid Social + Retail Media &mdash; taktiskt, baserat p&aring; realtidsdata</li>
+        <li><strong>Shelf share-optimering:</strong> Aktivering baserad p&aring; lager+pris+konkurrens</li>
+        <li><strong>Varum&auml;rke:</strong> Top-funnel &rarr; low-funnel alignment, konkurrentbudskaps-bevakning</li>
+        <li>Kvartalsvis strategisk review</li>
+        <li>L&ouml;pande exekvering &mdash; vi agerar, inte bara rekommenderar</li>
+      </ul>
+      <div class="pricing-cta">
+        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;">Prata med oss</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="pricing-footnote">Alla priser exkl. moms. M&aring;nadsvis upps&auml;gning. Anpassade paket f&ouml;r st&ouml;rre organisationer.</p>
 </div>
 
 <!-- ============================================================ -->
@@ -1362,6 +1586,14 @@
       <div class="vs-cell vs-them">Vet inte konkurrenters priss&auml;ttning</div>
       <div class="vs-cell vs-us">Ser varje pris&auml;ndring hos era konkurrenter</div>
     </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-them">Saknar insyn i sortimentsluckor</div>
+      <div class="vs-cell vs-us">Ser sortimentst&auml;ckning per retailer i realtid</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-them">F&ouml;rst&aring;r inte hyllpositionen</div>
+      <div class="vs-cell vs-us">Bevakar hyllandel och position dagligen</div>
+    </div>
   </div>
 </div>
 
@@ -1411,6 +1643,7 @@
       <div class="footer-col">
         <h4>Om oss</h4>
         <a href="#growth-os">S&aring; fungerar det</a>
+        <a href="#priser">Priser</a>
         <a href="#fit">Passar vi ihop?</a>
         <a href="https://app.invert.se" target="_blank">Growth OS &rarr;</a>
       </div>
@@ -1578,11 +1811,11 @@
   var el = document.getElementById('heroTicker');
   if (!el) return;
   var messages = [
-    'Pris\u00e4ndring: +3.2% Apotea \u2014 14:32',
-    'Lager\u00e4ndring: OOS Apotek Hj\u00e4rtat \u2014 09:15',
-    'Konkurrent: \u22125% underpris Meds \u2014 11:48',
-    'Synlighet: Position 1 \u2192 3 Apohem \u2014 16:04',
-    'Pris\u00e4ndring: \u22128.1% Apoteket \u2014 07:22'
+    'Pris\u00e4ndring: +3.2% Lyko \u2014 14:32',
+    'Lager\u00e4ndring: OOS Stadium \u2014 09:15',
+    'Konkurrent: \u22125% underpris Apotea \u2014 11:48',
+    'Synlighet: Position 1 \u2192 3 Care of Carl \u2014 16:04',
+    'Ny SKU: Konkurrent lanserade p\u00e5 Ica \u2014 07:22'
   ];
   var idx = 0;
   setInterval(function() {
