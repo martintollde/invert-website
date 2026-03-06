@@ -330,6 +330,111 @@
     }
     .service-link:hover svg { transform: translateX(3px); }
 
+    /* ---- SERVICE VISUALS ---- */
+    .service-visual {
+      background: #f8f7f5;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 1.75rem;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.65rem;
+      max-height: 120px;
+      overflow: hidden;
+    }
+    .sv-price-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .sv-price-table th {
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--light-grey);
+      font-weight: 600;
+      padding: 0.2rem 0.4rem;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+    }
+    .sv-price-table th:first-child { text-align: left; }
+    .sv-price-table td {
+      padding: 0.25rem 0.4rem;
+      color: var(--grey);
+      text-align: right;
+      font-size: 0.65rem;
+    }
+    .sv-price-table td:first-child {
+      text-align: left;
+      color: var(--black);
+      font-weight: 500;
+    }
+    .sv-price-table .sv-alert {
+      background: rgba(220, 38, 38, 0.08);
+      color: var(--red);
+      font-weight: 600;
+      border-radius: 3px;
+    }
+    .sv-roas {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .sv-roas-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sv-roas-label {
+      font-size: 0.58rem;
+      color: var(--grey);
+      width: 90px;
+      flex-shrink: 0;
+    }
+    .sv-roas-bar {
+      height: 18px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0.4rem;
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: white;
+    }
+    .sv-roas-bar.grey { background: #c5c5c5; width: 55%; }
+    .sv-roas-bar.green { background: var(--green); width: 88%; }
+    .sv-sync {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .sv-sync-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.2rem 0.35rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+    }
+    .sv-sync-name {
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: var(--black);
+    }
+    .sv-sync-price {
+      font-size: 0.6rem;
+      color: var(--grey);
+    }
+    .sv-sync-status {
+      font-size: 0.7rem;
+      line-height: 1;
+    }
+    .sv-sync-row.warn {
+      border-color: rgba(234, 179, 8, 0.4);
+      background: rgba(234, 179, 8, 0.06);
+    }
+
     /* ---- SPLIT ---- */
     .section-sand { background: var(--sand); }
     .split {
@@ -1163,6 +1268,14 @@
       <p>
         Priser &auml;ndras. Produkter tar slut. Konkurrenter styr om. Det mesta sker utan att ni m&auml;rker det. Vi bevakar lagerstatus, priss&auml;ttning, hyllandel, hyllposition och produktsideinne&aring;ll &mdash; &ouml;ver alla era e-retailers. Insikterna landar i Growth OS, redo att agera p&aring;.
       </p>
+      <div class="service-visual">
+        <table class="sv-price-table">
+          <tr><th>Produkt</th><th>Apotea</th><th>Lyko</th><th>Meds</th></tr>
+          <tr><td>Vitamin D3</td><td>189 kr</td><td>199 kr</td><td>195 kr</td></tr>
+          <tr><td>Omega-3</td><td>229 kr</td><td class="sv-alert">209 kr</td><td>225 kr</td></tr>
+          <tr><td>Magnesium</td><td>159 kr</td><td>165 kr</td><td>159 kr</td></tr>
+        </table>
+      </div>
       <a href="#cta" class="service-link">
         L&auml;s mer
         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
@@ -1176,6 +1289,18 @@
       <p>
         Varf&ouml;r aktivera p&aring; en retailer d&auml;r er produkt &auml;r sluts&aring;ld? Varf&ouml;r k&ouml;pa media n&auml;r konkurrenten har ett b&auml;ttre pris? Vi styr mediaspend baserat p&aring; realtidsdata: lager, pris, konkurrentl&auml;ge. Varje krona hamnar d&auml;r den ger mest f&ouml;rs&auml;ljning.
       </p>
+      <div class="service-visual">
+        <div class="sv-roas">
+          <div class="sv-roas-row">
+            <span class="sv-roas-label">Utan realtidsdata</span>
+            <div class="sv-roas-bar grey">ROAS 2.1x</div>
+          </div>
+          <div class="sv-roas-row">
+            <span class="sv-roas-label">Med Invert-data</span>
+            <div class="sv-roas-bar green">ROAS 4.8x &uarr;129%</div>
+          </div>
+        </div>
+      </div>
       <a href="#cta" class="service-link">
         L&auml;s mer
         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
@@ -1192,6 +1317,25 @@
         f&ouml;r att skapa en helhetsbild och navigera s&aring; att alla kanaler
         drar &aring;t samma h&aring;ll.
       </p>
+      <div class="service-visual">
+        <div class="sv-sync">
+          <div class="sv-sync-row">
+            <span class="sv-sync-name">Apotea</span>
+            <span class="sv-sync-price">189 kr</span>
+            <span class="sv-sync-status">&#x2705;</span>
+          </div>
+          <div class="sv-sync-row">
+            <span class="sv-sync-name">Egen webshop</span>
+            <span class="sv-sync-price">189 kr</span>
+            <span class="sv-sync-status">&#x2705;</span>
+          </div>
+          <div class="sv-sync-row warn">
+            <span class="sv-sync-name">Apotek Hj&auml;rtat</span>
+            <span class="sv-sync-price">169 kr</span>
+            <span class="sv-sync-status">&#x26A0;&#xFE0F;</span>
+          </div>
+        </div>
+      </div>
       <a href="#cta" class="service-link">
         L&auml;s mer
         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
