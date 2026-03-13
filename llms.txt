@@ -1,0 +1,40 @@
+# Invert
+
+> Invert helps consumer brands grow on Sweden's largest e-retailers — using real-time data on prices, inventory, shelf position, and competitor activity. We combine a SaaS platform (Growth OS) with hands-on agency execution.
+
+## Core Offering
+
+- [Invert — Homepage](https://invert.se/): Overview of services, pricing, and target customers
+- [Growth OS — Product Page](https://invert.se/growth-os.html): Real-time e-retail control room for brands
+
+## Key Facts
+
+- **Product**: Growth OS — real-time dashboard tracking prices, inventory, shelf position, and competitors across Swedish e-retailers
+- **Target customers**: Consumer brands (health, beauty, supplements, FMCG) selling via online retailers in Sweden
+- **Retailers monitored**: Apotea, Apotek Hjärtat, Meds, Apohem, Apoteket, Lyko, Stadium, Care of Carl, Ica
+- **Services**: E-retail intelligence, retail media & paid social, D2C strategy, competitor analysis, shelf optimization
+- **Pricing**: Three tiers — Bevaka (from 20,000 SEK/month), Optimera (from 40,000 SEK/month), Växa (from 80,000 SEK/month)
+- **Location**: Stockholm, Sweden
+- **Founded**: 2025
+- **Contact**: hello@invert.se
+- **Language**: Swedish (site), English (this file)
+
+## Optional
+
+### Growth OS Modules
+1. **Price Monitoring** — Real-time price tracking across all retailers, alerts on competitor price changes
+2. **Stock & Availability** — Inventory status per product per retailer, out-of-stock alerts
+3. **Shelf Position & Visibility** — Category ranking per retailer, trend tracking over time
+4. **Competitor Analysis** — Side-by-side comparison of pricing, assortment, visibility, and shelf share
+
+### How It Works
+1. Market scan (48 hours) — connect products and competitors, see real-time data
+2. Diagnosis & baseline — identify margin leaks, visibility gaps, competitor opportunities
+3. Strategy & execution — actionable plan covering pricing, media, campaigns, shelf optimization
+4. Ongoing optimization — daily monitoring, weekly reports, continuous data-driven actions
+
+### What Makes Invert Different
+- Data-first approach: decisions based on real-time market data, not gut feeling
+- Combined tech + agency: platform provides intelligence, team provides execution
+- E-retail specialist: focused exclusively on online retail channels in Sweden
+- Speed: first insights within 48 hours of onboarding
