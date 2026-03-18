@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Retail Intel — Growth OS Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-deep: oklch(0.130 0.008 265);
+  --bg-card: oklch(0.175 0.010 265);
+  --bg-card-hover: oklch(0.200 0.012 265);
+  --bg-sidebar: oklch(0.110 0.010 265);
+  --border: oklch(0.250 0.010 265);
+  --text-primary: oklch(0.920 0.005 265);
+  --text-secondary: oklch(0.650 0.010 265);
+  --text-muted: oklch(0.500 0.008 265);
+  --purple: oklch(0.600 0.200 265);
+  --purple-dim: oklch(0.400 0.120 265);
+  --emerald: oklch(0.650 0.170 155);
+  --emerald-dim: oklch(0.350 0.080 155);
+  --red: oklch(0.600 0.200 25);
+  --red-dim: oklch(0.300 0.080 25);
+  --amber: oklch(0.700 0.160 80);
+  --amber-dim: oklch(0.350 0.080 80);
+  --orange: oklch(0.650 0.180 55);
+  --orange-dim: oklch(0.350 0.090 55);
+  --blue: oklch(0.600 0.160 245);
+  --blue-dim: oklch(0.300 0.080 245);
+  --font: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ========== LAYOUT ========== */
+#demo-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ========== TITLE OVERLAY ========== */
+#title-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: var(--bg-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+#title-overlay.hidden { opacity: 0; pointer-events: none; }
+#title-overlay .logo-icon {
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700; color: white;
+}
+#title-overlay h1 {
+  font-size: 42px; font-weight: 700;
+  background: linear-gradient(135deg, var(--purple), var(--emerald));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+#title-overlay .subtitle {
+  font-size: 18px; color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* ========== CTA OVERLAY ========== */
+#cta-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: var(--bg-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+#cta-overlay.visible { opacity: 1; pointer-events: auto; }
+#cta-overlay h2 {
+  font-size: 36px; font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+#cta-overlay .cta-sub {
+  font-size: 18px; color: var(--text-secondary);
+  margin-bottom: 32px;
+  max-width: 560px;
+  text-align: center;
+}
+#cta-overlay .cta-btn {
+  padding: 14px 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+#cta-overlay .cta-btn:hover { transform: scale(1.05); }
+#cta-overlay .replay-btn {
+  margin-top: 16px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ========== SCENE TITLE CARD ========== */
+#scene-title-card {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  background: var(--bg-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+#scene-title-card.visible { opacity: 1; }
+#scene-title-card .scene-num {
+  font-size: 14px; font-weight: 600;
+  color: var(--purple);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+#scene-title-card .scene-name {
+  font-size: 32px; font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+#scene-title-card .scene-desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 500px;
+  text-align: center;
+}
+
+/* ========== APP SHELL ========== */
+#app-shell {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 56px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#app-shell.visible { opacity: 1; }
+
+/* ========== SIDEBAR ========== */
+#sidebar {
+  width: 220px;
+  min-width: 220px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-logo .logo-sq {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 14px; color: white;
+}
+.sidebar-logo span {
+  font-weight: 600; font-size: 15px;
+  color: var(--text-primary);
+}
+.nav-section {
+  padding: 8px 12px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  margin: 1px 8px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.nav-item:hover { background: var(--bg-card); color: var(--text-primary); }
+.nav-item.active {
+  background: oklch(0.200 0.020 265);
+  color: var(--text-primary);
+}
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  border-radius: 2px;
+  background: var(--purple);
+}
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ========== IMPACT BAR (top) ========== */
+#impact-bar {
+  width: 100%;
+  height: 44px;
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 20px;
+}
+.impact-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.impact-chip .chip-val {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.impact-chip .chip-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+
+/* ========== CONTENT AREA ========== */
+#content-area {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+.screen {
+  position: absolute;
+  inset: 0;
+  padding: 24px 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+}
+.screen.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========== PAGE HEADERS ========== */
+.page-header { margin-bottom: 20px; }
+.page-header h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.page-header p { font-size: 13px; color: var(--text-secondary); }
+
+/* ========== TABS ========== */
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.tab {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.tab.active { color: var(--text-primary); border-bottom-color: var(--purple); }
+.tab:hover { color: var(--text-secondary); }
+
+/* ========== KPI CARDS ========== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+.kpi-card.purple::before { background: var(--purple); }
+.kpi-card.emerald::before { background: var(--emerald); }
+.kpi-card.red::before { background: var(--red); }
+.kpi-card.amber::before { background: var(--amber); }
+.kpi-card.blue::before { background: var(--blue); }
+.kpi-card.orange::before { background: var(--orange); }
+.kpi-label {
+  font-size: 11.5px; font-weight: 500; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+.kpi-value { font-size: 26px; font-weight: 700; margin-bottom: 2px; }
+.kpi-trend { font-size: 12px; font-weight: 500; }
+.kpi-trend.up { color: var(--emerald); }
+.kpi-trend.down { color: var(--red); }
+.kpi-trend.neutral { color: var(--text-muted); }
+
+/* ========== BADGES ========== */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 3px 10px; border-radius: 20px;
+  font-size: 11.5px; font-weight: 600;
+}
+.badge-emerald { background: var(--emerald-dim); color: var(--emerald); }
+.badge-red { background: var(--red-dim); color: var(--red); }
+.badge-amber { background: var(--amber-dim); color: var(--amber); }
+.badge-orange { background: var(--orange-dim); color: var(--orange); }
+.badge-blue { background: var(--blue-dim); color: var(--blue); }
+.badge-purple { background: var(--purple-dim); color: var(--purple); }
+.badge-gray { background: oklch(0.250 0.005 265); color: var(--text-secondary); }
+
+/* ========== DATA TABLES ========== */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th {
+  text-align: left; padding: 10px 12px; font-weight: 600; font-size: 11.5px;
+  text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);
+  border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.data-table td {
+  padding: 10px 12px; border-bottom: 1px solid oklch(0.200 0.005 265);
+  color: var(--text-secondary);
+}
+.data-table tr { transition: background 0.2s; }
+.data-table tbody tr:hover { background: var(--bg-card); }
+.data-table .text-primary { color: var(--text-primary); font-weight: 500; }
+.data-table .text-emerald { color: var(--emerald); }
+.data-table .text-red { color: var(--red); }
+.data-table .text-amber { color: var(--amber); }
+
+/* ========== CARDS ========== */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px; margin-bottom: 12px; transition: all 0.3s;
+}
+.card.highlight-emerald { border-color: var(--emerald); box-shadow: 0 0 20px oklch(0.400 0.100 155 / 0.15); }
+.card.highlight-red { border-color: var(--red); box-shadow: 0 0 20px oklch(0.400 0.100 25 / 0.15); }
+.card.highlight-purple { border-color: var(--purple); box-shadow: 0 0 20px oklch(0.400 0.100 265 / 0.15); }
+.card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.card-meta { font-size: 12px; color: var(--text-muted); }
+
+/* ========== BUTTONS ========== */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 8px; font-size: 13px;
+  font-weight: 600; border: none; cursor: pointer; transition: all 0.2s;
+}
+.btn-purple { background: var(--purple); color: white; }
+.btn-purple:hover { filter: brightness(1.1); }
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
+
+/* ========== ANIMATED CURSOR ========== */
+#demo-cursor {
+  position: absolute; z-index: 200; width: 20px; height: 20px;
+  pointer-events: none;
+  transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1), top 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+#demo-cursor .cursor-dot {
+  width: 20px; height: 20px; border-radius: 50%; background: white;
+  opacity: 0.9; box-shadow: 0 0 12px rgba(255,255,255,0.4), 0 0 24px rgba(255,255,255,0.15);
+  position: relative;
+}
+#demo-cursor .cursor-trail {
+  position: absolute; width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15); top: -6px; left: -6px;
+  transition: transform 0.3s;
+}
+#demo-cursor.clicking .cursor-dot { transform: scale(0.7); }
+
+.click-ripple {
+  position: absolute; z-index: 199; width: 40px; height: 40px;
+  border-radius: 50%; border: 2px solid var(--purple);
+  pointer-events: none; animation: ripple-expand 0.6s ease-out forwards;
+}
+@keyframes ripple-expand {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+.el-highlight { position: relative; }
+.el-highlight::after {
+  content: ''; position: absolute; inset: -3px; border-radius: 8px;
+  border: 2px solid var(--purple); opacity: 0;
+  animation: pulse-glow 1.5s ease-in-out; pointer-events: none;
+}
+@keyframes pulse-glow {
+  0% { opacity: 0; } 30% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; }
+}
+
+/* ========== NARRATION BAR ========== */
+#narration-bar {
+  position: absolute; bottom: 72px; left: 50%; transform: translateX(-50%);
+  z-index: 150; background: oklch(0.100 0.008 265 / 0.92);
+  backdrop-filter: blur(12px); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 24px;
+  max-width: 640px; min-width: 200px; text-align: center;
+  font-size: 14.5px; font-weight: 400; color: var(--text-primary);
+  line-height: 1.6; opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+}
+#narration-bar.visible { opacity: 1; }
+#narration-bar .typewriter-cursor {
+  display: inline-block; width: 2px; height: 1em; background: var(--purple);
+  margin-left: 2px; animation: blink 0.8s step-end infinite; vertical-align: text-bottom;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ========== CONTROLS BAR ========== */
+#controls-bar {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 56px; z-index: 160;
+  background: var(--bg-sidebar); border-top: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 20px; gap: 16px;
+}
+#play-pause-btn {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--purple);
+  border: none; color: white; font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.15s; flex-shrink: 0;
+}
+#play-pause-btn:hover { transform: scale(1.1); }
+#progress-container {
+  flex: 1; height: 4px; background: oklch(0.250 0.005 265);
+  border-radius: 2px; cursor: pointer; position: relative;
+}
+#progress-fill {
+  height: 100%; border-radius: 2px; background: var(--purple);
+  width: 0%; transition: width 0.3s;
+}
+.scene-dots { display: flex; gap: 8px; align-items: center; }
+.scene-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted);
+  cursor: pointer; transition: all 0.2s;
+}
+.scene-dot.active { background: var(--purple); transform: scale(1.3); }
+.scene-dot.completed { background: var(--emerald); }
+#time-display {
+  font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums;
+  min-width: 70px; text-align: right;
+}
+
+/* ========== STAGGER ANIMATIONS ========== */
+.anim-fade-up {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.anim-fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== RADAR CHART ========== */
+.radar-container { display: flex; align-items: center; gap: 32px; margin-bottom: 20px; }
+.radar-legend { display: flex; flex-direction: column; gap: 8px; }
+.radar-legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); }
+.radar-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+/* ========== BAR CHART ========== */
+.bar-chart { display: flex; align-items: flex-end; gap: 16px; height: 160px; padding: 0 8px; margin-bottom: 8px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+.bar-fill { width: 100%; max-width: 48px; border-radius: 4px 4px 0 0; transition: height 0.6s ease; }
+.bar-label { font-size: 11px; color: var(--text-muted); text-align: center; white-space: nowrap; }
+.bar-value { font-size: 11px; font-weight: 600; color: var(--text-secondary); }
+
+/* ========== TEXT STYLES ========== */
+.text-strike { text-decoration: line-through; color: var(--text-muted); }
+.text-suggestion { color: var(--emerald); font-weight: 500; }
+
+/* ========== APPROVE BUTTON STATES ========== */
+.btn-approve {
+  background: var(--emerald); color: white; padding: 6px 16px;
+  border-radius: 8px; font-size: 12px; font-weight: 600;
+  border: none; cursor: pointer; transition: all 0.3s;
+}
+.btn-approve.glow {
+  box-shadow: 0 0 16px var(--emerald), 0 0 32px oklch(0.500 0.120 155 / 0.3);
+  animation: btn-pulse 1.5s ease-in-out infinite;
+}
+@keyframes btn-pulse {
+  0%, 100% { box-shadow: 0 0 16px var(--emerald), 0 0 32px oklch(0.500 0.120 155 / 0.3); }
+  50% { box-shadow: 0 0 24px var(--emerald), 0 0 48px oklch(0.500 0.120 155 / 0.4); }
+}
+.btn-approved {
+  background: var(--emerald-dim); color: var(--emerald); padding: 6px 16px;
+  border-radius: 8px; font-size: 12px; font-weight: 600; border: none;
+}
+
+/* ========== KPI PULSE ========== */
+.kpi-card.pulse-red { animation: card-pulse-red 1.5s ease-in-out infinite; }
+@keyframes card-pulse-red {
+  0%, 100% { box-shadow: 0 0 0 transparent; }
+  50% { box-shadow: 0 0 20px oklch(0.400 0.120 25 / 0.25); }
+}
+.kpi-card.pulse-emerald { animation: card-pulse-emerald 1.5s ease-in-out infinite; }
+@keyframes card-pulse-emerald {
+  0%, 100% { box-shadow: 0 0 0 transparent; }
+  50% { box-shadow: 0 0 20px oklch(0.400 0.100 155 / 0.25); }
+}
+
+/* ========== SUMMARY CARDS ROW ========== */
+.summary-row { display: flex; gap: 12px; margin-bottom: 20px; }
+.summary-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 18px; flex: 1;
+}
+.summary-card .sc-label {
+  font-size: 11px; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+}
+.summary-card .sc-value { font-size: 22px; font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="demo-viewport">
+
+  <!-- ===== TITLE OVERLAY ===== -->
+  <div id="title-overlay">
+    <div class="logo-icon">RI</div>
+    <h1>Retail Intel</h1>
+    <div class="subtitle">Growth OS — Interactive Demo</div>
+  </div>
+
+  <!-- ===== SCENE TITLE CARD ===== -->
+  <div id="scene-title-card">
+    <div class="scene-num" id="stc-num"></div>
+    <div class="scene-name" id="stc-name"></div>
+    <div class="scene-desc" id="stc-desc"></div>
+  </div>
+
+  <!-- ===== CTA OVERLAY ===== -->
+  <div id="cta-overlay">
+    <h2>Ready to see your data?</h2>
+    <div class="cta-sub">Retail Intel delivers pricing, content, and operations intelligence for pharma brands — all in one platform.</div>
+    <button class="cta-btn" onclick="window.open('mailto:hello@retailintel.se','_blank')">Get in Touch</button>
+    <button class="replay-btn" onclick="demo.restart()">&#x21BB; Replay Demo</button>
+  </div>
+
+  <!-- ===== IMPACT BAR ===== -->
+  <div id="impact-bar">
+    <div class="impact-chip"><span class="chip-dot" style="background:var(--emerald)"></span> Price Index <span class="chip-val">0.96</span></div>
+    <div class="impact-chip"><span class="chip-dot" style="background:var(--blue)"></span> Content Score <span class="chip-val">71%</span></div>
+    <div class="impact-chip"><span class="chip-dot" style="background:var(--red)"></span> Active OOS <span class="chip-val">4</span></div>
+    <div class="impact-chip"><span class="chip-dot" style="background:var(--amber)"></span> Open Actions <span class="chip-val">14</span></div>
+  </div>
+
+  <!-- ===== APP SHELL ===== -->
+  <div id="app-shell">
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-sq">RI</div>
+        <span>Retail Intel</span>
+      </div>
+      <div class="nav-section">Overview</div>
+      <div class="nav-item active" data-nav="dashboard">
+        <span class="nav-icon">&#x25C9;</span> Dashboard
+      </div>
+      <div class="nav-section">Intelligence</div>
+      <div class="nav-item" data-nav="pricing">
+        <span class="nav-icon">&#x25C8;</span> Pricing
+      </div>
+      <div class="nav-item" data-nav="content">
+        <span class="nav-icon">&#x25C7;</span> Content
+      </div>
+      <div class="nav-item" data-nav="operations">
+        <span class="nav-icon">&#x25CE;</span> Operations
+      </div>
+      <div class="nav-section">Execution</div>
+      <div class="nav-item" data-nav="actions">
+        <span class="nav-icon">&#x26A1;</span> Actions
+      </div>
+      <div class="nav-item" data-nav="finance">
+        <span class="nav-icon">&#x25C6;</span> Finance
+      </div>
+    </div>
+
+    <!-- CONTENT AREA -->
+    <div id="content-area">
+
+      <!-- ==================== SCREEN: Dashboard ==================== -->
+      <div class="screen" id="screen-dashboard">
+        <div class="page-header">
+          <h2>Command Center</h2>
+          <p>Portfolio overview across all monitored pharmacy retailers</p>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card emerald" id="kpi-price-index">
+            <div class="kpi-label">Prisposition (Index)</div>
+            <div class="kpi-value" style="color:var(--emerald)">0.96</div>
+            <div class="kpi-trend up">&uarr; 0.01 vs last week</div>
+          </div>
+          <div class="kpi-card blue">
+            <div class="kpi-label">Content Score</div>
+            <div class="kpi-value" style="color:var(--blue)">71%</div>
+            <div class="kpi-trend up">&uarr; 4pts this month</div>
+          </div>
+          <div class="kpi-card red">
+            <div class="kpi-label">Active OOS</div>
+            <div class="kpi-value" style="color:var(--red)">4</div>
+            <div class="kpi-trend down">&uarr; 2 since yesterday</div>
+          </div>
+          <div class="kpi-card amber">
+            <div class="kpi-label">Open Actions</div>
+            <div class="kpi-value" style="color:var(--amber)">14</div>
+            <div class="kpi-trend neutral">5 high priority</div>
+          </div>
+          <div class="kpi-card purple">
+            <div class="kpi-label">Revenue at Risk</div>
+            <div class="kpi-value" style="color:var(--purple)">38k SEK</div>
+            <div class="kpi-trend down">&uarr; 6k vs last month</div>
+          </div>
+          <div class="kpi-card emerald">
+            <div class="kpi-label">Monitored SKUs</div>
+            <div class="kpi-value">243</div>
+            <div class="kpi-trend neutral">Across 5 pharmacies</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Recent Alerts</div>
+          <table class="data-table">
+            <thead><tr><th>Time</th><th>Type</th><th>Product</th><th>Detail</th></tr></thead>
+            <tbody>
+              <tr><td>2h ago</td><td><span class="badge badge-red">Price Drop</span></td><td class="text-primary">Omega-3 Premium 1000mg</td><td>Apotea -14%</td></tr>
+              <tr><td>4h ago</td><td><span class="badge badge-red">OOS</span></td><td class="text-primary">Magnesium 400mg</td><td>Apotek Hj&auml;rtat &mdash; since 03:20</td></tr>
+              <tr><td>6h ago</td><td><span class="badge badge-blue">Content</span></td><td class="text-primary">Vitamin D3 2000IE</td><td>Description mismatch detected</td></tr>
+              <tr><td>1d ago</td><td><span class="badge badge-amber">Action</span></td><td class="text-primary">Zink + C Komplex</td><td>Decision pending approval</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== SCREEN: Pricing - Matrix ==================== -->
+      <div class="screen" id="screen-pricing-matrix">
+        <div class="page-header">
+          <h2>Pricing Intelligence</h2>
+          <p>Cross-pharmacy price comparison and monitoring</p>
+        </div>
+        <div class="tabs">
+          <div class="tab active" data-tab="matrix">Price Matrix</div>
+          <div class="tab" data-tab="watch" id="tab-price-watch">Price Watch</div>
+          <div class="tab" data-tab="history">History</div>
+        </div>
+        <table class="data-table" id="price-matrix-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>RRP</th>
+              <th>Apotea</th>
+              <th>Apotek Hj&auml;rtat</th>
+              <th>Kronans Apotek</th>
+              <th>DOZ Apotek</th>
+              <th>Index</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Omega-3 Premium 1000mg</td>
+              <td>349 kr</td>
+              <td style="color:var(--emerald)">329 kr</td>
+              <td style="color:var(--emerald)">349 kr</td>
+              <td style="color:var(--emerald)">339 kr</td>
+              <td style="color:var(--red)" id="cell-red-price">279 kr</td>
+              <td><span class="badge badge-amber">0.91</span></td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Magnesium 400mg</td>
+              <td>189 kr</td>
+              <td style="color:var(--emerald)">179 kr</td>
+              <td style="color:var(--emerald)">189 kr</td>
+              <td style="color:var(--emerald)">185 kr</td>
+              <td style="color:var(--emerald)">182 kr</td>
+              <td><span class="badge badge-emerald">0.98</span></td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Vitamin D3 2000IE</td>
+              <td>159 kr</td>
+              <td style="color:var(--emerald)">149 kr</td>
+              <td style="color:var(--amber)">129 kr</td>
+              <td style="color:var(--emerald)">155 kr</td>
+              <td style="color:var(--emerald)">152 kr</td>
+              <td><span class="badge badge-emerald">0.96</span></td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Zink + C Komplex</td>
+              <td>129 kr</td>
+              <td style="color:var(--emerald)">119 kr</td>
+              <td style="color:var(--emerald)">129 kr</td>
+              <td style="color:var(--red)">89 kr</td>
+              <td style="color:var(--emerald)">125 kr</td>
+              <td><span class="badge badge-amber">0.90</span></td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Probiotika Plus</td>
+              <td>279 kr</td>
+              <td style="color:var(--emerald)">269 kr</td>
+              <td style="color:var(--emerald)">279 kr</td>
+              <td style="color:var(--emerald)">275 kr</td>
+              <td style="color:var(--emerald)">272 kr</td>
+              <td><span class="badge badge-emerald">0.99</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ==================== SCREEN: Pricing - Watch ==================== -->
+      <div class="screen" id="screen-pricing-watch">
+        <div class="page-header">
+          <h2>Pricing Intelligence</h2>
+          <p>Cross-pharmacy price comparison and monitoring</p>
+        </div>
+        <div class="tabs">
+          <div class="tab" data-tab="matrix">Price Matrix</div>
+          <div class="tab active" data-tab="watch">Price Watch</div>
+          <div class="tab" data-tab="history">History</div>
+        </div>
+        <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 16px;">
+          <div class="kpi-card red">
+            <div class="kpi-label">Price Drops (7d)</div>
+            <div class="kpi-value" style="color:var(--red)">8</div>
+            <div class="kpi-trend down">&uarr; 4 vs prior week</div>
+          </div>
+          <div class="kpi-card emerald">
+            <div class="kpi-label">Price Increases</div>
+            <div class="kpi-value" style="color:var(--emerald)">3</div>
+            <div class="kpi-trend neutral">Stable</div>
+          </div>
+          <div class="kpi-card amber">
+            <div class="kpi-label">Index Drift</div>
+            <div class="kpi-value" style="color:var(--amber)">-0.04</div>
+            <div class="kpi-trend down">Trending down</div>
+          </div>
+        </div>
+        <div class="card highlight-emerald" id="price-drop-card" style="border-color: var(--red);">
+          <div class="card-title"><span class="badge badge-red">Competitor Price Drop</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+            <div>
+              <div style="font-weight:600; font-size:15px; color:var(--text-primary)">Omega-3 Premium 1000mg &mdash; Apotea</div>
+              <div style="font-size:13px; color:var(--text-muted); margin-top:4px;">329 kr &rarr; <span style="color:var(--red); font-weight:600;">279 kr</span> <span class="badge badge-red" style="margin-left:6px;">-14%</span></div>
+              <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Detected 2h ago &middot; Impact: Your price is now 25% above competitor</div>
+            </div>
+            <button class="btn btn-outline" style="white-space:nowrap;">View Details &rarr;</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Other Recent Changes</div>
+          <table class="data-table">
+            <thead><tr><th>Product</th><th>Retailer</th><th>Change</th><th>New Price</th><th>When</th></tr></thead>
+            <tbody>
+              <tr><td class="text-primary">Vitamin D3 2000IE</td><td>Apotek Hj&auml;rtat</td><td class="text-red">-19%</td><td>129 kr</td><td>1d ago</td></tr>
+              <tr><td class="text-primary">Zink + C Komplex</td><td>Kronans Apotek</td><td class="text-red">-31%</td><td>89 kr</td><td>3d ago</td></tr>
+              <tr><td class="text-primary">Probiotika Plus</td><td>DOZ Apotek</td><td class="text-emerald">+2%</td><td>272 kr</td><td>5d ago</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== SCREEN: Actions - Situations ==================== -->
+      <div class="screen" id="screen-actions-situations">
+        <div class="page-header">
+          <h2>Actions</h2>
+          <p>System-generated situations and decision recommendations</p>
+        </div>
+        <div class="tabs">
+          <div class="tab active" data-tab="situations">Situations</div>
+          <div class="tab" data-tab="decisions" id="tab-decisions">Decisions</div>
+          <div class="tab" data-tab="history">History</div>
+        </div>
+        <div class="card highlight-purple" id="situation-card" style="padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <div style="display:flex; gap:8px; margin-bottom:10px;">
+                <span class="badge badge-emerald">Pricing</span>
+                <span class="badge badge-blue">Visibility</span>
+              </div>
+              <div style="font-size:16px; font-weight:600; color:var(--text-primary); margin-bottom:6px;">Omega-3 Premium 1000mg &mdash; Multi-Domain Alert</div>
+              <div style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">Competitor undercut on Apotea combined with declining search rank on Apotek Hj&auml;rtat. Price gap widening while organic position drops.</div>
+              <div style="display:flex; gap:20px;">
+                <div>
+                  <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Est. Monthly Impact</div>
+                  <div style="font-size:20px; font-weight:700; color:var(--red);">~4,800 SEK/mo</div>
+                </div>
+                <div>
+                  <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Affected Pharmacies</div>
+                  <div style="font-size:20px; font-weight:700; color:var(--text-primary);">2</div>
+                </div>
+                <div>
+                  <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Urgency</div>
+                  <div style="font-size:20px; font-weight:700; color:var(--amber);">High</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="opacity:0.6;">
+          <div style="display:flex; gap:8px; margin-bottom:8px;">
+            <span class="badge badge-red">OOS</span>
+          </div>
+          <div style="font-weight:600; color:var(--text-primary);">Magnesium 400mg &mdash; Out-of-Stock Alert</div>
+          <div style="font-size:13px; color:var(--text-muted); margin-top:4px;">OOS on Apotek Hj&auml;rtat since 03:20. Est. daily loss: 920 SEK.</div>
+        </div>
+        <div class="card" style="opacity:0.4;">
+          <div style="display:flex; gap:8px; margin-bottom:8px;">
+            <span class="badge badge-blue">Content</span>
+          </div>
+          <div style="font-weight:600; color:var(--text-primary);">Vitamin D3 2000IE &mdash; Content Drift</div>
+          <div style="font-size:13px; color:var(--text-muted); margin-top:4px;">Significant description drift on Kronans Apotek. SEO impact likely.</div>
+        </div>
+      </div>
+
+      <!-- ==================== SCREEN: Actions - Decisions ==================== -->
+      <div class="screen" id="screen-actions-decisions">
+        <div class="page-header">
+          <h2>Actions</h2>
+          <p>System-generated situations and decision recommendations</p>
+        </div>
+        <div class="tabs">
+          <div class="tab" data-tab="situations">Situations</div>
+          <div class="tab active" data-tab="decisions">Decisions</div>
+          <div class="tab" data-tab="history">History</div>
+        </div>
+        <div class="card" id="decision-card" style="padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div style="flex:1;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                <span style="font-size:16px; font-weight:600; color:var(--text-primary);">Reprice Omega-3 Premium on Matas</span>
+                <span class="badge badge-amber">Warning</span>
+              </div>
+              <div style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">Reduce RRP to match competitive pressure. Recommended new price: 299 kr (-14%). Expected recovery: ~3,600 SEK/mo in lost conversions.</div>
+              <div style="display:flex; gap:16px; align-items:center; margin-bottom:12px;">
+                <div><span style="font-size:11px; color:var(--text-muted);">RBI State:</span> <span class="badge badge-purple">Scale</span></div>
+                <div><span style="font-size:11px; color:var(--text-muted);">Severity:</span> <span class="badge badge-amber">Warning</span></div>
+                <div><span style="font-size:11px; color:var(--text-muted);">Confidence:</span> <span style="font-weight:600; color:var(--text-primary);">89%</span></div>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+              <button class="btn-approve glow" id="approve-btn">Approve</button>
+              <button class="btn btn-outline" style="font-size:11px; padding:4px 12px;">Dismiss</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="opacity:0.5; padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-weight:600; color:var(--text-primary); margin-bottom:4px;">Restock Magnesium 400mg &rarr; Apotek Hj&auml;rtat</div>
+              <div style="font-size:13px; color:var(--text-muted);">Priority restock recommendation. Est. recovery: 920 SEK/day.</div>
+            </div>
+            <button class="btn-approve" style="opacity:0.7;">Approve</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SCREEN: Content - PDP Quality ==================== -->
+      <div class="screen" id="screen-content-pdp">
+        <div class="page-header">
+          <h2>Content Intelligence</h2>
+          <p>Product page quality and optimization across pharmacies</p>
+        </div>
+        <div class="tabs">
+          <div class="tab active" data-tab="pdp">PDP Quality</div>
+          <div class="tab" data-tab="copy" id="tab-copy-advisor">AI Copy Advisor</div>
+          <div class="tab" data-tab="sync" id="tab-content-sync">Content Sync</div>
+          <div class="tab" data-tab="atl" id="tab-atl">ATL Alignment</div>
+        </div>
+        <div class="radar-container">
+          <svg id="radar-chart" width="280" height="280" viewBox="0 0 280 280"></svg>
+          <div>
+            <div class="radar-legend">
+              <div class="radar-legend-item"><div class="radar-legend-dot" style="background:var(--purple)"></div> Your Portfolio</div>
+              <div class="radar-legend-item"><div class="radar-legend-dot" style="background:var(--text-muted)"></div> Competitors Avg</div>
+            </div>
+            <div style="margin-top:16px;">
+              <div style="font-size:13px; color:var(--text-muted); margin-bottom:4px;">Biggest Gap</div>
+              <div style="font-size:15px; font-weight:600; color:var(--red);">Ingredient list: -26pts below avg</div>
+            </div>
+          </div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-card">
+            <div class="sc-label">Excellent</div>
+            <div class="sc-value" style="color:var(--emerald)">58</div>
+          </div>
+          <div class="summary-card">
+            <div class="sc-label">Good</div>
+            <div class="sc-value" style="color:var(--blue)">34</div>
+          </div>
+          <div class="summary-card">
+            <div class="sc-label">Needs Improvement</div>
+            <div class="sc-value" style="color:var(--amber)">11</div>
+          </div>
+          <div class="summary-card">
+            <div class="sc-label">Critical</div>
+            <div class="sc-value" style="color:var(--red)">4</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SCREEN: Content - AI Copy Advisor ==================== -->
+      <div class="screen" id="screen-content-copy">
+        <div class="page-header">
+          <h2>Content Intelligence</h2>
+          <p>Product page quality and optimization across pharmacies</p>
+        </div>
+        <div class="tabs">
+          <div class="tab" data-tab="pdp">PDP Quality</div>
+          <div class="tab active" data-tab="copy">AI Copy Advisor</div>
+          <div class="tab" data-tab="sync">Content Sync</div>
+          <div class="tab" data-tab="atl">ATL Alignment</div>
+        </div>
+        <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:16px;">
+          <div class="kpi-card purple">
+            <div class="kpi-label">Suggestions</div>
+            <div class="kpi-value" style="color:var(--purple)">31</div>
+            <div class="kpi-trend neutral">Across 22 products</div>
+          </div>
+          <div class="kpi-card orange">
+            <div class="kpi-label">High Priority</div>
+            <div class="kpi-value" style="color:var(--orange)">9</div>
+            <div class="kpi-trend neutral">Revenue-impacting</div>
+          </div>
+          <div class="kpi-card emerald">
+            <div class="kpi-label">Applied This Week</div>
+            <div class="kpi-value" style="color:var(--emerald)">6</div>
+            <div class="kpi-trend up">&uarr; 4 vs last week</div>
+          </div>
+        </div>
+        <table class="data-table" id="copy-table">
+          <thead><tr><th>Product</th><th>Field</th><th>Priority</th><th>Current &rarr; Suggested</th></tr></thead>
+          <tbody>
+            <tr class="anim-fade-up" id="copy-row-highlight">
+              <td class="text-primary">Omega-3 Premium 1000mg</td>
+              <td>Title</td>
+              <td><span class="badge badge-orange">High</span></td>
+              <td>
+                <span class="text-strike">Great Earth Omega-3</span>
+                <br><span class="text-suggestion">Great Earth Omega-3 Premium 1000mg &mdash; Norsk Fiskolja, 120 Kapslar</span>
+              </td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Magnesium 400mg</td>
+              <td>Description</td>
+              <td><span class="badge badge-orange">High</span></td>
+              <td>
+                <span class="text-strike">Magnesiumtillskott 400mg tabletter.</span>
+                <br><span class="text-suggestion">Great Earth Magnesium 400mg &mdash; H&ouml;gabsorberande magnesiumcitrat f&ouml;r muskler &amp; s&ouml;mn, 90 tabletter</span>
+              </td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Vitamin D3 2000IE</td>
+              <td>Meta Title</td>
+              <td><span class="badge badge-amber">Medium</span></td>
+              <td>
+                <span class="text-strike">D-vitamin - Great Earth</span>
+                <br><span class="text-suggestion">Great Earth Vitamin D3 2000IE &mdash; Vegetabiliska Kapslar | K&ouml;p Online</span>
+              </td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Probiotika Plus</td>
+              <td>Bullet Points</td>
+              <td><span class="badge badge-gray">Low</span></td>
+              <td>
+                <span class="text-strike">Inneh&aring;ller mjölksyrabakterier.</span>
+                <br><span class="text-suggestion">15 miljarder CFU per kapsel &mdash; 8 bakteriest&auml;mmar f&ouml;r daglig tarmh&auml;lsa &amp; immunf&ouml;rsvar</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ==================== SCREEN: Content - Sync ==================== -->
+      <div class="screen" id="screen-content-sync">
+        <div class="page-header">
+          <h2>Content Intelligence</h2>
+          <p>Product page quality and optimization across pharmacies</p>
+        </div>
+        <div class="tabs">
+          <div class="tab" data-tab="pdp">PDP Quality</div>
+          <div class="tab" data-tab="copy">AI Copy Advisor</div>
+          <div class="tab active" data-tab="sync">Content Sync</div>
+          <div class="tab" data-tab="atl">ATL Alignment</div>
+        </div>
+        <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:16px;">
+          <div class="kpi-card blue">
+            <div class="kpi-label">Sync Score</div>
+            <div class="kpi-value" style="color:var(--blue)">84%</div>
+            <div class="kpi-trend up">&uarr; 3pts this month</div>
+          </div>
+          <div class="kpi-card red">
+            <div class="kpi-label">Out of Sync</div>
+            <div class="kpi-value" style="color:var(--red)">5</div>
+            <div class="kpi-trend down">Needs attention</div>
+          </div>
+          <div class="kpi-card emerald">
+            <div class="kpi-label">In Sync</div>
+            <div class="kpi-value" style="color:var(--emerald)">38</div>
+            <div class="kpi-trend neutral">Across 5 pharmacies</div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Product</th><th>Pharmacy</th><th>Drift Status</th><th>Field</th><th>Last Checked</th></tr></thead>
+          <tbody>
+            <tr class="anim-fade-up"><td class="text-primary">Omega-3 Premium 1000mg</td><td>Apotea</td><td><span class="badge badge-red">Significant Drift</span></td><td>Description</td><td>2h ago</td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Vitamin D3 2000IE</td><td>Kronans Apotek</td><td><span class="badge badge-red">Significant Drift</span></td><td>Ingredients</td><td>4h ago</td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Zink + C Komplex</td><td>DOZ Apotek</td><td><span class="badge badge-amber">Minor Drift</span></td><td>Dosage Info</td><td>6h ago</td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Magnesium 400mg</td><td>Matas</td><td><span class="badge badge-emerald">In Sync</span></td><td>&mdash;</td><td>1h ago</td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Probiotika Plus</td><td>Apotek Hj&auml;rtat</td><td><span class="badge badge-emerald">In Sync</span></td><td>&mdash;</td><td>3h ago</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ==================== SCREEN: Content - ATL Alignment ==================== -->
+      <div class="screen" id="screen-content-atl">
+        <div class="page-header">
+          <h2>Content Intelligence</h2>
+          <p>Product page quality and optimization across pharmacies</p>
+        </div>
+        <div class="tabs">
+          <div class="tab" data-tab="pdp">PDP Quality</div>
+          <div class="tab" data-tab="copy">AI Copy Advisor</div>
+          <div class="tab" data-tab="sync">Content Sync</div>
+          <div class="tab active" data-tab="atl">ATL Alignment</div>
+        </div>
+        <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:16px;">
+          <div class="kpi-card emerald">
+            <div class="kpi-label">Avg Coherence</div>
+            <div class="kpi-value" style="color:var(--emerald)">68%</div>
+            <div class="kpi-trend up">&uarr; 6pts this month</div>
+          </div>
+          <div class="kpi-card red">
+            <div class="kpi-label">Critical Misalignment</div>
+            <div class="kpi-value" style="color:var(--red)">4</div>
+            <div class="kpi-trend down">Revenue at risk</div>
+          </div>
+          <div class="kpi-card amber">
+            <div class="kpi-label">Review Needed</div>
+            <div class="kpi-value" style="color:var(--amber)">6</div>
+            <div class="kpi-trend neutral">Moderate gaps</div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Product</th><th>Ad Message</th><th>PDP Message</th><th>Coherence</th><th>Urgency</th><th>Monthly Rev</th></tr></thead>
+          <tbody>
+            <tr class="anim-fade-up" id="atl-critical-row">
+              <td class="text-primary">Omega-3 Premium 1000mg</td>
+              <td style="font-size:12px;">"Ren norsk fiskolja"</td>
+              <td style="font-size:12px;">"Omega-3-tillskott kapslar"</td>
+              <td style="color:var(--red); font-weight:600;">29%</td>
+              <td><span class="badge badge-red">Critical</span></td>
+              <td style="font-weight:600;">22k SEK</td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Magnesium 400mg</td>
+              <td style="font-size:12px;">"B&auml;ttre s&ouml;mn naturligt"</td>
+              <td style="font-size:12px;">"Magnesium tabletter"</td>
+              <td style="color:var(--amber); font-weight:600;">51%</td>
+              <td><span class="badge badge-amber">Warning</span></td>
+              <td style="font-weight:600;">14k SEK</td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Probiotika Plus</td>
+              <td style="font-size:12px;">"St&auml;rk immunf&ouml;rsvaret"</td>
+              <td style="font-size:12px;">"Probiotika 15 mdr CFU, 8 st&auml;mmar"</td>
+              <td style="color:var(--emerald); font-weight:600;">78%</td>
+              <td><span class="badge badge-emerald">Good</span></td>
+              <td style="font-weight:600;">9k SEK</td>
+            </tr>
+            <tr class="anim-fade-up">
+              <td class="text-primary">Vitamin D3 2000IE</td>
+              <td style="font-size:12px;">"Solens vitamin &aring;ret runt"</td>
+              <td style="font-size:12px;">"D-vitamin kapslar"</td>
+              <td style="color:var(--amber); font-weight:600;">44%</td>
+              <td><span class="badge badge-amber">Warning</span></td>
+              <td style="font-weight:600;">11k SEK</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ==================== SCREEN: Operations - Live Status ==================== -->
+      <div class="screen" id="screen-ops-live">
+        <div class="page-header">
+          <h2>Operations</h2>
+          <p>Stock monitoring and out-of-stock detection across pharmacies</p>
+        </div>
+        <div class="tabs">
+          <div class="tab active" data-tab="live">Live Status</div>
+          <div class="tab" data-tab="history" id="tab-oos-history">OOS History</div>
+          <div class="tab" data-tab="alerts">Alerts</div>
+        </div>
+        <div class="card highlight-red" id="oos-alert-card" style="padding:20px; margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:12px; font-weight:600; color:var(--red); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">&#x26A0; Active Out-of-Stock</div>
+              <div style="font-size:28px; font-weight:700; color:var(--text-primary);">4 <span style="font-size:14px; font-weight:400; color:var(--text-muted);">own products</span></div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:12px; color:var(--text-muted);">Estimated Revenue Loss</div>
+              <div style="font-size:24px; font-weight:700; color:var(--red);">3,800 SEK/day</div>
+            </div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Product</th><th>Pharmacy</th><th>OOS Since</th><th>Duration</th><th>Impact Tier</th><th>Est. Loss/Day</th></tr></thead>
+          <tbody>
+            <tr class="anim-fade-up"><td class="text-primary">Magnesium 400mg</td><td>Apotek Hj&auml;rtat</td><td>Mar 18, 03:20</td><td>14h</td><td><span class="badge badge-red">Critical</span></td><td style="color:var(--red); font-weight:600;">1,400 SEK</td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Vitamin D3 2000IE</td><td>Apotea</td><td>Mar 17, 18:45</td><td>23h</td><td><span class="badge badge-red">Critical</span></td><td style="color:var(--red); font-weight:600;">1,100 SEK</td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Zink + C Komplex</td><td>Kronans Apotek</td><td>Mar 17, 12:10</td><td>1d 5h</td><td><span class="badge badge-amber">High</span></td><td style="color:var(--amber); font-weight:600;">800 SEK</td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Kollagen Pulver</td><td>DOZ Apotek</td><td>Mar 16, 22:00</td><td>2d 19h</td><td><span class="badge badge-amber">High</span></td><td style="color:var(--amber); font-weight:600;">500 SEK</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ==================== SCREEN: Operations - OOS History ==================== -->
+      <div class="screen" id="screen-ops-history">
+        <div class="page-header">
+          <h2>Operations</h2>
+          <p>Stock monitoring and out-of-stock detection across pharmacies</p>
+        </div>
+        <div class="tabs">
+          <div class="tab" data-tab="live">Live Status</div>
+          <div class="tab active" data-tab="history">OOS History</div>
+          <div class="tab" data-tab="alerts">Alerts</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-card">
+            <div class="sc-label">Total Episodes (90d)</div>
+            <div class="sc-value">52</div>
+          </div>
+          <div class="summary-card">
+            <div class="sc-label">Active OOS</div>
+            <div class="sc-value" style="color:var(--red)">4</div>
+          </div>
+          <div class="summary-card">
+            <div class="sc-label">Avg Duration</div>
+            <div class="sc-value">1.8d</div>
+          </div>
+          <div class="summary-card">
+            <div class="sc-label">Est. Total Loss</div>
+            <div class="sc-value" style="color:var(--red)">146k SEK</div>
+          </div>
+        </div>
+        <div style="margin-bottom:8px; font-size:13px; font-weight:600; color:var(--text-secondary);">Revenue Loss by Pharmacy (90d)</div>
+        <div class="bar-chart" id="oos-bar-chart">
+          <div class="bar-col">
+            <div class="bar-value">48k</div>
+            <div class="bar-fill" style="background:var(--red); height:0%;" data-target-height="78%"></div>
+            <div class="bar-label">Apotek Hj&auml;rtat</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-value">36k</div>
+            <div class="bar-fill" style="background:var(--red); height:0%;" data-target-height="59%"></div>
+            <div class="bar-label">Apotea</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-value">31k</div>
+            <div class="bar-fill" style="background:var(--amber); height:0%;" data-target-height="50%"></div>
+            <div class="bar-label">Kronans Apotek</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-value">22k</div>
+            <div class="bar-fill" style="background:var(--amber); height:0%;" data-target-height="36%"></div>
+            <div class="bar-label">DOZ Apotek</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-value">9k</div>
+            <div class="bar-fill" style="background:var(--emerald); height:0%;" data-target-height="15%"></div>
+            <div class="bar-label">Matas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SCREEN: Finance - Overview ==================== -->
+      <div class="screen" id="screen-finance-overview">
+        <div class="page-header">
+          <h2>Finance</h2>
+          <p>Revenue impact and opportunity analysis</p>
+        </div>
+        <div class="tabs">
+          <div class="tab active" data-tab="overview">Financial Overview</div>
+          <div class="tab" data-tab="opportunities" id="tab-revenue-opps">Revenue Opportunities</div>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card emerald">
+            <div class="kpi-label">Monthly Revenue</div>
+            <div class="kpi-value" style="color:var(--emerald)">312k SEK</div>
+            <div class="kpi-trend up">&uarr; 9% vs prior month</div>
+          </div>
+          <div class="kpi-card red" id="kpi-oos-loss">
+            <div class="kpi-label">OOS Daily Loss</div>
+            <div class="kpi-value" style="color:var(--red)">3,800 SEK</div>
+            <div class="kpi-trend down">&uarr; 1,200 vs yesterday</div>
+          </div>
+          <div class="kpi-card purple">
+            <div class="kpi-label">Price Erosion</div>
+            <div class="kpi-value" style="color:var(--purple)">-5.4k SEK/mo</div>
+            <div class="kpi-trend down">Competitor undercuts</div>
+          </div>
+          <div class="kpi-card amber">
+            <div class="kpi-label">Content Impact</div>
+            <div class="kpi-value" style="color:var(--amber)">-2.1k SEK/mo</div>
+            <div class="kpi-trend neutral">Poor PDP quality</div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Pharmacy</th><th>Monthly Rev</th><th>OOS Loss</th><th>Price Gap</th><th>Capture %</th></tr></thead>
+          <tbody>
+            <tr class="anim-fade-up"><td class="text-primary">Matas</td><td>104k SEK</td><td style="color:var(--emerald);">0</td><td>&mdash;</td><td><span class="badge badge-emerald">95%</span></td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Apotek Hj&auml;rtat</td><td>82k SEK</td><td style="color:var(--red);">-2,300/d</td><td>-4%</td><td><span class="badge badge-amber">79%</span></td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Apotea</td><td>64k SEK</td><td style="color:var(--red);">-1,100/d</td><td>-14%</td><td><span class="badge badge-red">68%</span></td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Kronans Apotek</td><td>41k SEK</td><td style="color:var(--amber);">-800/d</td><td>-6%</td><td><span class="badge badge-amber">81%</span></td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">DOZ Apotek</td><td>21k SEK</td><td style="color:var(--amber);">-500/d</td><td>-9%</td><td><span class="badge badge-amber">85%</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ==================== SCREEN: Finance - Revenue Opportunities ==================== -->
+      <div class="screen" id="screen-finance-opportunities">
+        <div class="page-header">
+          <h2>Finance</h2>
+          <p>Revenue impact and opportunity analysis</p>
+        </div>
+        <div class="tabs">
+          <div class="tab" data-tab="overview">Financial Overview</div>
+          <div class="tab active" data-tab="opportunities">Revenue Opportunities</div>
+        </div>
+        <div class="card highlight-emerald" style="padding:20px; margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Total Monthly Uplift Potential</div>
+              <div style="font-size:36px; font-weight:700; color:var(--emerald);">51k SEK/mo</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:12px; color:var(--text-muted);">If all actions approved</div>
+              <div style="font-size:14px; color:var(--emerald); font-weight:600; margin-top:4px;">+16.3% revenue recovery</div>
+            </div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Opportunity</th><th>Domain</th><th>Pharmacy</th><th>Monthly Uplift</th><th>Confidence</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="anim-fade-up"><td class="text-primary">Reprice Omega-3 Premium</td><td><span class="badge badge-emerald">Pricing</span></td><td>Matas</td><td style="color:var(--emerald); font-weight:600;">+21,600 SEK</td><td>89%</td><td><span class="badge badge-amber">Pending</span></td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Restock Magnesium 400mg</td><td><span class="badge badge-red">OOS</span></td><td>Apotek Hj&auml;rtat</td><td style="color:var(--emerald); font-weight:600;">+11,200 SEK</td><td>94%</td><td><span class="badge badge-amber">Pending</span></td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Fix Omega-3 PDP Content</td><td><span class="badge badge-blue">Content</span></td><td>Apotea</td><td style="color:var(--emerald); font-weight:600;">+7,800 SEK</td><td>76%</td><td><span class="badge badge-gray">Draft</span></td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Restock Vitamin D3</td><td><span class="badge badge-red">OOS</span></td><td>Apotea</td><td style="color:var(--emerald); font-weight:600;">+6,200 SEK</td><td>91%</td><td><span class="badge badge-amber">Pending</span></td></tr>
+            <tr class="anim-fade-up"><td class="text-primary">Align ATL &mdash; Omega-3</td><td><span class="badge badge-blue">Content</span></td><td>All</td><td style="color:var(--emerald); font-weight:600;">+4,200 SEK</td><td>71%</td><td><span class="badge badge-gray">Draft</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- /content-area -->
+  </div><!-- /app-shell -->
+
+  <!-- ===== ANIMATED CURSOR ===== -->
+  <div id="demo-cursor">
+    <div class="cursor-trail"></div>
+    <div class="cursor-dot"></div>
+  </div>
+
+  <!-- ===== NARRATION BAR ===== -->
+  <div id="narration-bar">
+    <span id="narration-text"></span><span class="typewriter-cursor"></span>
+  </div>
+
+  <!-- ===== CONTROLS BAR ===== -->
+  <div id="controls-bar">
+    <button id="play-pause-btn" title="Play/Pause (Space)">&#x25B6;</button>
+    <div id="progress-container">
+      <div id="progress-fill"></div>
+    </div>
+    <div class="scene-dots">
+      <div class="scene-dot" data-scene="0" title="Scene 1"></div>
+      <div class="scene-dot" data-scene="1" title="Scene 2"></div>
+      <div class="scene-dot" data-scene="2" title="Scene 3"></div>
+    </div>
+    <div id="time-display">0:00 / 2:15</div>
+  </div>
+
+</div><!-- /demo-viewport -->
+
+<script>
+// ========== RADAR CHART (SVG) ==========
+function drawRadarChart() {
+  const svg = document.getElementById('radar-chart');
+  if (!svg) return;
+  const cx = 140, cy = 140, r = 110;
+  const labels = ['Title', 'Ingredients', 'Images', 'Dosage', 'Meta', 'Claims'];
+  const yours = [0.80, 0.48, 0.75, 0.72, 0.62, 0.70];
+  const comp  = [0.73, 0.74, 0.70, 0.69, 0.68, 0.66];
+  const n = labels.length;
+
+  let html = '';
+  for (let ring = 1; ring <= 4; ring++) {
+    const rr = (r * ring) / 4;
+    let pts = [];
+    for (let i = 0; i < n; i++) {
+      const a = (Math.PI * 2 * i) / n - Math.PI / 2;
+      pts.push(`${cx + rr * Math.cos(a)},${cy + rr * Math.sin(a)}`);
+    }
+    html += `<polygon points="${pts.join(' ')}" fill="none" stroke="oklch(0.250 0.005 265)" stroke-width="1"/>`;
+  }
+  for (let i = 0; i < n; i++) {
+    const a = (Math.PI * 2 * i) / n - Math.PI / 2;
+    const x2 = cx + r * Math.cos(a);
+    const y2 = cy + r * Math.sin(a);
+    html += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="oklch(0.220 0.005 265)" stroke-width="1"/>`;
+    const lx = cx + (r + 16) * Math.cos(a);
+    const ly = cy + (r + 16) * Math.sin(a);
+    const anchor = Math.abs(Math.cos(a)) < 0.1 ? 'middle' : Math.cos(a) > 0 ? 'start' : 'end';
+    html += `<text x="${lx}" y="${ly}" fill="oklch(0.500 0.008 265)" font-size="11" font-family="var(--font)" text-anchor="${anchor}" dominant-baseline="middle">${labels[i]}</text>`;
+  }
+  function polyPoints(data) {
+    return data.map((v, i) => {
+      const a = (Math.PI * 2 * i) / n - Math.PI / 2;
+      return `${cx + r * v * Math.cos(a)},${cy + r * v * Math.sin(a)}`;
+    }).join(' ');
+  }
+  html += `<polygon points="${polyPoints(comp)}" fill="oklch(0.400 0.005 265 / 0.15)" stroke="oklch(0.500 0.008 265)" stroke-width="1.5"/>`;
+  html += `<polygon points="${polyPoints(yours)}" fill="oklch(0.600 0.200 265 / 0.15)" stroke="oklch(0.600 0.200 265)" stroke-width="2"/>`;
+  yours.forEach((v, i) => {
+    const a = (Math.PI * 2 * i) / n - Math.PI / 2;
+    html += `<circle cx="${cx + r * v * Math.cos(a)}" cy="${cy + r * v * Math.sin(a)}" r="3.5" fill="oklch(0.600 0.200 265)"/>`;
+  });
+  svg.innerHTML = html;
+}
+drawRadarChart();
+
+// ========== DEMO TIMELINE ENGINE ==========
+class DemoTimeline {
+  constructor() {
+    this.cursor = document.getElementById('demo-cursor');
+    this.narrationBar = document.getElementById('narration-bar');
+    this.narrationText = document.getElementById('narration-text');
+    this.appShell = document.getElementById('app-shell');
+    this.titleOverlay = document.getElementById('title-overlay');
+    this.ctaOverlay = document.getElementById('cta-overlay');
+    this.sceneTitleCard = document.getElementById('scene-title-card');
+    this.progressFill = document.getElementById('progress-fill');
+    this.playPauseBtn = document.getElementById('play-pause-btn');
+    this.timeDisplay = document.getElementById('time-display');
+    this.sceneDots = document.querySelectorAll('.scene-dot');
+
+    this.playing = false;
+    this.paused = false;
+    this.currentScene = -1;
+    this.totalDuration = 135;
+    this.startTime = 0;
+    this.pauseOffset = 0;
+    this._abortCtrl = null;
+
+    this.scenes = [
+      { name: 'Price Intelligence \u2192 Action', num: 'Scene 1', desc: 'How do I know when a competitor undercuts me?' },
+      { name: 'Content Optimization Loop', num: 'Scene 2', desc: 'How do I improve product pages without a content team?' },
+      { name: 'OOS Detection \u2192 Revenue Impact', num: 'Scene 3', desc: "What\u2019s it costing me when products go out of stock?" },
+    ];
+
+    this.bindControls();
+  }
+
+  bindControls() {
+    this.playPauseBtn.addEventListener('click', () => this.togglePause());
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') { e.preventDefault(); this.togglePause(); }
+      if (e.code === 'ArrowRight') this.skipToNextScene();
+      if (e.code === 'ArrowLeft') this.skipToPrevScene();
+    });
+    this.sceneDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.scene);
+        this.jumpToScene(idx);
+      });
+    });
+  }
+
+  togglePause() {
+    if (!this.playing) { this.start(); return; }
+    this.paused = !this.paused;
+    this.playPauseBtn.textContent = this.paused ? '\u25B6' : '\u23F8';
+  }
+
+  skipToNextScene() {
+    if (this.currentScene < 2) this.jumpToScene(this.currentScene + 1);
+  }
+  skipToPrevScene() {
+    if (this.currentScene > 0) this.jumpToScene(this.currentScene - 1);
+  }
+
+  jumpToScene(idx) {
+    if (this._abortCtrl) this._abortCtrl.abort();
+    this._abortCtrl = new AbortController();
+    this.currentScene = idx - 1;
+    this.paused = false;
+    this.playPauseBtn.textContent = '\u23F8';
+    this.hideNarration();
+    this.cursor.style.opacity = '0';
+    this.playing = true;
+    this.runFromScene(idx);
+  }
+
+  async start() {
+    if (this.playing && !this.paused) return;
+    if (this.paused) { this.paused = false; this.playPauseBtn.textContent = '\u23F8'; return; }
+    this.playing = true;
+    this.paused = false;
+    this.playPauseBtn.textContent = '\u23F8';
+    this._abortCtrl = new AbortController();
+    this.startTime = Date.now();
+
+    await this.wait(2500);
+    this.titleOverlay.classList.add('hidden');
+    await this.wait(800);
+    this.appShell.classList.add('visible');
+    this.cursor.style.opacity = '1';
+
+    await this.runScene1();
+    await this.runScene2();
+    await this.runScene3();
+
+    await this.wait(500);
+    this.cursor.style.opacity = '0';
+    this.hideNarration();
+    this.appShell.classList.remove('visible');
+    await this.wait(300);
+    this.ctaOverlay.classList.add('visible');
+    this.playing = false;
+    this.playPauseBtn.textContent = '\u25B6';
+    this.updateProgress(1);
+  }
+
+  async runFromScene(idx) {
+    this.sceneTitleCard.classList.remove('visible');
+    this.appShell.classList.add('visible');
+    this.cursor.style.opacity = '1';
+    this.titleOverlay.classList.add('hidden');
+    this.ctaOverlay.classList.remove('visible');
+
+    try {
+      if (idx <= 0) await this.runScene1();
+      if (idx <= 1) await this.runScene2();
+      if (idx <= 2) await this.runScene3();
+
+      this.cursor.style.opacity = '0';
+      this.hideNarration();
+      this.appShell.classList.remove('visible');
+      await this.wait(300);
+      this.ctaOverlay.classList.add('visible');
+      this.playing = false;
+      this.playPauseBtn.textContent = '\u25B6';
+    } catch(e) {
+      if (e.name === 'AbortError') return;
+    }
+  }
+
+  restart() {
+    if (this._abortCtrl) this._abortCtrl.abort();
+    this.ctaOverlay.classList.remove('visible');
+    this.titleOverlay.classList.remove('hidden');
+    this.appShell.classList.remove('visible');
+    this.cursor.style.opacity = '0';
+    this.currentScene = -1;
+    this.playing = false;
+    this.paused = false;
+    this.playPauseBtn.textContent = '\u25B6';
+    this.hideNarration();
+    this.updateProgress(0);
+    this.sceneDots.forEach(d => { d.classList.remove('active', 'completed'); });
+    const ab = document.getElementById('approve-btn');
+    if (ab) { ab.className = 'btn-approve glow'; ab.textContent = 'Approve'; }
+    document.querySelectorAll('#oos-bar-chart .bar-fill').forEach(b => b.style.height = '0%');
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelector('[data-nav="dashboard"]').classList.add('active');
+    document.querySelectorAll('.anim-fade-up').forEach(el => el.classList.remove('visible'));
+    document.getElementById('kpi-oos-loss')?.classList.remove('pulse-red');
+
+    setTimeout(() => this.start(), 500);
+  }
+
+  // ---- Core animation methods ----
+
+  async wait(ms) {
+    const signal = this._abortCtrl?.signal;
+    return new Promise((resolve, reject) => {
+      if (signal?.aborted) { const e = new Error('AbortError'); e.name = 'AbortError'; reject(e); return; }
+      const check = () => {
+        if (signal?.aborted) { const e = new Error('AbortError'); e.name = 'AbortError'; reject(e); return; }
+        if (this.paused) { requestAnimationFrame(check); return; }
+        if (ms <= 0) { resolve(); return; }
+        ms -= 16;
+        requestAnimationFrame(check);
+      };
+      requestAnimationFrame(check);
+    });
+  }
+
+  moveCursor(targetEl, duration = 800) {
+    return new Promise(async (resolve) => {
+      if (!targetEl) { resolve(); return; }
+      const rect = targetEl.getBoundingClientRect();
+      const x = rect.left + rect.width / 2 - 10;
+      const y = rect.top + rect.height / 2 - 10;
+      this.cursor.style.transitionDuration = duration + 'ms';
+      this.cursor.style.left = x + 'px';
+      this.cursor.style.top = y + 'px';
+      await this.wait(duration + 100);
+      resolve();
+    });
+  }
+
+  async click(targetEl) {
+    if (!targetEl) return;
+    this.cursor.classList.add('clicking');
+    const rect = targetEl.getBoundingClientRect();
+    const ripple = document.createElement('div');
+    ripple.className = 'click-ripple';
+    ripple.style.left = (rect.left + rect.width / 2) + 'px';
+    ripple.style.top = (rect.top + rect.height / 2) + 'px';
+    document.getElementById('demo-viewport').appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+    await this.wait(150);
+    this.cursor.classList.remove('clicking');
+  }
+
+  switchScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(screenId);
+    if (target) target.classList.add('active');
+  }
+
+  setActiveNav(navId) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const target = document.querySelector(`[data-nav="${navId}"]`);
+    if (target) target.classList.add('active');
+  }
+
+  async typeNarration(text, duration = null) {
+    this.narrationBar.classList.add('visible');
+    this.narrationText.textContent = '';
+    const speed = duration ? (duration / text.length) : 30;
+    for (let i = 0; i < text.length; i++) {
+      if (this._abortCtrl?.signal?.aborted) return;
+      while (this.paused) await this.wait(16);
+      this.narrationText.textContent = text.slice(0, i + 1);
+      await this.wait(speed);
+    }
+  }
+
+  hideNarration() {
+    this.narrationBar.classList.remove('visible');
+    this.narrationText.textContent = '';
+  }
+
+  async animateRows(container) {
+    const rows = container.querySelectorAll('.anim-fade-up');
+    for (let i = 0; i < rows.length; i++) {
+      rows[i].classList.add('visible');
+      await this.wait(120);
+    }
+  }
+
+  async showSceneTitle(idx) {
+    this.currentScene = idx;
+    const scene = this.scenes[idx];
+    this.sceneDots.forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+      d.classList.toggle('completed', i < idx);
+    });
+    document.getElementById('stc-num').textContent = scene.num;
+    document.getElementById('stc-name').textContent = scene.name;
+    document.getElementById('stc-desc').textContent = scene.desc;
+    this.sceneTitleCard.classList.add('visible');
+    this.appShell.classList.remove('visible');
+    this.cursor.style.opacity = '0';
+    await this.wait(2500);
+    this.sceneTitleCard.classList.remove('visible');
+    await this.wait(400);
+    this.appShell.classList.add('visible');
+    this.cursor.style.opacity = '1';
+    await this.wait(300);
+  }
+
+  updateProgress(pct) {
+    this.progressFill.style.width = (pct * 100) + '%';
+    const elapsed = Math.floor(pct * this.totalDuration);
+    const m = Math.floor(elapsed / 60);
+    const s = String(elapsed % 60).padStart(2, '0');
+    const tm = Math.floor(this.totalDuration / 60);
+    const ts = String(this.totalDuration % 60).padStart(2, '0');
+    this.timeDisplay.textContent = `${m}:${s} / ${tm}:${ts}`;
+  }
+
+  // ========== SCENE 1: Price Intelligence ==========
+  async runScene1() {
+    await this.showSceneTitle(0);
+
+    this.setActiveNav('dashboard');
+    this.switchScreen('screen-dashboard');
+    await this.wait(600);
+
+    const kpiCard = document.getElementById('kpi-price-index');
+    await this.moveCursor(kpiCard, 700);
+    kpiCard.classList.add('pulse-emerald');
+    await this.typeNarration('Your price position across all pharmacies, updated daily.');
+    await this.wait(2000);
+    kpiCard.classList.remove('pulse-emerald');
+    this.hideNarration();
+    await this.wait(400);
+
+    const pricingNav = document.querySelector('[data-nav="pricing"]');
+    await this.moveCursor(pricingNav, 600);
+    await this.click(pricingNav);
+    this.setActiveNav('pricing');
+    this.switchScreen('screen-pricing-matrix');
+    await this.wait(500);
+
+    this.updateProgress(0.08);
+    await this.animateRows(document.getElementById('price-matrix-table'));
+    const redCell = document.getElementById('cell-red-price');
+    await this.moveCursor(redCell, 700);
+    await this.typeNarration('Instantly spot where you\u2019re priced out of the market.');
+    await this.wait(2500);
+    this.hideNarration();
+    await this.wait(300);
+
+    const watchTab = document.getElementById('tab-price-watch');
+    await this.moveCursor(watchTab, 500);
+    await this.click(watchTab);
+    this.switchScreen('screen-pricing-watch');
+    await this.wait(500);
+
+    this.updateProgress(0.15);
+    const dropCard = document.getElementById('price-drop-card');
+    dropCard.style.borderColor = 'var(--red)';
+    dropCard.style.boxShadow = '0 0 20px oklch(0.400 0.100 25 / 0.2)';
+    await this.moveCursor(dropCard, 600);
+    await this.typeNarration('Competitor price drop detected \u2014 Apotea, -14%.');
+    await this.wait(2500);
+    this.hideNarration();
+    await this.wait(300);
+
+    this.updateProgress(0.20);
+    const actionsNav = document.querySelector('[data-nav="actions"]');
+    await this.moveCursor(actionsNav, 600);
+    await this.click(actionsNav);
+    this.setActiveNav('actions');
+    this.switchScreen('screen-actions-situations');
+    await this.wait(500);
+
+    const sitCard = document.getElementById('situation-card');
+    await this.moveCursor(sitCard, 600);
+    await this.typeNarration('The system connects pricing signals with visibility impact.');
+    await this.wait(2500);
+    this.hideNarration();
+    await this.wait(300);
+
+    this.updateProgress(0.27);
+    const decTab = document.getElementById('tab-decisions');
+    await this.moveCursor(decTab, 500);
+    await this.click(decTab);
+    this.switchScreen('screen-actions-decisions');
+    await this.wait(500);
+
+    const approveBtn = document.getElementById('approve-btn');
+    await this.moveCursor(approveBtn, 700);
+    await this.typeNarration('One click to act. Full audit trail.');
+    await this.wait(1500);
+    await this.click(approveBtn);
+    approveBtn.className = 'btn-approved';
+    approveBtn.textContent = 'Approved \u2713';
+    await this.wait(2000);
+    this.hideNarration();
+    this.updateProgress(0.33);
+    await this.wait(500);
+  }
+
+  // ========== SCENE 2: Content Optimization ==========
+  async runScene2() {
+    await this.showSceneTitle(1);
+
+    const contentNav = document.querySelector('[data-nav="content"]');
+    await this.moveCursor(contentNav, 600);
+    await this.click(contentNav);
+    this.setActiveNav('content');
+    this.switchScreen('screen-content-pdp');
+    await this.wait(600);
+
+    this.updateProgress(0.40);
+    const radar = document.getElementById('radar-chart');
+    await this.moveCursor(radar, 700);
+    await this.typeNarration('See exactly where your content falls short vs competitors.');
+    await this.wait(2800);
+    this.hideNarration();
+    await this.wait(300);
+
+    this.updateProgress(0.47);
+    const copyTab = document.getElementById('tab-copy-advisor');
+    await this.moveCursor(copyTab, 500);
+    await this.click(copyTab);
+    this.switchScreen('screen-content-copy');
+    await this.wait(400);
+    await this.animateRows(document.getElementById('copy-table'));
+    const highlightRow = document.getElementById('copy-row-highlight');
+    await this.moveCursor(highlightRow, 600);
+    await this.typeNarration('AI-generated Swedish copy, ranked by impact.');
+    await this.wait(2500);
+    this.hideNarration();
+    await this.wait(300);
+
+    this.updateProgress(0.53);
+    const syncTab = document.getElementById('tab-content-sync');
+    await this.moveCursor(syncTab, 500);
+    await this.click(syncTab);
+    this.switchScreen('screen-content-sync');
+    await this.wait(400);
+    await this.animateRows(document.querySelector('#screen-content-sync .data-table'));
+    await this.typeNarration('Track consistency across all 5 pharmacies automatically.');
+    await this.wait(2500);
+    this.hideNarration();
+    await this.wait(300);
+
+    this.updateProgress(0.60);
+    const atlTab = document.getElementById('tab-atl');
+    await this.moveCursor(atlTab, 500);
+    await this.click(atlTab);
+    this.switchScreen('screen-content-atl');
+    await this.wait(400);
+    await this.animateRows(document.querySelector('#screen-content-atl .data-table'));
+    const critRow = document.getElementById('atl-critical-row');
+    await this.moveCursor(critRow, 600);
+    await this.typeNarration('When your ads say one thing and your PDP says another \u2014 we flag it.');
+    await this.wait(2800);
+    this.hideNarration();
+    this.updateProgress(0.66);
+    await this.wait(500);
+  }
+
+  // ========== SCENE 3: OOS Detection ==========
+  async runScene3() {
+    await this.showSceneTitle(2);
+
+    const opsNav = document.querySelector('[data-nav="operations"]');
+    await this.moveCursor(opsNav, 600);
+    await this.click(opsNav);
+    this.setActiveNav('operations');
+    this.switchScreen('screen-ops-live');
+    await this.wait(500);
+
+    this.updateProgress(0.72);
+    const alertCard = document.getElementById('oos-alert-card');
+    await this.moveCursor(alertCard, 600);
+    await this.animateRows(document.querySelector('#screen-ops-live .data-table'));
+    await this.typeNarration('Real-time stockout alerts with estimated revenue loss.');
+    await this.wait(2500);
+    this.hideNarration();
+    await this.wait(300);
+
+    this.updateProgress(0.78);
+    const histTab = document.getElementById('tab-oos-history');
+    await this.moveCursor(histTab, 500);
+    await this.click(histTab);
+    this.switchScreen('screen-ops-history');
+    await this.wait(500);
+
+    const bars = document.querySelectorAll('#oos-bar-chart .bar-fill');
+    bars.forEach(b => { b.style.height = b.dataset.targetHeight; });
+    await this.typeNarration('Full history with revenue attribution per pharmacy.');
+    await this.wait(2800);
+    this.hideNarration();
+    await this.wait(300);
+
+    this.updateProgress(0.84);
+    const finNav = document.querySelector('[data-nav="finance"]');
+    await this.moveCursor(finNav, 600);
+    await this.click(finNav);
+    this.setActiveNav('finance');
+    this.switchScreen('screen-finance-overview');
+    await this.wait(500);
+    await this.animateRows(document.querySelector('#screen-finance-overview .data-table'));
+
+    const oosLossKpi = document.getElementById('kpi-oos-loss');
+    oosLossKpi.classList.add('pulse-red');
+    await this.moveCursor(oosLossKpi, 600);
+    await this.typeNarration('Every stockout translates directly to lost revenue capture.');
+    await this.wait(2500);
+    this.hideNarration();
+    oosLossKpi.classList.remove('pulse-red');
+    await this.wait(300);
+
+    this.updateProgress(0.92);
+    const oppTab = document.getElementById('tab-revenue-opps');
+    await this.moveCursor(oppTab, 500);
+    await this.click(oppTab);
+    this.switchScreen('screen-finance-opportunities');
+    await this.wait(400);
+    await this.animateRows(document.querySelector('#screen-finance-opportunities .data-table'));
+    await this.typeNarration('Quantified upside \u2014 this is what you\u2019re leaving on the table.');
+    await this.wait(3000);
+    this.hideNarration();
+    this.updateProgress(1.0);
+    await this.wait(500);
+  }
+}
+
+// ========== INIT ==========
+const demo = new DemoTimeline();
+demo.cursor.style.left = '50%';
+demo.cursor.style.top = '50%';
+setTimeout(() => demo.start(), 800);
+</script>
+</body>
+</html>

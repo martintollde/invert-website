@@ -44,4 +44,6 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
+Disallow: /demo.html
+
 Sitemap: https://invert.se/sitemap.xml
