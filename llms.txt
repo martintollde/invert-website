@@ -13,7 +13,7 @@
 - **Target customers**: Consumer brands (health, beauty, supplements, FMCG) selling via online retailers in Sweden
 - **Retailers monitored**: Apotea, Apotek Hjärtat, Meds, Apohem, Apoteket, Lyko, Stadium, Care of Carl, Ica
 - **Services**: E-retail intelligence, retail media & paid social, D2C strategy, competitor analysis, shelf optimization
-- **Pricing**: Three tiers — Bevaka (from 20,000 SEK/month), Optimera (from 40,000 SEK/month), Växa (from 80,000 SEK/month)
+- **Pricing**: Three tiers — Insight (from 9,999 SEK/month), Pattern (from 19,900 SEK/month), Edge (from 39,900 SEK/month). Managed Service add-on from +19,900 SEK/month.
 - **Location**: Stockholm, Sweden
 - **Founded**: 2025
 - **Contact**: hello@invert.se

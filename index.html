@@ -75,30 +75,30 @@
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "SEK",
-      "lowPrice": "20000",
-      "highPrice": "80000",
+      "lowPrice": "9999",
+      "highPrice": "39900",
       "offerCount": "3",
       "offers": [
         {
           "@type": "Offer",
-          "name": "Bevaka",
-          "price": "20000",
+          "name": "Insight",
+          "price": "9999",
           "priceCurrency": "SEK",
-          "description": "Prisbevakning, lagerstatus, hyllplats, dashboard, upp till 3 e-retailers, månadsvis genomgång"
+          "description": "Daglig prismatris, konkurrentöversikt, PDP-kvalitet, distribution, SOV, OOS-alerts, P&L per retailer, månadssammanfattning"
         },
         {
           "@type": "Offer",
-          "name": "Optimera",
-          "price": "40000",
+          "name": "Pattern",
+          "price": "19900",
           "priceCurrency": "SEK",
-          "description": "Alla e-retailers, konkurrentbevakning, marknadsandelsanalys, alerts, veckovis strategimöte, prisoptimering"
+          "description": "Trender, promo-ROI, priselasticitet, demand forecast, review-sentiment, veckorapport, månadsmöte, Slack-rådgivning"
         },
         {
           "@type": "Offer",
-          "name": "Växa",
-          "price": "80000",
+          "name": "Edge",
+          "price": "39900",
           "priceCurrency": "SEK",
-          "description": "Fullskalig tillväxtpartner: custom-rapporter, dedikerad account lead, mediaexekvering, sortimentsstrategi, shelf share-optimering"
+          "description": "AI-beslutskö, Revenue at Risk, promo-rekommendationer, strategi-dashboard, anomali-detektion, veckomöte, proaktiv rådgivning"
         }
       ]
     },
@@ -162,7 +162,7 @@
         "name": "Vad kostar Invert?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Invert erbjuder tre paket: Bevaka från 20 000 kr/mån (prisbevakning, dashboard, månadsgenomgång), Optimera från 40 000 kr/mån (konkurrentbevakning, alerts, veckovis strategi), och Växa från 80 000 kr/mån (fullskalig tillväxtpartner med dedikerad account lead och mediaexekvering). Alla priser exkl. moms."
+          "text": "Invert erbjuder tre nivåer: Insight från 9 999 kr/mån (daglig prismatris, konkurrentöversikt, content audit, OOS-alerts, P&L), Pattern från 19 900 kr/mån (trender, promo-ROI, demand forecast, veckorapporter, Slack-rådgivning), och Edge från 39 900 kr/mån (AI-beslutskö, Revenue at Risk, promo-rekommendationer, veckomöten). Managed Service som tillval från +19 900 kr/mån. Alla priser exkl. moms."
         }
       },
       {
@@ -1874,86 +1874,93 @@
   </p>
 
   <div class="pricing-grid">
-    <!-- Tier 1: Bevaka -->
+    <!-- Tier 1: Insight -->
     <div class="pricing-card">
       <div class="pricing-tier">Tier 1</div>
-      <h3>Bevaka</h3>
-      <div class="pricing-tagline">Se vad som h&auml;nder p&aring; hyllan. Varje dag.</div>
-      <div class="pricing-price">Fr&aring;n 20 000 <span>kr/m&aring;n</span></div>
+      <h3>Insight</h3>
+      <div class="pricing-tagline">Se allt som h&auml;nder &mdash; dagligen, cross-retailer.</div>
+      <div class="pricing-price">Fr&aring;n 9 999 <span>kr/m&aring;n</span></div>
 
       <div class="pricing-divider-label">Tech (Growth OS)</div>
       <ul class="pricing-features">
-        <li>Prisbevakning per e-retailer</li>
-        <li>Lagerstatus per produkt</li>
-        <li>Produktsideinne&aring;ll  - &auml;ndringsbevakning</li>
-        <li>Hyllandel i era kategorier</li>
-        <li>Hyllposition per retailer</li>
-        <li>Tillg&aring;ng till Growth OS dashboard</li>
-        <li>Upp till 3 e-retailers</li>
-        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Byr&aring;</strong></li>
-        <li>M&aring;natlig genomg&aring;ng med Invert-r&aring;dgivare</li>
-        <li>Veckorapporter med sammanfattning och rekommendationer</li>
+        <li>Daglig prismatris &mdash; egna + konkurrenter, cross-retailer</li>
+        <li>Lager &amp; tillg&auml;nglighetsstatus med OOS-alerts</li>
+        <li>Position, synlighet &amp; Share of Voice</li>
+        <li>PDP-kvalitet &amp; content audit vs konkurrenter</li>
+        <li>Distribution &amp; sortimentsgap vs konkurrenter</li>
+        <li>P&amp;L per retailer</li>
+        <li>Growth OS dashboard med alla KPIs</li>
+        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Analyst</strong></li>
+        <li>M&aring;nadssammanfattning med KPIs och rekommendationer (2h/m&aring;n inkl.)</li>
       </ul>
       <div class="pricing-cta">
-        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;">B&ouml;rja bevaka</a>
+        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;">B&ouml;rja med Insight</a>
       </div>
     </div>
 
-    <!-- Tier 2: Optimera (POPULAR) -->
+    <!-- Tier 2: Pattern (POPULAR) -->
     <div class="pricing-card popular">
       <div class="pricing-badge">Mest vald</div>
       <div class="pricing-tier">Tier 2</div>
-      <h3>Optimera</h3>
-      <div class="pricing-tagline">F&ouml;rst&aring; hela marknaden. Agera f&ouml;re konkurrenterna.</div>
-      <div class="pricing-price">Fr&aring;n 40 000 <span>kr/m&aring;n</span></div>
+      <h3>Pattern</h3>
+      <div class="pricing-tagline">F&ouml;rst&aring; varf&ouml;r saker h&auml;nder. Se m&ouml;nster andra missar.</div>
+      <div class="pricing-price">Fr&aring;n 19 900 <span>kr/m&aring;n</span></div>
 
       <div class="pricing-divider-label">Tech (Growth OS)</div>
       <ul class="pricing-features">
-        <li>Allt i Bevaka, plus:</li>
-        <li>Alla tillg&auml;ngliga e-retailers</li>
-        <li>Konkurrentbevakning  - priser, sortiment, synlighet</li>
-        <li>Marknadsandelsanalys per kategori</li>
-        <li>Sortimentslucksanalys vs konkurrenter</li>
-        <li>Automatiska alerts vid pris- och lager&auml;ndringar</li>
-        <li>Obegr&auml;nsat antal produkter</li>
-        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Byr&aring;</strong></li>
-        <li>Veckovis strategim&ouml;te med dedikerad r&aring;dgivare</li>
-        <li>Prisoptimeringsrekommendationer</li>
-        <li>Handlingsplaner baserade p&aring; insikter</li>
-        <li>L&ouml;pande r&aring;dgivning via Slack/mail</li>
-        <li><em>Tillval: Mediahantering (Paid Social + Retail Media)</em></li>
+        <li>Allt i Insight, plus:</li>
+        <li>Promo-kalender med konkurrentpromos &amp; ROI-m&auml;tning</li>
+        <li>Priselasticitet &amp; velocity-trender</li>
+        <li>Brand share-trender &ouml;ver tid</li>
+        <li>Demand forecast &amp; stockout-prediktion</li>
+        <li>Review-trender &amp; sentiment</li>
+        <li>Marketing attribution</li>
+        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Analyst</strong></li>
+        <li>Veckorapport med deltas och highlights (5h/m&aring;n inkl.)</li>
+        <li>M&aring;nadsm&ouml;te (30 min) &mdash; trender och m&ouml;jligheter</li>
+        <li>L&ouml;pande r&aring;dgivning via Slack/email (SLA 24h)</li>
+        <li>QBR-prep med underlag och talking points</li>
       </ul>
       <div class="pricing-cta">
-        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;background:var(--accent);">B&ouml;rja optimera</a>
+        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;background:var(--accent);">Uppgradera till Pattern</a>
       </div>
     </div>
 
-    <!-- Tier 3: Växa -->
+    <!-- Tier 3: Edge -->
     <div class="pricing-card premium">
       <div class="pricing-tier">Tier 3</div>
-      <h3>V&auml;xa</h3>
-      <div class="pricing-tagline">Er e-retail-tillv&auml;xtpartner. Data, strategi och exekvering.</div>
-      <div class="pricing-price">Fr&aring;n 80 000 <span>kr/m&aring;n</span></div>
+      <h3>Edge</h3>
+      <div class="pricing-tagline">Agera innan konkurrenten g&ouml;r det. AI-driven beslutsintelligens.</div>
+      <div class="pricing-price">Fr&aring;n 39 900 <span>kr/m&aring;n</span></div>
 
       <div class="pricing-divider-label">Tech (Growth OS)</div>
       <ul class="pricing-features">
-        <li>Allt i Optimera, plus:</li>
-        <li>Custom-rapporter och integrationer</li>
-        <li>Baseline &rarr; delta-tracking av er totala e-retail-aff&auml;r</li>
-        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Byr&aring; &amp; Exekvering</strong></li>
-        <li>Dedikerad account lead</li>
-        <li><strong>Sortiment:</strong> Kategoritrender, lanserings-timing, sortimentsstrategi</li>
-        <li><strong>Priss&auml;ttning:</strong> Cross-retailer prisstrategi, trafikstyrning, demand-analys</li>
-        <li><strong>Mediaexekvering:</strong> Vi hanterar er Paid Social + Retail Media  - taktiskt, baserat p&aring; realtidsdata</li>
-        <li><strong>Shelf share-optimering:</strong> Aktivering baserad p&aring; lager+pris+konkurrens</li>
-        <li><strong>Varum&auml;rke:</strong> Top-funnel &rarr; low-funnel alignment, konkurrentbudskaps-bevakning</li>
+        <li>Allt i Pattern, plus:</li>
+        <li>AI-prioriterad beslutsk&ouml; &mdash; &rdquo;vad ska jag g&ouml;ra idag?&rdquo;</li>
+        <li>Revenue at Risk-scoring i SEK</li>
+        <li>Promo-rekommendationer baserat p&aring; historisk ROI</li>
+        <li>Strategi-dashboard med competitive radar</li>
+        <li>Anomali-detektion &amp; AI-trendprojektioner</li>
+        <li>Decision tracking med ROI-bevis</li>
+        <li class="section-break"><strong style="color:var(--black);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;">Analyst</strong></li>
+        <li>Veckorapport + prioriterad brief (10h/m&aring;n inkl.)</li>
+        <li>Veckom&ouml;te (30 min) &mdash; konkreta rekommendationer</li>
+        <li>Proaktiv r&aring;dgivning via Slack/email (SLA 4h)</li>
         <li>Kvartalsvis strategisk review</li>
-        <li>L&ouml;pande exekvering  - vi agerar, inte bara rekommenderar</li>
+        <li>Aktiveringsplan per retailer</li>
+        <li>Promo-optimering baserat p&aring; AI-library</li>
       </ul>
       <div class="pricing-cta">
-        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;">Prata med oss</a>
+        <a href="#cta" class="btn-dark" style="width:100%;text-align:center;">Kontakta oss</a>
       </div>
     </div>
+  </div>
+
+  <!-- Managed Service add-on -->
+  <div style="max-width:600px;margin:1.5rem auto 0;padding:1.25rem 1.5rem;border:1px solid var(--light-grey);border-radius:10px;text-align:center;">
+    <p style="font-family:var(--heading-font);font-weight:600;font-size:0.95rem;margin:0 0 0.5rem;">Managed Service</p>
+    <p style="font-size:0.82rem;color:var(--grey);margin:0 0 0.75rem;">Dedikerad Account Lead, veckom&ouml;ten, l&ouml;pande exekvering, sortiments- och prisstrategi. Inkl. mediahantering (Paid Social + Retail Media) vid behov.</p>
+    <p style="font-family:var(--heading-font);font-weight:700;font-size:1rem;margin:0;">Fr&aring;n +19 900 <span style="font-weight:400;font-size:0.82rem;">kr/m&aring;n</span></p>
   </div>
 
   <p class="pricing-footnote">Alla priser exkl. moms. M&aring;nadsvis upps&auml;gning. Anpassade paket f&ouml;r st&ouml;rre organisationer.</p>
