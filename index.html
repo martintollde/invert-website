@@ -2307,16 +2307,11 @@
   </p>
   <div class="cta-details">30 min &bull; Ingen f&ouml;rpliktelse &bull; Vi visar konkret data</div>
 
-  <!-- TODO: Koppla formul&auml;ret till Formspree (formspree.io) eller annan tj&auml;nst -->
-  <form class="cta-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <input type="text" name="name" placeholder="Namn" required>
-    <input type="text" name="company" placeholder="F&ouml;retag" required>
-    <input type="text" name="retailers" placeholder="E-retailers ni s&auml;ljer via" class="full-width">
-    <input type="email" name="email" placeholder="E-post" class="full-width" required>
-    <button type="submit">Boka ett samtal</button>
-  </form>
-
-  <div class="hero-ctas" style="margin-top: 1rem;">
+  <!-- Form removed 2026-04-09: Formspree action was a placeholder
+       (YOUR_FORM_ID) and silently dropped submissions. Re-add with
+       a real Formspree ID when ready. Falling back to mailto CTA. -->
+  <div class="hero-ctas" style="margin-top: 1.5rem;">
+    <a href="mailto:hello@invert.se?subject=Boka%20ett%20samtal" class="btn-primary">Boka ett samtal</a>
     <a href="mailto:hello@invert.se" class="btn-outline">hello@invert.se</a>
   </div>
 </div>
