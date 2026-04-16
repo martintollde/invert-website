@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invert — Sales Deck</title>
+<meta name="description" content="Invert är e-retail growth-firman för varumärken som säljer majoritet via Apotea, Apotek Hjärtat, Kicks och Lyko. Vi gör jobbet. Vi unboxar blackboxen.">
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --surface: #ffffff;
+    --ink: #0a0e13;
+    --ink-soft: #3a4250;
+    --muted: #6a7383;
+    --line: #e6e4df;
+    --brand: #0f4a3d;
+    --brand-soft: #e8f1ee;
+    --accent: #b9f25c;
+    --warn: #f2b95c;
+    --stop: #e46a5c;
+    --ok: #3a9f7a;
+    --radius: 8px;
+    --radius-lg: 14px;
+    --shadow: 0 1px 2px rgba(10,14,19,0.04), 0 2px 8px rgba(10,14,19,0.04);
+    --maxw: 980px;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
+    --font-head: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0 0 0.5em;
+  }
+  h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); letter-spacing: -0.03em; font-weight: 700; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -0.02em; }
+  h3 { font-size: 1.25rem; }
+  h4 { font-size: 1rem; }
+  p { margin: 0 0 1em; color: var(--ink-soft); }
+  a { color: var(--brand); text-decoration: none; border-bottom: 1px solid rgba(15,74,61,0.3); }
+  a:hover { border-bottom-color: var(--brand); }
+  small { color: var(--muted); }
+
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  /* Top nav */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+  }
+  nav.top .row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  nav.top .brand { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; border: none; color: var(--ink); }
+  nav.top .links { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.88rem; }
+  nav.top .links a { color: var(--ink-soft); border: none; }
+  nav.top .links a:hover { color: var(--brand); }
+
+  /* Hero */
+  .hero { padding: 96px 0 72px; background: linear-gradient(180deg, #fafaf8 0%, #fff 100%); }
+  .hero .eyebrow { display: inline-block; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--brand); padding: 5px 12px; background: var(--brand-soft); border-radius: 999px; margin-bottom: 20px; }
+  .hero h1 { max-width: 800px; }
+  .hero .lede { font-size: clamp(1.05rem, 1.5vw, 1.2rem); max-width: 680px; color: var(--ink-soft); margin: 16px 0 32px; }
+  .hero .sequoia { font-size: 0.92rem; color: var(--muted); font-style: italic; max-width: 620px; margin-bottom: 28px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ink); color: #fff; border: none; border-radius: var(--radius);
+    padding: 14px 22px; font-weight: 500; font-size: 0.95rem; cursor: pointer;
+    text-decoration: none;
+  }
+  .btn:hover { background: var(--brand); border: none; }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn.ghost:hover { background: #fff; border-color: var(--ink); }
+
+  /* Sequoia bar */
+  .sequoia-bar { background: var(--ink); color: #f0ede5; padding: 18px 0; font-size: 0.92rem; }
+  .sequoia-bar .container { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .sequoia-bar strong { color: var(--accent); font-weight: 600; }
+
+  /* Section header */
+  .kicker { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); margin-bottom: 14px; }
+
+  /* Day pie */
+  .day-block { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  @media (max-width: 720px) { .day-block { grid-template-columns: 1fr; } }
+  .pie {
+    position: relative; width: 260px; height: 260px; margin: 0 auto;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--stop) 0% 50%,
+      var(--brand) 50% 100%
+    );
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pie::after {
+    content: ""; position: absolute; inset: 24%; background: var(--bg); border-radius: 50%;
+  }
+  .pie-legend { font-size: 0.95rem; }
+  .pie-legend .dot { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 8px; vertical-align: middle; }
+  .pie-legend .dot.a { background: var(--stop); }
+  .pie-legend .dot.b { background: var(--brand); }
+  .pie-legend li { list-style: none; margin-bottom: 10px; }
+
+  /* Accordions */
+  details.card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    margin-bottom: 12px; overflow: hidden;
+  }
+  details.card summary {
+    padding: 20px 24px; cursor: pointer; list-style: none;
+    font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; color: var(--ink);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  details.card summary::-webkit-details-marker { display: none; }
+  details.card summary::after {
+    content: "+"; font-size: 1.3rem; color: var(--muted); font-weight: 400;
+    transition: transform 0.2s;
+  }
+  details.card[open] summary::after { content: "−"; }
+  details.card .body { padding: 0 24px 22px; color: var(--ink-soft); }
+  details.card .tag { display: inline-block; font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-weight: 600; margin-right: 8px; }
+
+  /* Kartan grid */
+  .kartan-wrap { overflow-x: auto; padding-bottom: 4px; }
+  table.kartan { width: 100%; border-collapse: separate; border-spacing: 4px; min-width: 640px; font-size: 0.88rem; }
+  table.kartan th, table.kartan td { padding: 12px 10px; text-align: center; border-radius: 6px; }
+  table.kartan th { background: transparent; color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  table.kartan th.retailer { text-align: left; padding-left: 14px; color: var(--ink); font-size: 0.92rem; text-transform: none; letter-spacing: 0; font-family: var(--font-head); }
+  table.kartan td.retailer { text-align: left; padding-left: 14px; font-weight: 600; background: #f3f1ec; color: var(--ink); font-family: var(--font-head); }
+  .cell-ok { background: #d8ecdf; color: #1f5f46; font-weight: 600; }
+  .cell-test { background: #fcebc6; color: #7a5517; font-weight: 600; }
+  .cell-fixed { background: #f4d3cd; color: #8a3128; font-weight: 600; }
+  .cell-none { background: #eeece7; color: #8a8779; }
+  .legend-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; font-size: 0.88rem; color: var(--ink-soft); }
+  .legend-row .item { display: flex; align-items: center; gap: 8px; }
+  .legend-row .swatch { width: 14px; height: 14px; border-radius: 3px; }
+
+  /* How we work */
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 720px) { .how-grid { grid-template-columns: 1fr; } }
+  .how-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: 24px; position: relative;
+  }
+  .how-card .pct { font-family: var(--font-head); font-size: 2.2rem; font-weight: 700; color: var(--brand); margin-bottom: 4px; letter-spacing: -0.02em; }
+  .how-card h3 { margin-bottom: 6px; }
+  .how-card p { margin: 0; font-size: 0.93rem; }
+
+  /* Works-done cards */
+  .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 720px) { .works-grid { grid-template-columns: 1fr; } }
+  .work {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: 22px;
+  }
+  .work .num { font-family: var(--font-head); font-size: 0.82rem; color: var(--brand); font-weight: 700; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .work h3 { margin-bottom: 10px; }
+  .work p { font-size: 0.94rem; margin-bottom: 10px; }
+  .work .typical { font-size: 0.82rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; margin-top: 10px; }
+  .work .typical strong { color: var(--ink-soft); }
+
+  /* Price ladder */
+  .ladder { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  @media (max-width: 960px) { .ladder { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .ladder { grid-template-columns: 1fr; } }
+  .step {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: 22px; display: flex; flex-direction: column;
+  }
+  .step.core { border-color: var(--brand); box-shadow: 0 0 0 2px var(--brand-soft); }
+  .step .name { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; margin-bottom: 4px; }
+  .step .price { font-family: var(--font-head); font-size: 1.5rem; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.02em; }
+  .step .price small { font-size: 0.72rem; color: var(--muted); font-weight: 400; }
+  .step ul { list-style: none; padding: 0; margin: 0 0 16px; font-size: 0.9rem; color: var(--ink-soft); }
+  .step ul li { padding: 5px 0; border-bottom: 1px dotted var(--line); }
+  .step ul li:last-child { border-bottom: none; }
+  .step .trigger { font-size: 0.82rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 12px; margin-top: auto; }
+  .step .trigger strong { color: var(--brand); font-weight: 600; }
+  .step .badge { display: inline-block; font-size: 0.7rem; padding: 3px 9px; border-radius: 999px; background: var(--ink); color: #fff; margin-bottom: 12px; width: fit-content; }
+  .step.core .badge { background: var(--brand); }
+
+  /* Honesty block */
+  .honesty {
+    background: var(--ink); color: #e8e6df; border-radius: var(--radius-lg); padding: 32px;
+  }
+  .honesty h2 { color: #fff; }
+  .honesty h2::before { content: ""; display: inline-block; width: 28px; height: 3px; background: var(--accent); vertical-align: middle; margin-right: 12px; border-radius: 2px; }
+  .honesty ul { list-style: none; padding: 0; margin: 16px 0 0; }
+  .honesty li { padding: 14px 0; border-top: 1px solid #2a2f38; color: #c9c7bf; }
+  .honesty li:first-child { border-top: none; }
+  .honesty li strong { color: #fff; font-weight: 600; display: block; margin-bottom: 4px; font-family: var(--font-head); }
+
+  /* Case section */
+  .case {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+  .case .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 24px; }
+  @media (max-width: 720px) { .case .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .case .steps { grid-template-columns: 1fr; } }
+  .case .step-box { border-top: 3px solid var(--brand); padding-top: 14px; }
+  .case .step-box .lbl { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+  .case .step-box p { font-size: 0.9rem; margin: 0; }
+  .placeholder { color: var(--muted); font-style: italic; }
+
+  /* FAQ uses details.card already */
+  /* Footer */
+  footer { padding: 48px 0; background: var(--ink); color: #a8a59b; border-bottom: none; }
+  footer .container { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer h4 { color: #fff; font-size: 0.95rem; margin-bottom: 10px; }
+  footer a { color: #e8e6df; border: none; }
+  footer a:hover { color: var(--accent); }
+  footer small { color: #6a6760; display: block; margin-top: 18px; }
+
+  /* Print */
+  @media print {
+    nav.top, .cta-row, .btn { display: none; }
+    body { background: #fff; font-size: 11pt; }
+    section { padding: 24px 0; page-break-inside: avoid; border-bottom: 1px solid #ccc; }
+    .hero { padding: 24px 0; }
+    details.card { page-break-inside: avoid; }
+    details.card > .body { display: block !important; padding: 0 24px 22px; }
+    details.card:not([open]) > .body { display: none !important; }
+    a { color: var(--ink); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="container row">
+    <a class="brand" href="#top">Invert</a>
+    <div class="links">
+      <a href="#jobbet">Jobbet</a>
+      <a href="#varde">Värde</a>
+      <a href="#kartan">Kartan</a>
+      <a href="#hur">Hur</a>
+      <a href="#vad">Vad vi levererar</a>
+      <a href="#pris">Pris</a>
+      <a href="#arlighet">Ärlighet</a>
+      <a href="#case">Case</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero" id="top">
+  <div class="container">
+    <span class="eyebrow">E-retail growth-firman</span>
+    <h1>Vi unboxar blackboxen. Du investerar där nålen rör sig.</h1>
+    <p class="lede">Invert är inte ditt e-retail-verktyg. Vi är ditt e-retail-team. En plattform som körs 24/7 + seniora operatörer som gör jobbet på din hylla hos Apotea, Apotek Hjärtat, Kicks, Lyko och Meds.</p>
+    <p class="sequoia">Services revenue at software margins — för nordisk e-retail. Byggt på tesen Julien Bek och Sequoia kallar ”Services: The New Software”.</p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:hello@invert.se?subject=20%20min%20intro">Boka 20 min</a>
+      <a class="btn ghost" href="#varde">Se värdet</a>
+    </div>
+  </div>
+</section>
+
+<div class="sequoia-bar">
+  <div class="container">
+    <strong>Tesen på en rad:</strong>
+    <span>Inte e-retail-SaaS. E-retail growth-firman. Vi säljer arbetet, inte verktyget.</span>
+  </div>
+</div>
+
+<!-- 2. JOBBET -->
+<section id="jobbet">
+  <div class="container">
+    <div class="kicker">Jobbet du inte ska göra</div>
+    <h2>En KAM på ett varumärke som säljer via e-retail lägger hälften av veckan på fel saker.</h2>
+    <div class="day-block" style="margin-top: 36px;">
+      <div>
+        <div class="pie" aria-label="Diagram: 50% datainsamling och retailer-chase, 50% strategi och beslut"></div>
+      </div>
+      <div>
+        <ul class="pie-legend">
+          <li><span class="dot a"></span><strong>40–60%</strong> — datainsamling, retailer-chase, statusuppdateringar, sammanställningar.</li>
+          <li><span class="dot b"></span><strong>Resterande</strong> — faktisk strategi, kundrelation, förhandling, beslut.</li>
+        </ul>
+        <p style="margin-top: 18px;"><strong>Det är jobbet vi tar.</strong> KAM får tillbaka halva veckan. Plattformen samlar, analyserar, prioriterar. Människan agerar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. VÄRDE SOM HÅLLER OAVSETT -->
+<section id="varde" style="background: #fff;">
+  <div class="container">
+    <div class="kicker">Värde som håller oavsett</div>
+    <h2>Invert betalar sig även om ingen retailer-algoritm rör sig.</h2>
+    <p style="max-width: 680px; margin-bottom: 32px;">Vissa retailers har låsta merchandising-regler. Vissa av våra analyser visar sig vara fel. Publiceringar fördröjs. Retainern justifieras ändå av fem värden som levereras i varje fall:</p>
+
+    <details class="card" open>
+      <summary><span class="tag">1</span>KAM-tid frigörs 40–60%</summary>
+      <div class="body">
+        <p>Datainsamling och retailer-chase ersätts av dagliga briefs. Oavsett om något rör sig på hyllan har klient fått tillbaka motsvarande 0,5–1 FTE per månad. Intern kostnad 25–40k/mån — direkt återbetalning av retainern.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="tag">2</span>Investeringsallokering mellan retailers</summary>
+      <div class="body">
+        <p>Kartan över vad som är påverkbart vs fixed styr <em>var din budget ska stå</em>. Kritisk för varumärken med 30–70% av försäljningen via e-retail. En felflyttad miljon i årsbudget kostar mer än 12 månaders Invert-retainer.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="tag">3</span>Konkurrentintel som försvarsbeslut</summary>
+      <div class="body">
+        <p>Även vid fixed hyllor är det värdefullt att veta när konkurrent dumpar pris, lanserar nytt eller ändrar content. Styr pris- och promo-motdrag — eller strategiskt reträtt-beslut när man ser att kriget inte går att vinna.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="tag">4</span>C-level strategiska beslut</summary>
+      <div class="body">
+        <p>”Ska vi satsa på retailer X eller Y?” ”Är det värt att skala på Apotea när vår andra vertikal växer hos Kicks?” Dessa frågor drivs av Invert-datamaterial. Svaren är boardroom-nivå, inte operativa.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="tag">5</span>Dokumenterad sanning över tid</summary>
+      <div class="body">
+        <p>Klient får en växande privat playbook — ”så ser ranking ut på Apotek Hjärtat när vi testat X under 6 månader”. Intellektuellt kapital som följer med varumärket även om Invert avslutas. Inte bara månadsrapport.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 4. KARTAN -->
+<section id="kartan">
+  <div class="container">
+    <div class="kicker">Kartan över dina retailers</div>
+    <h2>Vad är påverkbart på varje hylla? Vad är fixed?</h2>
+    <p style="max-width: 680px; margin-bottom: 28px;">Vi testar systematiskt vilka lever som faktiskt flyttar position, synlighet och konvertering per retailer. Kartan uppdateras löpande. Den styr var du lägger content-timmar, media-budget och priskrig — och var du inte ska bränna krut.</p>
+
+    <div class="kartan-wrap">
+      <table class="kartan" aria-label="Karta över påverkbara lever per retailer">
+        <thead>
+          <tr>
+            <th class="retailer">Retailer</th>
+            <th>Pris</th>
+            <th>PDP-content</th>
+            <th>Bilder</th>
+            <th>Promo</th>
+            <th>Sökord</th>
+            <th>Placement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="retailer">Apotea</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-fixed">Fixed</td>
+          </tr>
+          <tr>
+            <td class="retailer">Apotek Hjärtat</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-fixed">Fixed</td>
+            <td class="cell-fixed">Fixed</td>
+          </tr>
+          <tr>
+            <td class="retailer">Kicks</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-none">Ej testat</td>
+          </tr>
+          <tr>
+            <td class="retailer">Lyko</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-test">Testas</td>
+          </tr>
+          <tr>
+            <td class="retailer">Meds</td>
+            <td class="cell-ok">Mutable</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-none">Ej testat</td>
+            <td class="cell-test">Testas</td>
+            <td class="cell-none">Ej testat</td>
+            <td class="cell-fixed">Fixed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legend-row">
+      <div class="item"><span class="swatch" style="background:#d8ecdf"></span>Mutable — bevisat påverkbart</div>
+      <div class="item"><span class="swatch" style="background:#fcebc6"></span>Testas — hypotes under aktivt test</div>
+      <div class="item"><span class="swatch" style="background:#f4d3cd"></span>Fixed — observerat låst (också värdefull insikt)</div>
+      <div class="item"><span class="swatch" style="background:#eeece7"></span>Ej testat ännu</div>
+    </div>
+    <p style="margin-top: 28px; font-size: 0.92rem; color: var(--muted);"><em>Exempel-karta. Varje klient får sin egen, uppdaterad löpande.</em></p>
+  </div>
+</section>
+
+<!-- 5. HUR VI ARBETAR -->
+<section id="hur" style="background: #fff;">
+  <div class="container">
+    <div class="kicker">Hur vi arbetar</div>
+    <h2>En plattform + ett team. Inte en SaaS, inte en byrå.</h2>
+    <p style="max-width: 680px; margin-bottom: 32px;">60–80% av leveransen bärs av kod som kör dygnet runt. Resterande är mänsklig judgment där den faktiskt tillför värde. Det är därför vi kan prissätta som en byrå-avdelning, inte som en hel byrå.</p>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="pct">60–80%</div>
+        <h3>Plattform</h3>
+        <p>Daglig scrape av fem retailers, PDP-scoring, OOS-alerts, kampanj-baselines, anomali-detektion, rapport-generering, push-delivery. Körs dygnet runt, kostar lite per klient.</p>
+      </div>
+      <div class="how-card">
+        <div class="pct">20–40%</div>
+        <h3>Operatörer</h3>
+        <p>Seniora e-retail-analytiker som tolkar signaler, skriver rekommendationer, driver retailer-relation, designar tester. Judgment. Inte tidrapportering.</p>
+      </div>
+      <div class="how-card">
+        <div class="pct">∞</div>
+        <h3>Din KAM</h3>
+        <p>Agerar på vad vi levererar. Sitter närmast kund och retailer. Får tillbaka halva arbetsveckan att lägga på relation och förhandling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. VAD VI LEVERERAR -->
+<section id="vad">
+  <div class="container">
+    <div class="kicker">Vad vi levererar</div>
+    <h2>Fyra ”works done”. Konkret arbete — inte KPI-garantier.</h2>
+    <p style="max-width: 680px; margin-bottom: 32px;">Retailern är slutinstans. Vi lovar arbetet, inte deras beteende.</p>
+    <div class="works-grid">
+      <div class="work">
+        <div class="num">01</div>
+        <h3>Shelf-bevakning & åtgärdsförslag</h3>
+        <p>Vi övervakar din hylla dagligen. Avvikelser flaggas inom 24h med rekommenderad åtgärd och namnad action-owner.</p>
+        <div class="typical"><strong>Typiskt:</strong> Daglig brief, Slack-alert vid OOS/priskrig, veckosammanfattning med prioriterade actions.</div>
+      </div>
+      <div class="work">
+        <div class="num">02</div>
+        <h3>Content-produktion & submission</h3>
+        <p>Vi skriver, uppdaterar och submittar PDP-innehåll som klarar kvalitetströskel. Vi driver retailerns godkännandeprocess åt dig.</p>
+        <div class="typical"><strong>Typiskt:</strong> 8–20 PDP:er per månad, A/B-loggning, eskalering vid fördröjd publicering.</div>
+      </div>
+      <div class="work">
+        <div class="num">03</div>
+        <h3>Kampanj-baseline & verifiering</h3>
+        <p>Innan kampanj sätter vi baseline. Efter mäter vi faktisk lift mot baseline — inte retailer-story.</p>
+        <div class="typical"><strong>Typiskt:</strong> Baseline-snapshot, post-hoc ROAS-rapport, retailer-claim-kontroll.</div>
+      </div>
+      <div class="work">
+        <div class="num">04</div>
+        <h3>Blackbox-kartläggning (moat)</h3>
+        <p>Vi testar systematiskt vad som flyttar nålen per retailer. Du får kartan — mutable, under test, fixed. Styr investering.</p>
+        <div class="typical"><strong>Typiskt:</strong> Kvartalsvis karta-uppdatering, hypotes-logg, investeringsrekommendation per retailer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PRIS-LADDER -->
+<section id="pris" style="background: #fff;">
+  <div class="container">
+    <div class="kicker">Pris-ladder</div>
+    <h2>Du köper aldrig något du inte behöver.</h2>
+    <p style="max-width: 680px; margin-bottom: 32px;">Land-and-expand. Börja lågt, skala när kartan säger att nålen rör sig. Execution är en separat add-on — inte inbakat, inte tvingat.</p>
+
+    <div class="ladder">
+      <div class="step">
+        <span class="badge">Intro</span>
+        <div class="name">Intro</div>
+        <div class="price">10–15k<small> /mån</small></div>
+        <ul>
+          <li>1 retailer</li>
+          <li>20–40 SKUs</li>
+          <li>Månatlig brief</li>
+          <li>Kvartalsvis kartläggning</li>
+        </ul>
+        <div class="trigger"><strong>Uppgradera när:</strong> du vill ha fler retailers, snabbare cadence, eller insikter leder till action som vill exekveras snabbare.</div>
+      </div>
+      <div class="step core">
+        <span class="badge">Core</span>
+        <div class="name">Core-retainer</div>
+        <div class="price">30–60k<small> /mån</small></div>
+        <ul>
+          <li>3–5 retailers</li>
+          <li>Full SKU-coverage</li>
+          <li>Vecko-brief + Slack-SLA</li>
+          <li>Strategiska möten/kvartal</li>
+          <li>Löpande kartläggning</li>
+        </ul>
+        <div class="trigger"><strong>Där Sequoia-ekonomin kickar in.</strong> 60–80% automation, analytiker där det tillför värde.</div>
+      </div>
+      <div class="step">
+        <span class="badge">Add-on</span>
+        <div class="name">Execution</div>
+        <div class="price">Volymbaserat</div>
+        <ul>
+          <li>Content-produktion i volym</li>
+          <li>Kampanj-exekvering</li>
+          <li>Retail-media-operation</li>
+          <li>Portal-submission & chasing</li>
+        </ul>
+        <div class="trigger"><strong>Aktivera när:</strong> kartan visar mutable yta värd att flytta. Tim-bank eller per-enhet-pris.</div>
+      </div>
+      <div class="step">
+        <span class="badge">Add-on</span>
+        <div class="name">Managed Service</div>
+        <div class="price">+15–20k<small> /mån</small></div>
+        <ul>
+          <li>Dedikerad Account Lead</li>
+          <li>Veckomöten</li>
+          <li>Strategisk exekvering</li>
+          <li>Prioriterad SLA</li>
+        </ul>
+        <div class="trigger"><strong>Välj till när:</strong> intern bandbredd är bottleneck och du vill outsourca ägarskap av e-retail-funktionen helt.</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px; font-size: 0.92rem; color: var(--muted); max-width: 620px;"><strong>Upside-bonus</strong> kan förhandlas per klient (t.ex. PDP-score ≥ 85 efter 90 dagar → +10k). Endast upside — aldrig rebate. Vi tar inte risk på utfall vi inte kontrollerar.</p>
+  </div>
+</section>
+
+<!-- 8. ÄRLIGHET -->
+<section id="arlighet">
+  <div class="container">
+    <div class="honesty">
+      <div class="kicker" style="color: #b9f25c;">Vad vi inte lovar</div>
+      <h2>Ärligheten är en del av produkten.</h2>
+      <ul>
+        <li><strong>Retailern publicerar i sin egen takt.</strong> Vi kan skriva, submitta, pusha och eskalera — men den sista knappen sitter hos Apotea, Apotek Hjärtat, Kicks, Lyko och Meds. Vi dokumenterar väntetid som separat data.</li>
+        <li><strong>Vissa algoritmer kan vara låsta.</strong> Om vi bevisar att en retailers ranking är statisk merchandising är det ingen förlust — det är insikten som gör att din budget flyttar till retailers där nålen faktiskt rör sig.</li>
+        <li><strong>Våra analyser är inte ofelbara.</strong> Vi visar bevisnivå per slutsats: bevisat, hypotes, observerat. Du ser alltid vilket lager en rekommendation vilar på. Vi korrigerar oss när vi lär oss något nytt.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CASE -->
+<section id="case" style="background: #fff;">
+  <div class="container">
+    <div class="kicker">Case</div>
+    <h2>Bevis från faktiskt arbete.</h2>
+    <p style="max-width: 680px; margin-bottom: 28px;">Vi publicerar inte ROI-prål. Vi visar vad vi gjorde, vad vi lärde oss och vad klient beslutade.</p>
+
+    <div class="case">
+      <h3>Tanrevel — nordisk beauty, full täckning Kicks + Apotek Hjärtat + Lyko</h3>
+      <p style="color: var(--muted); font-size: 0.92rem;">Onboardad april 2026. 57 egna + 13 konkurrent-SKU:er. 100% PDP-täckning.</p>
+      <div class="steps">
+        <div class="step-box">
+          <div class="lbl">Utgångsläge</div>
+          <p>Manuell daglig retailer-check av KAM. Kampanj-lift mättes mot retailer-claims. Ingen kartläggning av vad som är mutable per retailer.</p>
+        </div>
+        <div class="step-box">
+          <div class="lbl">Vad vi gjorde</div>
+          <p class="placeholder">[Dokumenteras under 60-dagars-perioden — briefs levererade, PDP-submissions, eskaleringar, hypoteser testade.]</p>
+        </div>
+        <div class="step-box">
+          <div class="lbl">Vad vi lärde oss</div>
+          <p class="placeholder">[Fylls i löpande — vilka lever på vilken retailer som visat sig påverkbara vs fixed.]</p>
+        </div>
+        <div class="step-box">
+          <div class="lbl">Vad klient beslutade</div>
+          <p class="placeholder">[Investeringsallokering mellan retailers, prioriterade kampanj-fönster, etc.]</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 24px; font-size: 0.92rem; color: var(--muted);">Fler case: GANT (kommande demo), andra nordiska brands under onboarding.</p>
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="kicker">Vanliga frågor</div>
+    <h2>Det alla frågar.</h2>
+
+    <details class="card">
+      <summary>Är ni byrå eller SaaS?</summary>
+      <div class="body"><p>Båda — egentligen ingen. Vi är e-retail growth-firma rebuilt on software. Plattformen bär tunga arbetet, operatörerna äger judgment. Services revenue at software margins, som Sequoia skulle säga.</p></div>
+    </details>
+
+    <details class="card">
+      <summary>Vad händer om retailern inte gör som ni rekommenderar?</summary>
+      <div class="body"><p>Det gör retailern ofta inte, åtminstone inte på kort sikt. Vi dokumenterar rekommendationen, submissionen och retailerns svar/tystnad. Om det visar sig vara ett återkommande mönster blir det ingångsdata till din investeringsallokering: mindre budget till retailers som inte rör sig.</p></div>
+    </details>
+
+    <details class="card">
+      <summary>Hur vet vi att er analys stämmer?</summary>
+      <div class="body"><p>Ni vet det inte förrän vi har testat — och det är själva jobbet. Vi markerar alltid slutsatser med bevisnivå: <em>bevisat</em> (vi har agerat och sett effekt), <em>hypotes</em> (under aktivt test), <em>observerat</em> (mönster utan interventionsbevis). Du ser alltid vilket lager en rekommendation vilar på.</p></div>
+    </details>
+
+    <details class="card">
+      <summary>Hur snabbt kan vi börja?</summary>
+      <div class="body"><p>Intro-tier kan vara live inom 1–2 veckor från tecknat avtal. Core-retainer kräver 3–4 veckors onboarding (datamodell, retailer-mapping, KAM-integration). Execution-add-on aktiveras när intel-lagret börjat generera konkreta actions.</p></div>
+    </details>
+
+    <details class="card">
+      <summary>Vad kostar execution-lagret?</summary>
+      <div class="body"><p>Volymbaserat. Per PDP producerad/submittad, per kampanj-setup, per retail-media-månad, eller tim-bank (20h/mån ≈ 30k). Vi prissätter per klient efter scope — håller intel-retainern förutsägbar.</p></div>
+    </details>
+
+    <details class="card">
+      <summary>Kan vi byta ner från Core till Intro om vi behöver?</summary>
+      <div class="body"><p>Ja. Kontrakten är kvartalsvisa. Vi hellre tappar en core-klient till intro och behåller relationen än låser in dig i något du inte får värde av.</p></div>
+    </details>
+
+    <details class="card">
+      <summary>Vilka retailers bevakar ni?</summary>
+      <div class="body"><p>I dag: Apotea, Apotek Hjärtat, Kicks, Lyko, Meds. Fler läggs till när klient-efterfrågan motiverar utveckling av adapter.</p></div>
+    </details>
+
+    <details class="card">
+      <summary>Hur ser ni på Meta/Google-annonsering?</summary>
+      <div class="body"><p>Vår Ad Signal Engine kopplar hylldata till annons-messaging — organisk differentiator. Full paid orchestration är på roadmap för 2027, när nordisk retail media mognat tillräckligt för att det ska vara en självbärande vertikal.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- 11. FOOTER -->
+<footer>
+  <div class="container">
+    <div>
+      <h4>Invert</h4>
+      <p style="margin: 0;"><a href="mailto:hello@invert.se">hello@invert.se</a></p>
+      <p style="margin: 6px 0 0;"><a href="https://invert.se">invert.se</a></p>
+    </div>
+    <div>
+      <h4>Referens</h4>
+      <p style="margin: 0;"><a href="https://www.sequoiacap.com/article/generative-ais-act-01/" rel="noopener">Sequoia — Services: The New Software</a></p>
+      <p style="margin: 6px 0 0;"><small>Julien Bek &amp; Guillermo Flor, 2026</small></p>
+    </div>
+    <div>
+      <h4>Denna deck</h4>
+      <p style="margin: 0;"><small>Uppdaterad 2026. Skriv ut som PDF via webbläsarens print-funktion.</small></p>
+    </div>
+  </div>
+  <div class="container">
+    <small>© Invert 2026 — E-retail growth-firma rebuilt on software.</small>
+  </div>
+</footer>
+
+</body>
+</html>
