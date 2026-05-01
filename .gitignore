@@ -8,3 +8,4 @@ build/
 .vercel
 .cache/
 *.log
+preview-no-overlay.html
