@@ -1,0 +1,89 @@
+/* Invert — Brand tokens
+ * Brutalist Grid · Signal Red · v.02
+ */
+
+:root {
+  /* color */
+  --invert-paper: #ffffff;
+  --invert-ink: #0a0a0a;
+  --invert-signal: #ee2a2a;
+  --invert-rule: #0a0a0a;        /* borders are the design — same as ink */
+  --invert-muted: #888888;
+  --invert-faint: #e6e6e6;
+
+  /* type */
+  --invert-font-sans: "Inter", Helvetica, Arial, sans-serif;
+  --invert-font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  /* type roles (clamp values target 1280–1920px viewports) */
+  --invert-display: 900 clamp(64px, 9vw, 132px) / 0.85 var(--invert-font-sans);
+  --invert-h1: 800 clamp(48px, 6vw, 88px) / 0.9 var(--invert-font-sans);
+  --invert-h2: 700 clamp(32px, 3.5vw, 48px) / 1.0 var(--invert-font-sans);
+  --invert-body: 400 17px/1.55 var(--invert-font-sans);
+  --invert-meta: 500 11px/1.4 var(--invert-font-mono);
+
+  /* type details */
+  --invert-tracking-display: -0.05em;     /* tight, all-caps */
+  --invert-tracking-mono: 0.18em;         /* loose, all-caps */
+
+  /* structure */
+  --invert-rule-w: 2px;                    /* every divider in the system */
+  --invert-pad: 56px;                      /* page gutter */
+  --invert-pad-tight: 24px;
+}
+
+/* ---------- base helpers ---------- */
+.invert-mono-label {
+  font: var(--invert-meta);
+  letter-spacing: var(--invert-tracking-mono);
+  text-transform: uppercase;
+  color: var(--invert-muted);
+}
+
+.invert-display {
+  font: var(--invert-display);
+  letter-spacing: var(--invert-tracking-display);
+  text-transform: uppercase;
+}
+
+.invert-rule {
+  border-top: var(--invert-rule-w) solid var(--invert-rule);
+}
+
+/* ---------- button: split-stamp ---------- */
+.invert-btn {
+  display: inline-flex;
+  border: var(--invert-rule-w) solid var(--invert-ink);
+  font: var(--invert-meta);
+  letter-spacing: var(--invert-tracking-mono);
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+}
+.invert-btn__action {
+  background: var(--invert-ink);
+  color: var(--invert-paper);
+  padding: 14px 22px;
+}
+.invert-btn__action--signal {
+  background: var(--invert-signal);
+  color: var(--invert-paper);
+}
+.invert-btn__meta {
+  padding: 14px 22px;
+  border-left: var(--invert-rule-w) solid var(--invert-ink);
+  color: var(--invert-ink);
+}
+
+/* ---------- highlight stamp on display type ---------- */
+.invert-stamp {
+  background: var(--invert-signal);
+  color: var(--invert-paper);
+  padding: 0 0.05em;
+}
+.invert-stamp--ink {
+  background: var(--invert-ink);
+  color: var(--invert-paper);
+  padding: 0 0.05em;
+}

@@ -21,7 +21,9 @@
   <meta name="twitter:image" content="https://invert.se/og-image.png">
   <link rel="canonical" href="https://invert.se/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="handoff/tokens.css">
 
   <script type="application/ld+json">
   {
@@ -217,21 +219,58 @@
   </script>
 
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Brutalist Grid · Signal Red · Invert brand v.02
+       Legacy CSS vars below alias brand tokens from handoff/tokens.css.
+       Global reset enforces §7 don'ts (no radius, no shadow). */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
 
     :root {
-      --black: #1a1b2e;
-      --white: #faf8f6;
-      --sand: #f3efe9;
-      --light-blue: #edf0f7;
-      --grey: #6b6b6b;
-      --light-grey: #9a9a9a;
-      --border: #e0e0e0;
-      --border-dark: rgba(255,255,255,0.1);
-      --accent: #3D46FB;
-      --green: #16a34a;
-      --red: #dc2626;
+      /* Aliased to brand tokens — no third color, no third font */
+      --black: var(--invert-ink);
+      --white: var(--invert-paper);
+      --sand: var(--invert-paper);
+      --light-blue: var(--invert-paper);
+      --grey: var(--invert-muted);
+      --light-grey: var(--invert-muted);
+      --border: var(--invert-rule);
+      --border-dark: var(--invert-paper);
+      --accent: var(--invert-signal);
+      --green: var(--invert-signal);
+      --red: var(--invert-signal);
     }
+
+    /* Global font override — Space Grotesk → Inter (no third font) */
+    body, .logo, h1, h2, h3, h4, h5, h6,
+    [class*="title"], [class*="heading"], [class*="display"] {
+      font-family: var(--invert-font-sans) !important;
+    }
+    /* Headlines uppercase + tighter tracking */
+    h1, h2, h3, h4 {
+      text-transform: uppercase !important;
+      letter-spacing: -0.03em !important;
+      line-height: 0.95 !important;
+    }
+    h1 { font-weight: 800 !important; }
+    h2 { font-weight: 700 !important; }
+    h3 { font-weight: 700 !important; }
+
+    /* Mono everywhere meta-text was used */
+    .nav-product, .nav-cta, .btn-primary, .btn-outline, .btn-dark,
+    [class*="badge"], [class*="kicker"], [class*="eyebrow"], [class*="meta"],
+    [class*="label"], small, .pricing-tier, .pricing-tagline, .pricing-divider-label {
+      font-family: var(--invert-font-mono) !important;
+      letter-spacing: var(--invert-tracking-mono) !important;
+      text-transform: uppercase !important;
+    }
+
+    /* Kill gradients via inline style */
+    [style*="gradient"] { background: var(--invert-paper) !important; }
+    /* Kill backdrop-filter blur on nav */
+    nav { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
 
     html { scroll-behavior: smooth; }
 
@@ -333,7 +372,7 @@
       display: flex; flex-direction: column; justify-content: center;
       align-items: center; text-align: center;
       padding: 9rem 2rem 4rem;
-      background: linear-gradient(165deg, #1a1b2e 0%, #12132a 50%, #1a1b2e 100%);
+      background: var(--invert-ink);
       color: var(--white);
       position: relative;
     }
@@ -791,7 +830,7 @@
     .flow-hub-circle {
       width: 60px; height: 60px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #1e1f38, #282a50);
+      background: var(--invert-ink);
       border: 1.5px solid rgba(61, 70, 251, 0.25);
       display: flex;
       align-items: center;
@@ -1207,7 +1246,7 @@
 
     /* ---- CTA ---- */
     .cta-dark {
-      background: linear-gradient(175deg, #1a1b2e 0%, #141524 100%);
+      background: var(--invert-ink);
       color: var(--white);
       text-align: center;
       padding: 6rem 3rem;

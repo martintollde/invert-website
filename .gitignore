@@ -9,3 +9,4 @@ build/
 .cache/
 *.log
 preview-no-overlay.html
+.gstack/
