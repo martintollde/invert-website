@@ -271,6 +271,12 @@
     [style*="gradient"] { background: var(--invert-paper) !important; }
     /* Kill backdrop-filter blur on nav */
     nav { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+    /* Disable pulse / decorative animations — brutalist stays static */
+    .intel-dot, .nav-product-badge, [class*="-orb"], [class*="-pulse"] {
+      animation: none !important;
+    }
+    .intel-dot { background: var(--invert-signal) !important; }
+    .nav-product-badge { background: var(--invert-signal) !important; }
 
     html { scroll-behavior: smooth; }
 
@@ -1542,7 +1548,7 @@
 <!-- NAV -->
 <!-- ============================================================ -->
 <nav>
-  <div class="logo">Invert</div>
+  <div class="logo"><svg viewBox="60 40 80 120" width="22" height="22" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-right:0.5rem;color:currentColor;"><g fill="currentColor"><rect x="74" y="78" width="18" height="72"/><circle cx="83" cy="62" r="10"/><rect x="108" y="50" width="18" height="72"/><circle cx="117" cy="138" r="10"/></g></svg>Invert</div>
   <div class="nav-links">
     <a href="#services">Vad vi g&ouml;r</a>
     <a href="#growth-os">S&aring; fungerar det</a>
@@ -2032,7 +2038,7 @@
 <!-- ============================================================ -->
 <!-- ÄRLIGHET -->
 <!-- ============================================================ -->
-<section class="section" id="arlighet" style="background:var(--black);color:#e8e6df;">
+<section class="section" id="arlighet" style="background:var(--invert-ink);color:var(--invert-paper);">
   <div class="section-label" style="color:#b9f25c;">Vad vi inte lovar</div>
   <h2 style="color:#fff;">&Auml;rligheten &auml;r en del av produkten</h2>
   <p class="section-sub" style="color:#c9c7bf;max-width:720px;">

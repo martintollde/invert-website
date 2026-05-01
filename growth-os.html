@@ -152,6 +152,12 @@
     [style*="gradient"] { background: var(--invert-paper) !important; }
     /* Kill backdrop-filter blur on nav */
     nav { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+    /* Disable pulse / decorative animations — brutalist stays static */
+    .intel-dot, .nav-product-badge, [class*="-orb"], [class*="-pulse"] {
+      animation: none !important;
+    }
+    .intel-dot { background: var(--invert-signal) !important; }
+    .nav-product-badge { background: var(--invert-signal) !important; }
 
     html { scroll-behavior: smooth; }
 
@@ -489,11 +495,13 @@
     .gos-hero {
       min-height: auto;
       display: flex; flex-direction: column; justify-content: center;
-      align-items: center; text-align: center;
-      padding: 9rem 2rem 5rem;
+      align-items: flex-start; text-align: left;
+      padding: 9rem var(--invert-pad) 5rem;
       background: var(--invert-ink);
       color: var(--invert-paper);
+      border-bottom: var(--invert-rule-w) solid var(--invert-paper);
     }
+    .gos-hero-ctas { justify-content: flex-start !important; }
     .gos-hero .section-label { color: rgba(255,255,255,0.25); }
     .gos-hero h1 {
       font-family: 'Space Grotesk', sans-serif;
@@ -890,7 +898,7 @@
 <!-- NAV -->
 <!-- ============================================================ -->
 <nav>
-  <a href="index.html" class="logo">Invert</a>
+  <a href="index.html" class="logo"><svg viewBox="60 40 80 120" width="22" height="22" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-right:0.5rem;color:currentColor;"><g fill="currentColor"><rect x="74" y="78" width="18" height="72"/><circle cx="83" cy="62" r="10"/><rect x="108" y="50" width="18" height="72"/><circle cx="117" cy="138" r="10"/></g></svg>Invert</a>
   <div class="nav-links">
     <a href="index.html#services">Vad vi g&ouml;r</a>
     <a href="index.html#priser">Priser</a>
