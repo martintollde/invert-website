@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invert — Pitch Deck · Brand Owners</title>
+  <meta name="description" content="Invert pitch deck — e-retail growth-firman för nordiska brand owners.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       Invert — Brand tokens
+       Brutalist Grid · Signal Red · v.02
+       ============================================================ */
+    :root {
+      --paper: #ffffff;
+      --ink: #0a0a0a;
+      --signal: #ee2a2a;
+      --rule: #0a0a0a;
+      --muted: #888888;
+      --faint: #e6e6e6;
+      --body-ink: #222222;
+      --dim: #444444;
+      --on-dark-muted: #888888;
+      --on-dark-faint: #bbbbbb;
+
+      --font-sans: "Inter", Helvetica, Arial, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+      --rule-w: 2px;
+      --slide-w: 1920px;
+      --slide-h: 1080px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font-sans);
+      background: #0a0a0a;
+      color: var(--ink);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    em { font-style: italic; }
+
+    /* ============================================================
+       STAGE — viewport-scaled 1920×1080 deck
+       ============================================================ */
+    .deck {
+      position: fixed;
+      inset: 0;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+    .stage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: var(--slide-w);
+      height: var(--slide-h);
+      transform: translate(-50%, -50%) scale(var(--scale, 1));
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background: var(--paper);
+      color: var(--ink);
+      display: none;
+      flex-direction: column;
+    }
+    .slide.is-active { display: flex; }
+    .slide.bg-dark { background: var(--ink); color: var(--paper); }
+
+    /* ============================================================
+       CHROME — top meta-bar, bottom ticker
+       ============================================================ */
+    .meta-bar, .ticker {
+      flex-shrink: 0;
+      padding: 0 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .meta-bar {
+      height: 56px;
+      border-bottom: var(--rule-w) solid currentColor;
+      font-size: 14px;
+    }
+    .ticker {
+      height: 44px;
+      border-top: var(--rule-w) solid currentColor;
+      font-size: 12px;
+      color: #666;
+    }
+    .bg-dark .ticker { color: var(--on-dark-muted); }
+    .meta-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .meta-brand .logo { width: 32px; height: 32px; }
+    .meta-brand .wordmark {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.03em;
+      text-transform: none;
+    }
+    .meta-brand .wordmark .dot { color: var(--signal); }
+    .meta-center { display: flex; gap: 28px; }
+    .meta-center .sep { opacity: 0.4; }
+    .ticker .signal { color: var(--signal); }
+
+    /* slide content area fills remaining height */
+    .body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+    /* ============================================================
+       TYPE roles
+       ============================================================ */
+    .display {
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 0.85;
+      text-transform: uppercase;
+    }
+    .h1 {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .h2 {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+    }
+    .mono-label {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #666;
+    }
+    .bg-dark .mono-label { color: var(--on-dark-muted); }
+    .mono-label.signal { color: var(--signal); }
+    .stamp {
+      background: var(--signal);
+      color: var(--paper);
+      padding: 0 0.06em;
+    }
+    .red-period, .period { color: var(--signal); }
+    .body-copy {
+      font-size: 24px;
+      line-height: 1.45;
+      color: var(--body-ink);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .bg-dark .body-copy { color: var(--on-dark-faint); }
+
+    /* ============================================================
+       Section eyebrow (top row inside slide body)
+       ============================================================ */
+    .section-head {
+      padding: 64px 80px 32px;
+      border-bottom: var(--rule-w) solid currentColor;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-shrink: 0;
+    }
+    .section-head .lhs { font-size: 18px; }
+    .section-head .rhs { font-size: 14px; }
+    .bg-dark .section-head .lhs { color: var(--on-dark-muted); }
+
+    /* ============================================================
+       SLIDE 01 — Cover
+       ============================================================ */
+    .s01-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+    .s01-left {
+      border-right: var(--rule-w) solid var(--rule);
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .s01-left .display {
+      font-size: 224px;
+      letter-spacing: -0.06em;
+      line-height: 0.82;
+    }
+    .s01-left .sub {
+      margin-top: 36px;
+      font-size: 26px;
+      line-height: 1.4;
+      color: var(--dim);
+      max-width: 880px;
+      letter-spacing: -0.01em;
+    }
+    .s01-left .foot {
+      display: flex;
+      gap: 36px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #666;
+    }
+    .s01-right {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .s01-right .top-tag {
+      align-self: flex-start;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: var(--signal);
+    }
+    .s01-right .logo-xl { width: 300px; height: 300px; color: var(--paper); }
+    .s01-right .foot {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--on-dark-muted);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       SLIDE 02 — Problem
+       ============================================================ */
+    .s02-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .s02-left {
+      border-right: var(--rule-w) solid var(--rule);
+      padding: 80px;
+      display: flex;
+      align-items: center;
+    }
+    .s02-left .display { font-size: 116px; }
+    .s02-right {
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+    }
+    .s02-right p {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.4;
+      color: var(--body-ink);
+      letter-spacing: -0.01em;
+    }
+    .s02-right .closer {
+      padding-top: 24px;
+      border-top: var(--rule-w) solid var(--rule);
+      font-family: var(--font-mono);
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--signal);
+    }
+
+    /* ============================================================
+       SLIDE 03 — Position (dark, stamp)
+       ============================================================ */
+    .s03-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 0 80px;
+    }
+    .s03-eyebrow-l,
+    .s03-eyebrow-r {
+      position: absolute;
+      top: 64px;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .s03-eyebrow-l { left: 80px; color: var(--on-dark-muted); }
+    .s03-eyebrow-r { right: 80px; color: var(--signal); font-size: 14px; }
+    .s03-content { max-width: 1500px; }
+    .s03-content .display { font-size: 200px; }
+    .s03-content .sub {
+      margin-top: 56px;
+      font-family: var(--font-mono);
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      line-height: 1.55;
+      color: var(--on-dark-faint);
+      max-width: 1100px;
+    }
+    .s03-content .tags {
+      margin-top: 48px;
+      display: flex;
+      gap: 48px;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--on-dark-muted);
+    }
+
+    /* ============================================================
+       SLIDE 04 — Method (3-col)
+       ============================================================ */
+    .three-col {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .three-col > div {
+      padding: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .three-col > div + div { border-left: var(--rule-w) solid var(--rule); }
+    .three-col .step-num {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: var(--signal);
+      margin-bottom: 32px;
+    }
+    .three-col .step-title {
+      font-weight: 900;
+      font-size: 96px;
+      letter-spacing: -0.05em;
+      line-height: 0.85;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .three-col .step-body {
+      font-size: 22px;
+      line-height: 1.45;
+      color: #333;
+    }
+    .three-col .step-tag {
+      padding-top: 24px;
+      border-top: var(--rule-w) solid var(--rule);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    /* ============================================================
+       SLIDE 05 — Värde-anyway grid (2×3)
+       ============================================================ */
+    .value-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    .value-cell {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: var(--rule-w) solid var(--rule);
+      border-bottom: var(--rule-w) solid var(--rule);
+    }
+    .value-cell:nth-child(3n) { border-right: none; }
+    .value-cell:nth-child(n+4) { border-bottom: none; }
+    .value-cell .lbl {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #666;
+    }
+    .value-cell .stat {
+      font-weight: 900;
+      font-size: 96px;
+      letter-spacing: -0.05em;
+      line-height: 0.88;
+      font-feature-settings: "tnum";
+    }
+    .value-cell .desc {
+      font-size: 18px;
+      line-height: 1.45;
+      color: #333;
+    }
+    .value-cell.is-signal {
+      background: var(--signal);
+      color: var(--paper);
+    }
+    .value-cell.is-signal .lbl,
+    .value-cell.is-signal .desc { color: var(--paper); }
+    .value-cell.is-summary {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .value-cell.is-summary .lbl { color: var(--on-dark-muted); }
+    .value-cell.is-summary .stat { font-size: 56px; line-height: 1.0; }
+    .value-cell.is-summary .desc { color: var(--on-dark-faint); }
+
+    /* ============================================================
+       SLIDE 06 — Kartan (retailer × lever matrix)
+       ============================================================ */
+    .karta-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 80px 56px;
+    }
+    .karta {
+      flex: 1;
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    .karta th, .karta td {
+      border: var(--rule-w) solid var(--rule);
+      padding: 18px 20px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    .karta thead th {
+      background: var(--paper);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: #666;
+      font-weight: 500;
+      border-top: none;
+    }
+    .karta th:first-child, .karta td:first-child {
+      border-left: none;
+    }
+    .karta th:last-child, .karta td:last-child {
+      border-right: none;
+    }
+    .karta tbody tr:last-child td { border-bottom: none; }
+    .karta .retailer {
+      text-align: left;
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      text-transform: none;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    .karta .c-mut {
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .karta .c-mut::before { content: "● "; color: var(--signal); }
+    .karta .c-test {
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .karta .c-test::before { content: "◐ "; color: var(--signal); }
+    .karta .c-fixed {
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 700;
+    }
+    .karta .c-none {
+      background: var(--faint);
+      color: var(--muted);
+    }
+    .karta-legend {
+      margin-top: 24px;
+      display: flex;
+      gap: 36px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+    }
+    .karta-legend .signal { color: var(--signal); }
+    .karta-foot {
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================================================
+       SLIDE 07 — Works Done (4-col)
+       ============================================================ */
+    .four-col {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .four-col > div {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .four-col > div + div { border-left: var(--rule-w) solid var(--rule); }
+    .four-col .work-num {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: var(--signal);
+      margin-bottom: 32px;
+    }
+    .four-col .work-title {
+      font-weight: 800;
+      font-size: 36px;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      text-transform: none;
+      margin-bottom: 24px;
+    }
+    .four-col .work-body {
+      font-size: 18px;
+      line-height: 1.45;
+      color: #333;
+    }
+    .four-col .work-typical {
+      padding-top: 20px;
+      border-top: var(--rule-w) solid var(--rule);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       SLIDE 08 — Pris-ladder (5 columns)
+       ============================================================ */
+    .ladder {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.15fr 1fr 1fr;
+    }
+    .rung {
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .rung + .rung { border-left: var(--rule-w) solid var(--rule); }
+    .rung .badge {
+      align-self: flex-start;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+      border: var(--rule-w) solid currentColor;
+      padding: 4px 10px;
+    }
+    .rung .name {
+      font-weight: 900;
+      font-size: 56px;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+    .rung .price {
+      font-weight: 800;
+      font-size: 36px;
+      letter-spacing: -0.02em;
+      font-feature-settings: "tnum";
+      margin-top: 20px;
+      color: var(--ink);
+    }
+    .rung .price small {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+      font-weight: 500;
+    }
+    .rung ul {
+      list-style: none;
+      margin: 28px 0 0;
+      padding: 0;
+      font-size: 15px;
+      line-height: 1.45;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .rung ul li::before {
+      content: "— ";
+      color: var(--muted);
+    }
+    .rung .trigger {
+      padding-top: 20px;
+      border-top: var(--rule-w) solid var(--rule);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #666;
+      line-height: 1.5;
+    }
+    .rung.is-core {
+      background: var(--signal);
+      color: var(--paper);
+    }
+    .rung.is-core .badge { color: var(--paper); border-color: var(--paper); }
+    .rung.is-core .price { color: var(--paper); }
+    .rung.is-core .price small { color: rgba(255,255,255,0.7); }
+    .rung.is-core ul { color: var(--paper); }
+    .rung.is-core ul li::before { color: rgba(255,255,255,0.6); }
+    .rung.is-core .trigger { color: rgba(255,255,255,0.85); border-top-color: var(--paper); }
+
+    /* ============================================================
+       SLIDE 09 — Case · Tanrevel
+       ============================================================ */
+    .case-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+    }
+    .case-left {
+      border-right: var(--rule-w) solid var(--rule);
+      padding: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .case-left .display {
+      font-size: 152px;
+    }
+    .case-left .narrative {
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--body-ink);
+      max-width: 720px;
+    }
+    .case-left .meta-row {
+      margin-top: 32px;
+      display: flex;
+      gap: 24px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #666;
+    }
+    .case-left .meta-row .signal { color: var(--signal); }
+    .case-right {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+    }
+    .case-row {
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: var(--rule-w) solid var(--rule);
+    }
+    .case-row:last-child { border-bottom: none; }
+    .case-row.is-signal { background: var(--signal); color: var(--paper); }
+    .case-row .lbl {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+    }
+    .case-row.is-signal .lbl { color: var(--paper); }
+    .case-row .val {
+      font-weight: 900;
+      font-size: 56px;
+      letter-spacing: -0.04em;
+      font-feature-settings: "tnum";
+    }
+
+    /* ============================================================
+       SLIDE 10 — Honesty (dark)
+       ============================================================ */
+    .honesty-body {
+      flex: 1;
+      padding: 80px 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .honesty-body .h1 { font-size: 92px; max-width: 1500px; }
+    .honesty-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+      border-top: var(--rule-w) solid var(--paper);
+      padding-top: 36px;
+    }
+    .honesty-item .num {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: var(--signal);
+      margin-bottom: 18px;
+    }
+    .honesty-item .what {
+      font-weight: 800;
+      font-size: 26px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .honesty-item .body-copy {
+      color: var(--on-dark-faint);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       SLIDE 11 — Retailers (4×2)
+       ============================================================ */
+    .retailers {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr 1fr;
+    }
+    .retailer-cell {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: var(--rule-w) solid var(--rule);
+      border-bottom: var(--rule-w) solid var(--rule);
+    }
+    .retailer-cell:nth-child(4n) { border-right: none; }
+    .retailer-cell:nth-child(n+5) { border-bottom: none; }
+    .retailer-cell .idx {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+    }
+    .retailer-cell .rname {
+      font-weight: 900;
+      font-size: 64px;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+    .retailer-cell .rname .period { color: var(--signal); }
+    .retailer-cell .rstatus {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #666;
+      display: flex;
+      justify-content: space-between;
+    }
+    .retailer-cell .rstatus .dot { color: var(--signal); }
+    .retailer-cell.is-roadmap .rname { color: var(--muted); }
+    .retailer-cell.is-roadmap .rstatus .dot { color: var(--muted); }
+
+    /* ============================================================
+       SLIDE 12 — Contact (dark)
+       ============================================================ */
+    .s12-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+    .s12-left {
+      border-right: var(--rule-w) solid var(--paper);
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .s12-left .display { font-size: 240px; }
+    .s12-contact-row {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 1100px;
+    }
+    .s12-contact-row .lbl {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--on-dark-muted);
+    }
+    .s12-contact-row .val {
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      margin-top: 8px;
+      color: var(--paper);
+    }
+    .s12-contact-row .sub {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      color: var(--on-dark-faint);
+      margin-top: 4px;
+    }
+    .s12-cta {
+      display: flex;
+      border: var(--rule-w) solid var(--paper);
+      width: fit-content;
+    }
+    .s12-cta .fill {
+      background: var(--signal);
+      color: var(--paper);
+      padding: 20px 32px;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .s12-cta .timer {
+      padding: 20px 32px;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      border-left: var(--rule-w) solid var(--paper);
+      color: var(--paper);
+    }
+    .s12-right {
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .s12-right .top-tag {
+      align-self: flex-start;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: var(--signal);
+    }
+    .s12-right .logo-xl { width: 300px; height: 300px; color: var(--paper); }
+    .s12-right .foot {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--on-dark-muted);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       NAV HUD — keyboard hint + counter
+       ============================================================ */
+    .hud {
+      position: fixed;
+      bottom: 16px;
+      right: 20px;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888;
+      background: rgba(10,10,10,0.8);
+      padding: 8px 14px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      backdrop-filter: blur(6px);
+    }
+    .hud .keys { color: #555; }
+    .hud .signal { color: var(--signal); }
+
+    /* ============================================================
+       PRINT — one slide per landscape page
+       ============================================================ */
+    @media print {
+      @page { size: 1920px 1080px; margin: 0; }
+      html, body { width: 1920px; height: 1080px; background: var(--paper); overflow: visible; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .deck { position: static; display: block; background: var(--paper); }
+      .stage { transform: none !important; width: 1920px; height: 1080px; position: relative; }
+      .slide { position: relative; display: flex !important; page-break-after: always; break-after: page; }
+      .slide:last-child { page-break-after: auto; }
+      .hud { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reusable logo template (used at top-bar size) -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="invert-logo" viewBox="60 40 80 120">
+      <g fill="currentColor">
+        <rect x="74" y="78" width="18" height="72"/>
+        <circle cx="83" cy="62" r="10"/>
+        <rect x="108" y="50" width="18" height="72"/>
+        <circle cx="117" cy="138" r="10"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <div class="deck">
+    <div class="stage" id="stage">
+
+      <!-- ============================================================
+           SLIDE 01 — COVER
+           ============================================================ -->
+      <section class="slide is-active" data-label="01 Cover">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>01 Cover</span>
+          </div>
+          <div>01 / 12</div>
+        </div>
+        <div class="body">
+          <div class="s01-grid">
+            <div class="s01-left">
+              <div class="mono-label">Pitch · Brand owners · 2026</div>
+              <div>
+                <div class="display">Growth,<br>unboxed<span class="red-period">.</span></div>
+                <div class="sub">E-retail growth-firman för nordiska brand owners som säljer via Apotea, Apotek Hjärtat, Kicks, Lyko och Meds — och behöver tillbaka halva KAM-veckan.</div>
+              </div>
+              <div class="foot">
+                <span>Stockholm · Est. 2025</span>
+                <span style="color: var(--signal);">● Live since v.02</span>
+              </div>
+            </div>
+            <div class="s01-right">
+              <div class="top-tag">● 01 / 12</div>
+              <svg class="logo-xl" aria-hidden="true"><use href="#invert-logo"/></svg>
+              <div class="foot">Sales read<br>Confidential</div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 01 Cover</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 02 — PROBLEM
+           ============================================================ -->
+      <section class="slide" data-label="02 Jobbet">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>02 Jobbet</span>
+          </div>
+          <div>02 / 12</div>
+        </div>
+        <div class="body">
+          <div class="section-head">
+            <div class="lhs mono-label">02 · Jobbet du inte ska göra</div>
+            <div class="rhs mono-label signal">● the problem</div>
+          </div>
+          <div class="s02-grid">
+            <div class="s02-left">
+              <div class="display">Hälften av<br>KAM:ens<br>vecka går<br>åt fel saker<span class="red-period">.</span></div>
+            </div>
+            <div class="s02-right">
+              <p>Datainsamling, retailer-chase, portal-status, sammanställningar. <strong>40–60% av veckan</strong> — innan KAM får göra det jobb som faktiskt växer affären.</p>
+              <p>Resterande halva — strategi, förhandling, beslut — får trängas på den tid som blir över. <em>Black-boxen är affärsmodellen för byråerna som vill det så.</em></p>
+              <div class="closer">→ vi tar bort hälften.</div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 02 Jobbet</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 03 — POSITION (dark)
+           ============================================================ -->
+      <section class="slide bg-dark" data-label="03 Position">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true" style="color: var(--paper);"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>03 Position</span>
+          </div>
+          <div>03 / 12</div>
+        </div>
+        <div class="body">
+          <div class="s03-body">
+            <div class="s03-eyebrow-l">03 · Position</div>
+            <div class="s03-eyebrow-r">● the inversion</div>
+            <div class="s03-content">
+              <div class="display">Unbox<br>the <span class="stamp">black</span>box<span class="red-period">.</span></div>
+              <div class="sub">Vi visar var nålen rör sig — och var den är låst. Varje hypotes, varje action-rekommendation, varje vecka. Du köper aldrig något du inte behöver.</div>
+              <div class="tags">
+                <span>● Shared workspace</span>
+                <span>● Open queries</span>
+                <span>● Weekly write-ups</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 03 Position</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 04 — METHOD (3-col)
+           ============================================================ -->
+      <section class="slide" data-label="04 Method">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>04 Method</span>
+          </div>
+          <div>04 / 12</div>
+        </div>
+        <div class="body">
+          <div class="section-head">
+            <div class="lhs mono-label">04 · Method</div>
+            <div class="rhs mono-label">three steps · always in order</div>
+          </div>
+          <div class="three-col">
+            <div>
+              <div>
+                <div class="step-num">● 01</div>
+                <div class="step-title">Audit<span class="red-period">.</span></div>
+                <div class="step-body">4 veckors djupdykning. RBI + CPI + ATL/shelf-snapshot. Tre konkreta åtgärder med beräknad SEK-impact per åtgärd.</div>
+              </div>
+              <div class="step-tag">Universell ingång · 40–60k engångs</div>
+            </div>
+            <div>
+              <div>
+                <div class="step-num">● 02</div>
+                <div class="step-title">Retainer<span class="red-period">.</span></div>
+                <div class="step-body">Daglig brief i Slack. Veckorapport. Månatlig MBR. Avvikelser flaggas inom 24h med rekommenderad åtgärd och namnad action-owner.</div>
+              </div>
+              <div class="step-tag">Support → Growth → Managed · 40–180k /mån</div>
+            </div>
+            <div>
+              <div>
+                <div class="step-num">● 03</div>
+                <div class="step-title">Execution<span class="red-period">.</span></div>
+                <div class="step-body">Volymbaserat. Content-produktion och PDP-submission, kampanj-setup, retail-media, portal-chasing. Aktiveras när kartan visar mutable yta.</div>
+              </div>
+              <div class="step-tag">Add-on · per enhet eller tim-bank</div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 04 Method</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 05 — VÄRDE SOM HÅLLER OAVSETT
+           ============================================================ -->
+      <section class="slide" data-label="05 Värde">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>05 Värde</span>
+          </div>
+          <div>05 / 12</div>
+        </div>
+        <div class="body">
+          <div class="section-head">
+            <div class="lhs mono-label">05 · Värde som håller oavsett</div>
+            <div class="rhs mono-label signal">● 5 sätt retainern betalar sig</div>
+          </div>
+          <div class="value-grid">
+            <div class="value-cell is-signal">
+              <div class="lbl">01 · KAM-tid</div>
+              <div class="stat">0,5–1<br><span style="font-size: 36px; letter-spacing: -0.02em;">FTE/mån</span></div>
+              <div class="desc">Datainsamling och retailer-chase ersätts av dagliga briefs. <strong>40–60% av KAM-veckan tillbaka</strong>. Intern kostnad 25–40k/mån — direkt återbetalning av retainern.</div>
+            </div>
+            <div class="value-cell">
+              <div class="lbl">02 · Allokering</div>
+              <div class="stat">+1 MSEK</div>
+              <div class="desc">Kartan över mutable vs fixed styr <em>var budgeten ska stå</em>. En felflyttad miljon i årsbudget kostar mer än 12 månaders Invert-retainer.</div>
+            </div>
+            <div class="value-cell">
+              <div class="lbl">03 · Konkurrentintel</div>
+              <div class="stat">24h</div>
+              <div class="desc">Alert när konkurrent dumpar pris, lanserar nytt eller ändrar content. Styr pris- och promo-motdrag — eller strategiskt reträtt-beslut.</div>
+            </div>
+            <div class="value-cell">
+              <div class="lbl">04 · C-level-beslut</div>
+              <div class="stat">"X eller Y?"</div>
+              <div class="desc">"Ska vi satsa på retailer X eller Y?" "Värt att skala på Apotea när vår andra vertikal växer hos Kicks?" Svaren är boardroom-nivå, inte operativa.</div>
+            </div>
+            <div class="value-cell">
+              <div class="lbl">05 · Playbook</div>
+              <div class="stat">∞ truth</div>
+              <div class="desc">Klient bygger privat playbook över tid — "så ser ranking ut på Apotek Hjärtat när vi testat X under 6 månader". Intellektuellt kapital som följer varumärket.</div>
+            </div>
+            <div class="value-cell is-summary">
+              <div class="lbl">→ Sum</div>
+              <div class="stat">Månad 1<span class="red-period">.</span></div>
+              <div class="desc">Retainern återbetalar sig redan på KAM-tid-värdet ensamt. Resten — allokering, intel, C-level, playbook — är ren upside.</div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 05 Värde</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 06 — KARTAN
+           ============================================================ -->
+      <section class="slide" data-label="06 Kartan">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>06 Kartan</span>
+          </div>
+          <div>06 / 12</div>
+        </div>
+        <div class="body">
+          <div class="section-head">
+            <div class="lhs mono-label">06 · Kartan över dina retailers</div>
+            <div class="rhs mono-label signal">● vad är påverkbart, vad är fixed</div>
+          </div>
+          <div class="karta-wrap">
+            <table class="karta">
+              <thead>
+                <tr>
+                  <th class="retailer" style="text-align:left;">Retailer</th>
+                  <th>Pris</th>
+                  <th>PDP-content</th>
+                  <th>Bilder</th>
+                  <th>Promo</th>
+                  <th>Sökord</th>
+                  <th>Placement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="retailer">Apotea</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-fixed">Fixed</td>
+                </tr>
+                <tr>
+                  <td class="retailer">Apotek Hjärtat</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-fixed">Fixed</td>
+                  <td class="c-fixed">Fixed</td>
+                </tr>
+                <tr>
+                  <td class="retailer">Kicks</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-none">—</td>
+                </tr>
+                <tr>
+                  <td class="retailer">Lyko</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-test">Testas</td>
+                </tr>
+                <tr>
+                  <td class="retailer">Meds</td>
+                  <td class="c-mut">Mutable</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-none">—</td>
+                  <td class="c-test">Testas</td>
+                  <td class="c-none">—</td>
+                  <td class="c-fixed">Fixed</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="karta-legend">
+              <span><span class="signal">●</span> Mutable — bevisat påverkbart</span>
+              <span><span class="signal">◐</span> Testas — hypotes under aktivt test</span>
+              <span style="color: var(--ink);">▮ Fixed — observerat låst</span>
+              <span>— Ej testat ännu</span>
+            </div>
+            <div class="karta-foot">Exempel-karta. Varje klient får sin egen, uppdaterad löpande.</div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 06 Kartan</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 07 — WORKS DONE (4-col)
+           ============================================================ -->
+      <section class="slide" data-label="07 Works">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>07 Works</span>
+          </div>
+          <div>07 / 12</div>
+        </div>
+        <div class="body">
+          <div class="section-head">
+            <div class="lhs mono-label">07 · Vad vi levererar</div>
+            <div class="rhs mono-label">fyra works done · ej KPI-garantier</div>
+          </div>
+          <div class="four-col">
+            <div>
+              <div>
+                <div class="work-num">● 01</div>
+                <div class="work-title">Shelf-bevakning &amp; åtgärdsförslag<span class="red-period">.</span></div>
+                <div class="work-body">Vi övervakar din hylla dagligen. Avvikelser flaggas inom 24h med rekommenderad åtgärd och namnad action-owner.</div>
+              </div>
+              <div class="work-typical">Daglig brief · Slack-alert vid OOS / priskrig · veckorapport med prioriterade actions</div>
+            </div>
+            <div>
+              <div>
+                <div class="work-num">● 02</div>
+                <div class="work-title">Content-produktion &amp; submission<span class="red-period">.</span></div>
+                <div class="work-body">Vi skriver, uppdaterar och submittar PDP-innehåll som klarar kvalitetströskel. Vi driver retailerns godkännandeprocess åt dig.</div>
+              </div>
+              <div class="work-typical">8–20 PDP/mån · A/B-loggning · eskalering vid fördröjd publicering</div>
+            </div>
+            <div>
+              <div>
+                <div class="work-num">● 03</div>
+                <div class="work-title">Kampanj-baseline &amp; verifiering<span class="red-period">.</span></div>
+                <div class="work-body">Innan kampanj sätter vi baseline. Efter mäter vi faktisk lift mot baseline — inte retailer-claim.</div>
+              </div>
+              <div class="work-typical">Baseline-snapshot · post-hoc ROAS · retailer-claim-kontroll</div>
+            </div>
+            <div>
+              <div>
+                <div class="work-num">● 04</div>
+                <div class="work-title">Blackbox-kartläggning (moat)<span class="red-period">.</span></div>
+                <div class="work-body">Vi testar systematiskt vad som flyttar nålen per retailer. Du får kartan — mutable, under test, fixed. Styr investering.</div>
+              </div>
+              <div class="work-typical">Kvartalsvis karta-uppdatering · hypotes-logg · investeringsrekommendation</div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 07 Works</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 08 — PRIS-LADDER (5-col)
+           ============================================================ -->
+      <section class="slide" data-label="08 Pris">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>08 Pris</span>
+          </div>
+          <div>08 / 12</div>
+        </div>
+        <div class="body">
+          <div class="section-head">
+            <div class="lhs mono-label">08 · Pris-ladder</div>
+            <div class="rhs mono-label">audit → 3 tiers → execution add-on</div>
+          </div>
+          <div class="ladder">
+            <div class="rung">
+              <div>
+                <span class="badge">Audit</span>
+                <div class="name">Audit<span class="red-period">.</span></div>
+                <div class="price">40–60k<small> engångs</small></div>
+                <ul>
+                  <li>4 veckors leverans</li>
+                  <li>RBI + CPI + shelf-snapshot</li>
+                  <li>Tre konkreta åtgärder</li>
+                  <li>SEK-impact per åtgärd</li>
+                </ul>
+              </div>
+              <div class="trigger">Universell ingång — varje samarbete börjar här</div>
+            </div>
+            <div class="rung">
+              <div>
+                <span class="badge">Tier 1</span>
+                <div class="name">Support<span class="red-period">.</span></div>
+                <div class="price">40–50k<small> /mån</small></div>
+                <ul>
+                  <li>E-com-vardagen från KAM</li>
+                  <li>Daglig bevakning</li>
+                  <li>Operativ shelf-execution</li>
+                  <li>PDP-justeringar &amp; dialog mot retailer</li>
+                </ul>
+              </div>
+              <div class="trigger">Köpare: e-com manager / KAM</div>
+            </div>
+            <div class="rung is-core">
+              <div>
+                <span class="badge">Tier 2 · mest vald</span>
+                <div class="name">Growth<span class="red-period">.</span></div>
+                <div class="price">80–100k<small> /mån</small></div>
+                <ul>
+                  <li>Allt i Support, plus:</li>
+                  <li>Djupanalys på portföljnivå</li>
+                  <li>ATL → shelf-koppling</li>
+                  <li>Strategisk input på kommunikation</li>
+                  <li>Kategoripositionering</li>
+                </ul>
+              </div>
+              <div class="trigger">Köpare: CMO / strategichef</div>
+            </div>
+            <div class="rung">
+              <div>
+                <span class="badge">Tier 3</span>
+                <div class="name">Managed<span class="red-period">.</span></div>
+                <div class="price">130–180k<small> /mån</small></div>
+                <ul>
+                  <li>Allt i Growth, plus:</li>
+                  <li>Inhouse-team som drivs av oss</li>
+                  <li>Multi-stakeholder</li>
+                  <li>Proaktiv rådgivning · SLA 4h</li>
+                </ul>
+              </div>
+              <div class="trigger">Köpare: CEO / commercial director</div>
+            </div>
+            <div class="rung">
+              <div>
+                <span class="badge">Add-on</span>
+                <div class="name">Exec<span class="red-period">.</span></div>
+                <div class="price">Volym<small></small></div>
+                <ul>
+                  <li>Content-produktion i volym</li>
+                  <li>Kampanj-exekvering</li>
+                  <li>Retail-media-operation</li>
+                  <li>Portal-submission &amp; chasing</li>
+                </ul>
+              </div>
+              <div class="trigger">Aktiveras vid mutable yta · tim-bank</div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 08 Pris</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 09 — CASE · TANREVEL
+           ============================================================ -->
+      <section class="slide" data-label="09 Case · Tanrevel">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>09 Case · Tanrevel</span>
+          </div>
+          <div>09 / 12</div>
+        </div>
+        <div class="body">
+          <div class="section-head">
+            <div class="lhs mono-label">09 · Case 001</div>
+            <div class="rhs mono-label signal">● beauty · self-tan</div>
+          </div>
+          <div class="case-grid">
+            <div class="case-left">
+              <div class="display">Tanrevel<br><span style="color: var(--signal);">100%</span> PDP<span class="red-period">.</span></div>
+              <div>
+                <p class="narrative">Nordisk beauty self-tanning. Onboardad april 2026 — <strong>full täckning på Kicks + Apotek Hjärtat + Lyko inom en månad</strong>. 57 egna SKU:er, 13 konkurrent-SKU:er, 100% PDP-täckning. Daglig bevakning live sedan dag 30.</p>
+                <div class="meta-row">
+                  <span>1 mån onboarding</span>
+                  <span>·</span>
+                  <span>3 retailers</span>
+                  <span>·</span>
+                  <span class="signal">still live</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-right">
+              <div class="case-row">
+                <span class="lbl">Onboardad</span>
+                <span class="val">apr-26</span>
+              </div>
+              <div class="case-row is-signal">
+                <span class="lbl">PDP-täckning</span>
+                <span class="val">100%</span>
+              </div>
+              <div class="case-row">
+                <span class="lbl">Egna SKU:er</span>
+                <span class="val">57</span>
+              </div>
+              <div class="case-row">
+                <span class="lbl">Retailers live</span>
+                <span class="val">3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 09 Case</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 10 — HONESTY (dark)
+           ============================================================ -->
+      <section class="slide bg-dark" data-label="10 Ärlighet">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true" style="color: var(--paper);"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>10 Ärlighet</span>
+          </div>
+          <div>10 / 12</div>
+        </div>
+        <div class="body">
+          <div class="honesty-body">
+            <div>
+              <div class="mono-label" style="color: var(--signal);">● vad vi inte lovar</div>
+              <div class="h1" style="margin-top: 24px;">Ärligheten är<br>en del av produkten<span class="red-period">.</span></div>
+            </div>
+            <div class="honesty-list">
+              <div class="honesty-item">
+                <div class="num">● 01</div>
+                <div class="what">Retailern publicerar i sin egen takt.</div>
+                <div class="body-copy">Vi kan skriva, submitta, pusha och eskalera — men den sista knappen sitter hos Apotea, Apotek Hjärtat, Kicks, Lyko och Meds. Vi dokumenterar väntetid som separat data.</div>
+              </div>
+              <div class="honesty-item">
+                <div class="num">● 02</div>
+                <div class="what">Vissa algoritmer kan vara låsta.</div>
+                <div class="body-copy">Om vi bevisar att en retailers ranking är statisk merchandising är det ingen förlust — det är insikten som flyttar budgeten till retailers där nålen faktiskt rör sig.</div>
+              </div>
+              <div class="honesty-item">
+                <div class="num">● 03</div>
+                <div class="what">Våra analyser är inte ofelbara.</div>
+                <div class="body-copy">Vi visar bevisnivå per slutsats: <em>bevisat, hypotes, observerat</em>. Du ser alltid vilket lager en rekommendation vilar på. Vi korrigerar oss när vi lär oss något nytt.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 10 Ärlighet</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 11 — RETAILERS (4x2)
+           ============================================================ -->
+      <section class="slide" data-label="11 Retailers">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>11 Retailers</span>
+          </div>
+          <div>11 / 12</div>
+        </div>
+        <div class="body">
+          <div class="section-head">
+            <div class="lhs mono-label">11 · Retailers vi bevakar</div>
+            <div class="rhs mono-label">5 live · 3 i roadmap</div>
+          </div>
+          <div class="retailers">
+            <div class="retailer-cell">
+              <div class="idx">001</div>
+              <div class="rname">Apotea<span class="period">.</span></div>
+              <div class="rstatus"><span>Apotek &amp; FMCG</span><span class="dot">● Live</span></div>
+            </div>
+            <div class="retailer-cell">
+              <div class="idx">002</div>
+              <div class="rname">Apotek<br>Hjärtat<span class="period">.</span></div>
+              <div class="rstatus"><span>Apotek</span><span class="dot">● Live</span></div>
+            </div>
+            <div class="retailer-cell">
+              <div class="idx">003</div>
+              <div class="rname">Kicks<span class="period">.</span></div>
+              <div class="rstatus"><span>Beauty</span><span class="dot">● Live</span></div>
+            </div>
+            <div class="retailer-cell">
+              <div class="idx">004</div>
+              <div class="rname">Lyko<span class="period">.</span></div>
+              <div class="rstatus"><span>Beauty</span><span class="dot">● Live</span></div>
+            </div>
+            <div class="retailer-cell">
+              <div class="idx">005</div>
+              <div class="rname">Meds<span class="period">.</span></div>
+              <div class="rstatus"><span>Apotek</span><span class="dot">● Live</span></div>
+            </div>
+            <div class="retailer-cell is-roadmap">
+              <div class="idx">006</div>
+              <div class="rname">Boozt<span class="period">.</span></div>
+              <div class="rstatus"><span>Fashion</span><span class="dot">○ Roadmap</span></div>
+            </div>
+            <div class="retailer-cell is-roadmap">
+              <div class="idx">007</div>
+              <div class="rname">Care of<br>Carl<span class="period">.</span></div>
+              <div class="rstatus"><span>Fashion</span><span class="dot">○ Roadmap</span></div>
+            </div>
+            <div class="retailer-cell is-roadmap">
+              <div class="idx">008</div>
+              <div class="rname">GANT.se<span class="period">.</span></div>
+              <div class="rstatus"><span>Brand DTC</span><span class="dot">○ Roadmap</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 11 Retailers</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 12 — CONTACT (dark)
+           ============================================================ -->
+      <section class="slide bg-dark" data-label="12 Contact">
+        <div class="meta-bar">
+          <div class="meta-brand">
+            <svg class="logo" aria-hidden="true" style="color: var(--paper);"><use href="#invert-logo"/></svg>
+            <span class="wordmark">invert<span class="dot">.</span></span>
+          </div>
+          <div class="meta-center">
+            <span>Sales · 2026</span>
+            <span class="sep">/</span>
+            <span>12 Contact</span>
+          </div>
+          <div>12 / 12</div>
+        </div>
+        <div class="body">
+          <div class="s12-grid">
+            <div class="s12-left">
+              <div class="mono-label" style="color: var(--on-dark-muted);">12 · End</div>
+              <div>
+                <div class="display">Talk<br>to us<span class="red-period">.</span></div>
+                <div class="s12-contact-row">
+                  <div>
+                    <div class="lbl">Direct</div>
+                    <div class="val">hello@invert.se</div>
+                    <div class="sub">invert.se</div>
+                  </div>
+                  <div>
+                    <div class="lbl">Studio</div>
+                    <div class="val">Stockholm</div>
+                    <div class="sub">Est. 2025</div>
+                  </div>
+                </div>
+              </div>
+              <div class="s12-cta">
+                <div class="fill">Book audit</div>
+                <div class="timer">1–2 veckor →</div>
+              </div>
+            </div>
+            <div class="s12-right">
+              <div class="top-tag">● fin</div>
+              <svg class="logo-xl" aria-hidden="true"><use href="#invert-logo"/></svg>
+              <div class="foot">Unbox the<br>blackbox.</div>
+            </div>
+          </div>
+        </div>
+        <div class="ticker">
+          <span>Unbox the blackbox.</span>
+          <span class="signal">● 12 Contact</span>
+          <span>invert.se</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="hud">
+    <span class="keys">←/→</span>
+    <span><span id="cur">01</span> / 12</span>
+    <span class="signal">●</span>
+  </div>
+
+  <script>
+    (function () {
+      const stage = document.getElementById('stage');
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const curEl = document.getElementById('cur');
+      let i = 0;
+
+      function fitStage() {
+        const sx = window.innerWidth / 1920;
+        const sy = window.innerHeight / 1080;
+        const s = Math.min(sx, sy);
+        stage.style.setProperty('--scale', s);
+      }
+
+      function go(n) {
+        i = Math.max(0, Math.min(slides.length - 1, n));
+        slides.forEach((el, idx) => el.classList.toggle('is-active', idx === i));
+        curEl.textContent = String(i + 1).padStart(2, '0');
+        history.replaceState(null, '', '#' + (i + 1));
+      }
+
+      window.addEventListener('resize', fitStage);
+      fitStage();
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(i + 1); }
+        else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+        else if (e.key === 'Home') { e.preventDefault(); go(0); }
+        else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+        else if (/^[1-9]$/.test(e.key)) { go(parseInt(e.key, 10) - 1); }
+        else if (e.key === '0') { go(9); }
+      });
+
+      // deep-link via hash (#3 → slide 3)
+      const fromHash = parseInt(location.hash.replace('#', ''), 10);
+      if (!isNaN(fromHash)) go(fromHash - 1);
+    })();
+  </script>
+
+</body>
+</html>
