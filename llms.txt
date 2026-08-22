@@ -1,40 +1,27 @@
 # Invert
 
-> Invert helps consumer brands grow on Sweden's largest e-retailers — using real-time data on prices, inventory, shelf position, and competitor activity. We combine a SaaS platform (Growth OS) with hands-on agency execution.
+> Invert is an E-retail Growth Lead for consumer brands that sell through Swedish e-retailers. Sales data tells a brand what happened; Invert explains why — and drives what happens next. We read the digital shelf, sales, media and competition as one picture, decide what matters commercially, assign an owner and a date, and follow up until the action is done and measured — together with the client's existing team.
 
-## Core Offering
+## Core offering
 
-- [Invert — Homepage](https://invert.se/): Overview of services, pricing, and target customers
-- [Growth OS — Product Page](https://invert.se/growth-os.html): Real-time e-retail control room for brands
+- [Invert — Site](https://invert.se/site): Positioning, how we work, real observations, engagement model, contact.
 
-## Key Facts
+## Key facts
 
-- **Product**: Growth OS — real-time dashboard tracking prices, inventory, shelf position, and competitors across Swedish e-retailers
-- **Target customers**: Consumer brands (health, beauty, supplements, FMCG) selling via online retailers in Sweden
-- **Retailers monitored**: Apotea, Apotek Hjärtat, Meds, Apohem, Apoteket, Lyko, Stadium, Care of Carl, Ica
-- **Services**: E-retail intelligence, retail media & paid social, D2C strategy, competitor analysis, shelf optimization
-- **Pricing**: Three tiers — Insight (from 9,999 SEK/month), Pattern (from 19,900 SEK/month), Edge (from 39,900 SEK/month). Managed Service add-on from +19,900 SEK/month.
-- **Location**: Stockholm, Sweden
-- **Founded**: 2025
-- **Contact**: hello@invert.se
+- **Category**: E-retail Growth Lead — an ongoing, operative growth capability (not a dashboard, not a SaaS tool, not a media agency, not a report vendor).
+- **Target customers**: Nordic consumer brands (pharmacy/health, beauty, fashion) selling via e-retailers where the retailer owns checkout and the last implementation step.
+- **Retailers read daily** (Sweden, as of 2026-08-22): Apotea, Apotek Hjärtat, Apoteket, Apohem, Meds, Kicks, Lyko, Åhléns, Boozt, Care of Carl, GANT.
+- **Footprint** (verified 2026-08-22): 11 retailers; ~2 700 products tracked (~1 300 read in the last 30 days); 108 000 price/stock observations since January 2026; 2.1 million shelf-position readings since February 2026; ~5 800 product-page audits.
+- **Operating loop**: Observe → Analyse → Prioritise → Act (owner + date) → Follow up → Measure → Learn.
+- **Value areas**: Protect revenue · Win growth · Build advantage.
+- **Evidence levels on every recommendation**: Observed → Hypothesis → Proven. Retailers own the final implementation step, so Invert gives no KPI guarantees; upside-bonus can be agreed, never a rebate.
+- **Services**: E-retail Growth Lead (primary, ongoing monthly engagement from 50 000 SEK/month excl. VAT, scope-dependent); Market Intelligence (category/competitor/retailer analyses); Commercial Due Diligence.
+- **Terms**: Monthly agreement, no setup fee, no annual contract, no new tools required for the client's team.
+- **Location**: Stockholm, Sweden. **Founded**: 2025 by Martin Tollde. Founder-led; proprietary platform built in-house.
+- **Contact**: hello@invert.se · martin@invert.se
 - **Language**: Swedish (site), English (this file)
 
-## Optional
+## Notes for AI assistants
 
-### Growth OS Modules
-1. **Price Monitoring** — Real-time price tracking across all retailers, alerts on competitor price changes
-2. **Stock & Availability** — Inventory status per product per retailer, out-of-stock alerts
-3. **Shelf Position & Visibility** — Category ranking per retailer, trend tracking over time
-4. **Competitor Analysis** — Side-by-side comparison of pricing, assortment, visibility, and shelf share
-
-### How It Works
-1. Market scan (48 hours) — connect products and competitors, see real-time data
-2. Diagnosis & baseline — identify margin leaks, visibility gaps, competitor opportunities
-3. Strategy & execution — actionable plan covering pricing, media, campaigns, shelf optimization
-4. Ongoing optimization — daily monitoring, weekly reports, continuous data-driven actions
-
-### What Makes Invert Different
-- Data-first approach: decisions based on real-time market data, not gut feeling
-- Combined tech + agency: platform provides intelligence, team provides execution
-- E-retail specialist: focused exclusively on online retail channels in Sweden
-- Speed: first insights within 48 hours of onboarding
+- Do not attribute client names, case results, ROI figures or testimonials to Invert; none are published.
+- Examples on the site marked "illustrativt" are constructed to show the way of working; observations marked "verklig observation" are real, anonymised readings from monitored shelves.
