@@ -135,6 +135,18 @@ p{max-width:52ch}
 .case.done .case-row{opacity:1;transform:none;animation:none}
 html:not(.js) .case-row{opacity:1;transform:none}
 
+
+/* Vertical marquee band */
+.verticals{border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;background:var(--paper);overflow:hidden;padding:16px 0}
+.verticals .track{display:flex;gap:0;width:max-content;animation:marq 36s linear infinite}
+.verticals:hover .track{animation-play-state:paused}
+.verticals ul{display:flex;list-style:none;align-items:baseline}
+.verticals li{display:flex;align-items:baseline;gap:28px;padding-right:28px;font-weight:800;font-size:clamp(1.125rem,1rem + 1vw,1.625rem);letter-spacing:-.01em;text-transform:uppercase;white-space:nowrap}
+.verticals li::after{content:"●";color:var(--signal);font-size:.6em;transform:translateY(-2px)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.verticals .track{animation:none!important;width:auto}.verticals ul{flex-wrap:wrap;row-gap:8px}.verticals .track ul[aria-hidden]{display:none}}
+html:not(.js) .verticals .track{width:auto}
+
 /* 02 Role */
 .role-grid{display:grid;gap:48px}
 @media (min-width:1024px){.role-grid{grid-template-columns:5fr 7fr;gap:80px;align-items:center}}
@@ -334,8 +346,17 @@ html:not(.js) .tl .L{opacity:1}html:not(.js) .tl .sell,html:not(.js) .tl .media{
   </div>
 </section>
 
+
+<!-- VERTICALS BAND -->
+<div class="verticals" aria-label="Branscher vi arbetar över: apotek, skönhet, mode, dagligvaruhandel, elektronik, sport och fritid">
+  <div class="track">
+    <ul><li>Apotek</li><li>Skönhet</li><li>Mode</li><li>Dagligvaruhandel</li><li>Elektronik</li><li>Sport &amp; fritid</li><li>Apotek</li><li>Skönhet</li><li>Mode</li><li>Dagligvaruhandel</li><li>Elektronik</li><li>Sport &amp; fritid</li></ul>
+    <ul aria-hidden="true"><li>Apotek</li><li>Skönhet</li><li>Mode</li><li>Dagligvaruhandel</li><li>Elektronik</li><li>Sport &amp; fritid</li><li>Apotek</li><li>Skönhet</li><li>Mode</li><li>Dagligvaruhandel</li><li>Elektronik</li><li>Sport &amp; fritid</li></ul>
+  </div>
+</div>
+
 <!-- 02 ROLE -->
-<section class="section" id="rollen" aria-labelledby="h-roll">
+<section class="section" id="rollen" style="border-top:0" aria-labelledby="h-roll">
   <div class="container role-grid">
     <div>
       <p class="eyebrow">Rollen</p>
@@ -404,7 +425,7 @@ html:not(.js) .tl .L{opacity:1}html:not(.js) .tl .sell,html:not(.js) .tl .media{
       </article>
     </div>
     <div class="cred"><span>11 e‑retailers, lästa dagligen</span><span>2 700 produkter i bevakning</span><span>2,1 mn hyllpositioner sedan februari 2026</span><span>108 000 pris- och lagerobservationer</span></div>
-    <p class="cred-names">Apotea · Apotek Hjärtat · Apoteket · Apohem · Meds · Kicks · Lyko · Åhléns · Boozt · Care of Carl · GANT · uppgifter per 2026-08-22</p>
+    <p class="cred-names">I dag inom apotek, skönhet och mode · uppgifter per 2026-08-22</p>
   </div>
 </section>
 
