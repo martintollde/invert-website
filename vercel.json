@@ -4,8 +4,12 @@
       "source": "/:path*",
       "destination": "/site/:path*",
       "has": [
-        { "type": "host", "value": "app.invert.se" }
+        {
+          "type": "host",
+          "value": "app.invert.se"
+        }
       ]
     }
-  ]
+  ],
+  "trailingSlash": false
 }
