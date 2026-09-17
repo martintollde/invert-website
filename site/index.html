@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invert — Er E-retail Growth Lead</title>
-<meta name="description" content="Vi hittar vad som bromsar er e-retailaffär, prioriterar vad som ska göras och driver det med ert team. Egen teknik. 11 svenska e-retailers, lästa dagligen.">
+<title>Invert — Mer försäljning. Mindre magkänsla.</title>
+<meta name="description" content="Vi ser vad som händer med era produkter hos återförsäljarna, prioriterar det som faktiskt spelar roll och ser till att något blir gjort.">
 <link rel="canonical" href="https://invert.se/site">
-<meta property="og:title" content="Invert — Er E-retail Growth Lead">
-<meta property="og:description" content="Vi hittar vad som bromsar er e-retailaffär, prioriterar vad som ska göras och håller i frågan tillsammans med ert team.">
+<meta property="og:title" content="Invert — Mer försäljning. Mindre magkänsla.">
+<meta property="og:description" content="Vi ser vad som händer med era produkter hos återförsäljarna, prioriterar det som faktiskt spelar roll och ser till att något blir gjort.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://invert.se/site">
 <meta property="og:locale" content="sv_SE">
@@ -28,14 +28,9 @@
     { "@type": "Organization", "@id": "https://invert.se/#org", "name": "Invert", "url": "https://invert.se/site", "email": "hello@invert.se", "foundingDate": "2025",
       "founder": { "@type": "Person", "name": "Martin Tollde" },
       "address": { "@type": "PostalAddress", "addressLocality": "Stockholm", "addressCountry": "SE" },
-      "description": "E-retail Growth Lead för varumärken som säljer via svenska e-retailers: hittar vad som bromsar affären, prioriterar vad som ska göras och driver det med kundens team." },
-    { "@type": "Service", "name": "E-retail Growth Lead", "provider": { "@id": "https://invert.se/#org" }, "areaServed": "SE", "serviceType": "E-retail growth management",
-      "description": "Daglig läsning av hyllan hos svenska e-retailers, veckans prioriteringar, namngiven ansvarig som driver åtgärderna genom kundens team och följer upp vad som hände." },
-    { "@type": "FAQPage", "mainEntity": [
-      { "@type": "Question", "name": "Är Invert ett verktyg?", "acceptedAnswer": { "@type": "Answer", "text": "Nej. Ett verktyg visar tusen saker. Ni köper arbetet: en Growth Lead som avgör vilka tre som spelar roll den här veckan, driver dem och följer upp. Tekniken är vår." } },
-      { "@type": "Question", "name": "Ersätter ni vår KAM, e-com eller mediabyrå?", "acceptedAnswer": { "@type": "Answer", "text": "Nej. De får underlag, prioritet och uppföljning. Relationerna förblir era." } },
-      { "@type": "Question", "name": "Vad behöver ni för att börja?", "acceptedAnswer": { "@type": "Answer", "text": "Era viktigaste kedjor och 10–20 produkter. Hyllan läser vi själva; försäljning per kedja kan komma senare. Från er: omkring 30 minuter i veckan." } }
-    ] }
+      "description": "Invert hjälper varumärken som säljer via svenska e-handlare: ser vad som händer med produkterna hos återförsäljarna, prioriterar det som spelar roll och driver åtgärderna tillsammans med kundens team." },
+    { "@type": "Service", "name": "Löpande bevakning och uppföljning hos återförsäljare", "provider": { "@id": "https://invert.se/#org" }, "areaServed": "SE",
+      "description": "Löpande läsning av pris, lager, synlighet, kampanjer, sortiment och konkurrenter hos svenska e-handlare. En namngiven person hos Invert driver åtgärderna tillsammans med kundens team och följer upp vad som hände." }
   ]
 }
 </script>
@@ -89,7 +84,6 @@ p{max-width:52ch}
 .btn-secondary:hover .a{background:var(--ink);color:var(--paper)}
 .chip{display:inline-flex;align-items:center;height:24px;padding:0 8px;border:1px solid var(--ink);font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .own{font-family:var(--mono);font-size:.78rem;font-weight:700;letter-spacing:.06em}
-@keyframes rise{to{opacity:1;transform:none}}
 
 /* Nav */
 .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:var(--paper);border-bottom:2px solid var(--ink)}
@@ -108,95 +102,41 @@ p{max-width:52ch}
 
 /* 01 Hero (dark) + WOW1 */
 .hero{background:#0A0A0A;color:var(--on-dark);padding:calc(var(--sy)*.75) 0 var(--sy)}
-.hero .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:24px}
-.hero-grid{display:grid;gap:56px;align-items:center}
-@media (min-width:1024px){.hero-grid{grid-template-columns:7fr 5fr;gap:80px}}
-.hero h1{max-width:15ch;margin-bottom:26px;color:var(--on-dark)}
-.hero .lead{margin-bottom:32px;color:var(--on-dark-2)}
+.hero .tag{max-width:none;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:24px}
+.hero{min-height:min(calc(86vh - var(--nav-h)),720px);display:flex;align-items:center}
+.hero .container{width:100%}
+.hero h1{margin-bottom:30px;color:var(--on-dark)}
+.hero .lead{margin-bottom:36px;color:var(--on-dark-2);max-width:44ch}
 .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
-.hero-note{margin-top:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark-3);max-width:52ch}
 .hero .btn{border-color:var(--on-dark);color:var(--on-dark);background:transparent}
 .hero .btn .a{background:var(--signal);color:#fff}
 .hero .btn:hover .a{background:#C9241F}
-.case{position:relative;padding:22px 22px 16px;border:2px solid var(--on-dark);background:#0A0A0A;max-width:440px}
-.case::before{content:"";position:absolute;left:14px;top:34px;bottom:56px;width:1px;background:var(--rule-dark)}
-.case-dot{position:absolute;left:10.5px;top:34px;width:8px;height:8px;border-radius:50%;background:var(--signal)}
-.case-row{margin-left:20px;padding:10px 0;border-bottom:1px solid var(--rule-dark);display:flex;justify-content:space-between;gap:12px;align-items:baseline;opacity:0;transform:translateY(4px)}
-.case-row .k{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-3);white-space:nowrap}
-.case-row .v{font-weight:500;font-size:var(--fs-small);text-align:right;color:var(--on-dark)}
-.case-row .v.own{font-family:var(--mono);font-size:.78rem}
-.case-row:last-of-type{border-bottom:0}
-.case-foot{margin-left:20px;margin-top:8px;padding-top:10px;border-top:1px solid var(--rule-dark);display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-3)}
-.js .case.in .case-row{animation:rise .42s var(--ease) forwards}
-.js .case.in .case-row:nth-child(2){animation-delay:0s}.js .case.in .case-row:nth-child(3){animation-delay:.7s}.js .case.in .case-row:nth-child(4){animation-delay:1.4s}.js .case.in .case-row:nth-child(5){animation-delay:2.1s}.js .case.in .case-row:nth-child(6){animation-delay:2.8s}
-.js .case .case-dot{opacity:0}
-.js .case.in .case-dot{animation:travel 3.4s var(--ease) forwards}
-@keyframes travel{0%{opacity:1;top:34px;background:var(--signal)}85%{background:var(--signal)}100%{opacity:1;top:calc(100% - 64px);background:var(--green)}}
-.case.done .case-dot{opacity:1;top:calc(100% - 64px);background:var(--green);animation:none}
-.case.done .case-row{opacity:1;transform:none;animation:none}
-html:not(.js) .case-row{opacity:1;transform:none}
 
 
-/* Vertical marquee band */
-.verticals{border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;background:var(--paper);overflow:hidden;padding:16px 0}
-.verticals .track{display:flex;gap:0;width:max-content;animation:marq 36s linear infinite}
-.verticals:hover .track{animation-play-state:paused}
-.verticals ul{display:flex;list-style:none;align-items:baseline}
-.verticals li{display:flex;align-items:baseline;gap:28px;padding-right:28px;font-weight:800;font-size:clamp(1.125rem,1rem + 1vw,1.625rem);letter-spacing:-.01em;text-transform:uppercase;white-space:nowrap}
-.verticals li::after{content:"●";color:var(--signal);font-size:.6em;transform:translateY(-2px)}
-@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.verticals .track{animation:none!important;width:auto}.verticals ul{flex-wrap:wrap;row-gap:8px}.verticals .track ul[aria-hidden]{display:none}}
-html:not(.js) .verticals .track{width:auto}
+/* 02 Pains */
+.pains{margin-top:56px;border-bottom:2px solid var(--ink)}
+.pain{display:grid;gap:18px;padding:40px 0;border-top:2px solid var(--ink)}
+@media (min-width:900px){.pain{grid-template-columns:7fr 5fr;gap:72px;align-items:start;padding:56px 0}}
+.pain q{display:block;font-size:clamp(1.5rem,1.1rem + 1.6vw,2.375rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;max-width:24ch;quotes:"”" "”"}
+.pain h3{text-transform:none;font-size:1.25rem;line-height:1.2;margin-bottom:10px}
+.pain h3::before{content:"→ ";color:var(--signal)}
+.pain p{color:var(--ink-2)}
 
-/* 02 Role */
-.role-grid{display:grid;gap:48px}
-@media (min-width:1024px){.role-grid{grid-template-columns:5fr 7fr;gap:80px;align-items:center}}
-.route{display:grid;grid-template-columns:1fr;border:2px solid var(--ink)}
-@media (min-width:640px){.route{grid-template-columns:1.2fr 1fr 1.4fr}}
-.route>div{padding:13px 16px;border-bottom:1px solid var(--faint)}
-.route .hd{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink);padding:10px 16px}
-.route .hd.c{text-align:center}
-.route .sig{font-weight:700;font-size:var(--fs-small)}
-.route .arrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;color:var(--muted);text-align:center}
-@media (min-width:640px){.route .sig{border-right:1px solid var(--faint)}.route .arrow{border-right:1px solid var(--faint)}}
-@media (max-width:639px){.route .hd{display:none}.route .sig{border-bottom:0;padding-bottom:2px}.route .arrow{text-align:left;border-bottom:0;padding-top:0;padding-bottom:4px}}
-.inv-band{margin-top:16px;background:#0A0A0A;color:#fff;padding:14px 18px;text-align:center;font-weight:800;text-transform:uppercase;letter-spacing:.02em;display:flex;justify-content:center;gap:8px 20px;flex-wrap:wrap;align-items:baseline;border:2px solid var(--ink)}
-.inv-band span{font-weight:400;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:rgba(255,255,255,.6)}
-.route-foot{margin-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+/* 03 Chain */
+.chain-head{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-bottom:18px}
+.chain{list-style:none;display:grid;border:2px solid var(--ink);margin-top:44px}
+@media (min-width:1000px){.chain{grid-template-columns:repeat(5,1fr)}}
+.chain li{counter-increment:st;padding:22px 20px 24px;border-bottom:2px solid var(--ink);position:relative}
+.chain li:last-child{border-bottom:0}
+@media (min-width:1000px){.chain li{border-bottom:0;border-right:2px solid var(--ink)}.chain li:last-child{border-right:0}}
+.chain{counter-reset:st}
+.chain li::before{content:"0" counter(st);font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--signal);display:block;margin-bottom:14px}
+.chain h3{font-size:clamp(1.375rem,1.1rem + .9vw,1.75rem);margin-bottom:12px}
+.chain p{font-size:var(--fs-small);color:var(--ink-2)}
+.chain-foot{margin-top:22px;display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;align-items:baseline}
+.chain-foot .big{font-weight:700}
 
-/* 03 WOW2 Reduce (dark) */
-.reduce .head{display:grid;gap:24px;margin-bottom:44px}
-@media (min-width:900px){.reduce .head{grid-template-columns:1fr 1fr;align-items:end}}
-.reduce .head h2{max-width:20ch}
-.counter{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:18px}
-.counter .n{font-size:var(--fs-big);font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;min-width:4ch}
-.counter .l{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-2)}
-.scan{position:relative;margin-bottom:40px}
-.field{display:grid;grid-template-columns:repeat(24,1fr);grid-auto-rows:14px;row-gap:6px;align-items:end;padding-top:26px;contain:layout paint}
-@media (max-width:639px){.field{grid-template-columns:repeat(16,1fr)}}
-.field i{display:block;width:1px;height:14px;background:var(--on-dark);opacity:.28;transform-origin:bottom;justify-self:center;transition:opacity .6s var(--ease),transform .6s var(--ease),background .3s;transition-delay:calc(var(--c)*10ms)}
-.reduce[data-stage="1"] .field i:not(.s1),.reduce[data-stage="2"] .field i:not(.s1),.reduce[data-stage="3"] .field i:not(.s1),.reduce[data-stage="4"] .field i:not(.s1){opacity:.06}
-.reduce[data-stage="2"] .field i:not(.s2),.reduce[data-stage="3"] .field i:not(.s2),.reduce[data-stage="4"] .field i:not(.s2){opacity:.06}
-.reduce[data-stage="2"] .field i.s2,.reduce[data-stage="3"] .field i.s2,.reduce[data-stage="4"] .field i.s2{opacity:1;transform:scaleY(1.8)}
-.reduce[data-stage="3"] .field i:not(.s3),.reduce[data-stage="4"] .field i:not(.s3){opacity:.06;transform:none}
-.reduce[data-stage="3"] .field i.s3{opacity:1;transform:scaleY(2.6);background:var(--signal)}
-.reduce[data-stage="4"] .field i.s3{opacity:1;transform:scaleY(2.6);background:var(--on-dark)}
-.scan::after{content:"";position:absolute;top:0;bottom:0;left:0;width:1px;background:var(--on-dark);opacity:0}
-.reduce.playing[data-stage="0"] .scan::after{animation:scan .8s linear forwards}
-@keyframes scan{0%{opacity:.5;left:0}100%{opacity:0;left:100%}}
-.prio{list-style:none;display:grid;gap:14px}
-@media (min-width:720px){.prio{grid-template-columns:repeat(3,1fr);gap:20px}}
-.prio li{border:2px solid var(--on-dark);padding:20px 20px 18px;background:#0A0A0A;opacity:0;transform:translateY(14px)}
-.prio li em{font-style:normal;font-family:var(--mono);font-size:.78rem;font-weight:700;color:var(--signal);display:block;margin-bottom:12px}
-.prio li h3{margin-bottom:6px;text-transform:none;font-weight:700}
-.prio li p{font-size:var(--fs-small);color:var(--on-dark-2);margin-bottom:12px}
-.reduce[data-stage="4"] .prio li{animation:rise .5s var(--ease) forwards}
-.reduce[data-stage="4"] .prio li:nth-child(2){animation-delay:.3s}.reduce[data-stage="4"] .prio li:nth-child(3){animation-delay:.6s}
-html:not(.js) .prio li{opacity:1;transform:none}
-.reduce-foot{margin-top:26px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
-.reduce-foot .big{font-weight:700;color:var(--on-dark)}
-
-/* 04 Proof WOW3 */
+/* 04 Proof */
 .proofs{display:grid;gap:0;border:2px solid var(--ink)}
 @media (min-width:900px){.proofs{grid-template-columns:repeat(3,1fr)}}
 .proof{padding:26px 24px 22px;border-bottom:2px solid var(--ink)}
@@ -208,55 +148,19 @@ html:not(.js) .prio li{opacity:1;transform:none}
 .proof .act{border-top:1px solid var(--faint);padding-top:12px;font-size:var(--fs-small);color:var(--ink-2)}
 .proof .act b{font-family:var(--mono);font-size:.78rem;font-weight:700;letter-spacing:.04em}
 .g-bar{height:10px;background:var(--faint);position:relative;margin-bottom:16px}
-.g-bar i{position:absolute;left:0;top:0;bottom:0;width:11%;background:var(--signal)}
+.g-bar i{position:absolute;left:0;top:0;bottom:0;width:6.9%;background:var(--signal)}
+.g-bar i+i{width:.9%;background:var(--ink)}
 .g-gap{display:flex;gap:4px;align-items:flex-end;height:40px;margin-bottom:16px}
 .g-gap i{display:block;width:20px;background:var(--ink)}
-.g-gap i:first-child{height:22px}.g-gap i:last-child{height:40px}
+.g-gap i:first-child{height:25px}.g-gap i:last-child{height:40px}
 .g-sq{display:flex;gap:4px;align-items:center;height:40px;margin-bottom:16px}
-.g-sq i{width:12px;height:12px;border:2px solid var(--ink);display:block}
-.g-sq i.dim{opacity:.2}.g-sq span{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin:0 8px}
+.g-sq i{width:12px;height:12px;background:var(--signal);display:block}
 .cred{margin-top:48px;padding-top:18px;border-top:2px solid var(--ink);display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-2)}
 .cred-names{margin-top:10px;font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);line-height:1.9}
 
-/* 05 WOW4 Sales */
-.sales .head{margin-bottom:40px}
-.tl{display:grid;gap:24px}
-@media (min-width:1024px){.tl{grid-template-columns:8fr 4fr;gap:40px;align-items:end}}
-.tl figure{border:2px solid var(--ink);padding:20px 20px 14px}
-.tl svg{width:100%;height:auto;display:block}
-.tl .grid line{stroke:var(--faint);stroke-width:1}
-.tl .axis text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
-.tl .L{opacity:0;transition:opacity .4s var(--ease)}
-.tl .sell{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-dasharray:var(--len,1200);stroke-dashoffset:var(--len,1200);transition:stroke-dashoffset 1.2s var(--ease)}
-.sales.playing .L0,.sales[data-step="1"] .L0,.sales[data-step="2"] .L0,.sales[data-step="3"] .L0,.sales[data-step="4"] .L0{opacity:1}
-.sales.playing .sell,.sales[data-step="1"] .sell,.sales[data-step="2"] .sell,.sales[data-step="3"] .sell,.sales[data-step="4"] .sell{stroke-dashoffset:0}
-.tl .oos{fill:var(--signal);opacity:.1;transform-origin:380px 0;transform:scaleX(0);transition:transform .5s var(--ease)}
-.tl .oos-top{stroke:var(--signal);stroke-width:2.5;transform-origin:380px 0;transform:scaleX(0);transition:transform .5s var(--ease)}
-.sales[data-step="1"] .L1,.sales[data-step="2"] .L1,.sales[data-step="3"] .L1,.sales[data-step="4"] .L1{opacity:1}
-.sales[data-step="1"] .oos,.sales[data-step="2"] .oos,.sales[data-step="3"] .oos,.sales[data-step="4"] .oos,.sales[data-step="1"] .oos-top,.sales[data-step="2"] .oos-top,.sales[data-step="3"] .oos-top,.sales[data-step="4"] .oos-top{transform:none}
-.sales[data-step="2"] .L2,.sales[data-step="3"] .L2,.sales[data-step="4"] .L2{opacity:1}
-.tl .L2 text{font-family:var(--mono);font-size:13px;font-weight:700;fill:var(--ink)}
-.tl .L2 line{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
-.tl .media{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:6 5;transition:opacity .8s var(--ease)}
-.sales[data-step="3"] .L3,.sales[data-step="4"] .L3{opacity:1}
-.tl .lbl{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.04em;fill:var(--ink)}
-.tl .lbl.sub{font-size:10px;fill:var(--muted)}
-@media (max-width:639px){.tl svg text.lbl{display:none}}
-.legend{display:none;gap:10px 18px;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink-2);margin-top:8px}
-.legend i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:6px;background:var(--ink)}
-.legend i.r{background:var(--signal);height:10px;opacity:.5}.legend i.b{background:var(--ink);height:2px}
-@media (max-width:639px){.legend{display:flex}}
-.steps{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:14px}
-.steps .lnk{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:1px}
-.sales[data-step="4"] .steps button{display:none}
-html:not(.js) .steps button{display:none}
-.insight{border:2px solid var(--ink);padding:20px;background:var(--paper);opacity:0;transform:translateY(12px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
-.sales[data-step="4"] .insight,html:not(.js) .insight{opacity:1;transform:none}
-html:not(.js) .tl .L{opacity:1}html:not(.js) .tl .sell,html:not(.js) .tl .media{stroke-dashoffset:0}html:not(.js) .tl .oos,html:not(.js) .tl .oos-top{transform:none}
-.insight dt{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:14px}
-.insight dt:first-child{margin-top:0}
-.insight dd{font-size:1.0625rem;font-weight:700;margin-top:4px}
-.insight dd.next{color:var(--green)}
+/* 05 Engine */
+.engine p.lead{margin-top:20px}
+.engine .more{margin-top:18px;color:var(--ink-2)}
 
 /* Honesty band */
 .honest{border-top:2px solid var(--ink);padding:34px 0;background:var(--paper)}
@@ -266,39 +170,18 @@ html:not(.js) .tl .L{opacity:1}html:not(.js) .tl .sell,html:not(.js) .tl .media{
 .honest p{font-size:var(--fs-small);color:var(--ink-2);max-width:52ch}
 
 /* 06 Buy (dark) */
-.buy-grid{display:grid;gap:40px}
-@media (min-width:1024px){.buy-grid{grid-template-columns:6fr 6fr;gap:80px;align-items:start}}
 .cta-box .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:20px}
 .cta-box h2{margin-bottom:18px}
 .cta-box .lead{margin-bottom:26px}
 .cta-row{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;margin-bottom:12px}
 .cta-row .mail{font-family:var(--mono);font-size:.8rem;text-decoration:none;border-bottom:1px solid currentColor}
 .cta-micro{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-3)}
-.offer{border:2px solid var(--on-dark);padding:26px;background:#0A0A0A}
-.offer .tag{font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-3);margin-bottom:10px}
-.offer h3{font-size:1.375rem;margin-bottom:16px}
-.ticks{list-style:none;border-top:1px solid var(--rule-dark);margin-bottom:16px}
-.ticks li{padding:9px 0;border-bottom:1px solid var(--rule-dark);font-size:var(--fs-small);display:flex;gap:10px;color:var(--on-dark-2)}
-.ticks li::before{content:"✓";color:var(--green);font-weight:700}
-.offer .fric{font-size:var(--fs-small);color:var(--on-dark-2);margin-bottom:16px}
-.offer .price{font-size:1.375rem;font-weight:800;margin-bottom:4px}
-.offer .terms{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-3);margin-bottom:6px}
-.offer .scope{font-size:var(--fs-meta);color:var(--on-dark-3)}
-.founder{margin-top:52px;padding-top:24px;border-top:1px solid var(--rule-dark)}
-.founder q{display:block;font-size:1.125rem;line-height:1.4;max-width:44ch;quotes:"”" "”"}
-.founder .by{margin-top:10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-3)}
-.founder .by b{color:var(--on-dark);font-weight:700}
-.faq{margin-top:52px}
-.faq details{border-bottom:1px solid var(--rule-dark)}.faq details:first-child{border-top:2px solid var(--on-dark)}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:15px 0;font-weight:700}
-.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:var(--on-dark-3)}.faq details[open] summary::after{content:"–"}
-.faq p{padding:0 0 16px;color:var(--on-dark-2);font-size:var(--fs-small);max-width:60ch}
 
 /* Footer */
 .footer{padding:36px 0 calc(36px + 64px);border-top:1px solid var(--rule-dark)}
 @media (min-width:640px){.footer{padding-bottom:36px}}
 .fgrid{display:grid;gap:24px}
-@media (min-width:720px){.fgrid{grid-template-columns:1.5fr 1fr 1fr}}
+@media (min-width:720px){.fgrid{grid-template-columns:2fr 1fr}}
 .footer p,.footer li{font-size:var(--fs-small);color:var(--on-dark-2)}
 .footer ul{list-style:none}.footer li{padding:3px 0}.footer a{text-decoration:none}.footer a:hover{color:var(--on-dark)}
 .fbottom{margin-top:28px;padding-top:14px;border-top:1px solid var(--rule-dark);font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark-3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -306,10 +189,6 @@ html:not(.js) .tl .L{opacity:1}html:not(.js) .tl .sell,html:not(.js) .tl .media{
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .case-row,.prio li,.insight{opacity:1!important;transform:none!important}
-  .case-dot{opacity:1!important;top:calc(100% - 64px)!important;background:var(--green)!important}
-  .tl .L{opacity:1!important}.tl .sell,.tl .media{stroke-dashoffset:0!important}.tl .oos,.tl .oos-top{transform:none!important}
-  .field i{transition:none!important}
 }
 </style>
 <script>document.documentElement.classList.add('js');</script>
@@ -319,8 +198,8 @@ html:not(.js) .tl .L{opacity:1}html:not(.js) .tl .sell,html:not(.js) .tl .media{
 <header class="nav">
   <div class="container">
     <a class="logo" href="#top" aria-label="Invert – till början"><svg viewBox="60 40 80 120" aria-hidden="true"><g fill="currentColor"><rect x="74" y="78" width="18" height="72"/><circle cx="83" cy="62" r="10"/><rect x="108" y="50" width="18" height="72"/><circle cx="117" cy="138" r="10"/></g></svg>Invert</a>
-    <nav class="nav-links" aria-label="Huvudnavigation"><a href="#rollen">Rollen</a><a href="#vecka">Så arbetar vi</a><a href="#bevis">Bevis</a><a href="#pris">Pris</a></nav>
-    <a class="btn btn-secondary" href="#pris"><span class="a">Kostnadsfri hylla-audit</span><span class="m">→</span></a>
+    <nav class="nav-links" aria-label="Huvudnavigation"><a href="#exempel">Så fungerar det</a><a href="#bevis">Bevis</a></nav>
+    <a class="btn btn-secondary" href="#start"><span class="a">Se era egna produkter</span><span class="m">→</span></a>
   </div>
 </header>
 
@@ -328,189 +207,105 @@ html:not(.js) .tl .L{opacity:1}html:not(.js) .tl .sell,html:not(.js) .tl .media{
 
 <!-- 01 HERO -->
 <section class="hero" id="top" aria-labelledby="h1">
-  <div class="container hero-grid">
-    <div>
-      <p class="tag">● Er hylla. Vårt ansvar.</p>
-      <h1 id="h1">Vi är er E‑retail Growth Lead.</h1>
-      <p class="lead">Vi hittar vad som bromsar er e‑retailaffär, prioriterar vad som ska göras och håller i frågan tillsammans med ert team.</p>
-      <div class="hero-cta"><a class="btn" href="#pris"><span class="a">Få en kostnadsfri hylla-audit</span><span class="m">→</span></a></div>
-      <p class="hero-note">Klar innan första mötet. Byggd på vår egen dagliga läsning — ingen data krävs från er.</p>
-    </div>
-    <div class="case" id="case" role="group" aria-label="Ett ärende, från upptäckt till uppföljning (illustrativt)">
-      <span class="case-dot" aria-hidden="true"></span>
-      <div class="case-row"><span class="k">Upptäckt</span><span class="v">Lagerbrist · Kedja A</span></div>
-      <div class="case-row"><span class="k">Prioritet</span><span class="v">Hög — topprodukt, kampanj torsdag</span></div>
-      <div class="case-row"><span class="k">Ägare</span><span class="v own">Supply + KAM</span></div>
-      <div class="case-row"><span class="k">Drivs av</span><span class="v">Er Growth Lead · deadline i dag</span></div>
-      <div class="case-row"><span class="k">Uppföljning</span><span class="v">Tillbaka i hyllan · dag 4</span></div>
-      <div class="case-foot"><span>Ett ärende av många varje vecka</span><span>Illustrativt</span></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- VERTICALS BAND -->
-<div class="verticals" aria-label="Branscher vi arbetar över: apotek, skönhet, mode, dagligvaruhandel, elektronik, sport och fritid">
-  <div class="track">
-    <ul><li>Apotek</li><li>Skönhet</li><li>Mode</li><li>Dagligvaruhandel</li><li>Elektronik</li><li>Sport &amp; fritid</li><li>Apotek</li><li>Skönhet</li><li>Mode</li><li>Dagligvaruhandel</li><li>Elektronik</li><li>Sport &amp; fritid</li></ul>
-    <ul aria-hidden="true"><li>Apotek</li><li>Skönhet</li><li>Mode</li><li>Dagligvaruhandel</li><li>Elektronik</li><li>Sport &amp; fritid</li><li>Apotek</li><li>Skönhet</li><li>Mode</li><li>Dagligvaruhandel</li><li>Elektronik</li><li>Sport &amp; fritid</li></ul>
-  </div>
-</div>
-
-<!-- 02 ROLE -->
-<section class="section" id="rollen" style="border-top:0" aria-labelledby="h-roll">
-  <div class="container role-grid">
-    <div>
-      <p class="eyebrow">Rollen</p>
-      <h2 id="h-roll">Alla äger sin del. Ingen äger hela loopen.</h2>
-      <p class="lead" style="margin-top:20px">En E‑retail Growth Lead från Invert sitter mellan signalerna och er organisation och ser till att rätt sak faktiskt blir gjord — utan att ta över någons roll.</p>
-    </div>
-    <div>
-      <div class="route" role="group" aria-label="Så går en fråga från signal till ägare">
-        <div class="hd">Signal</div><div class="hd c">Er Growth Lead</div><div class="hd">Ägare hos er</div>
-        <div class="sig">Lagerbrist</div><div class="arrow">ser · prioriterar →</div><div class="to"><span class="chip">Supply</span> <span class="chip">KAM</span></div>
-        <div class="sig">Sök ↓</div><div class="arrow">ser · prioriterar →</div><div class="to"><span class="chip">Content</span></div>
-        <div class="sig">Prisavvikelse</div><div class="arrow">ser · prioriterar →</div><div class="to"><span class="chip">KAM</span></div>
-        <div class="sig">Kampanj + tom hylla</div><div class="arrow">ser · prioriterar →</div><div class="to"><span class="chip">Media</span> <span class="chip">Supply</span></div>
-      </div>
-      <div class="inv-band">Invert <span>driver · följer upp · tills det är stängt</span></div>
-      <div class="route-foot"><span>Ägarna är era. Vi håller i frågan.</span><span>Retailern äger sista steget</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 03 WOW2 REDUCE -->
-<section class="section dark reduce" id="vecka" data-stage="0" aria-labelledby="h-red">
   <div class="container">
-    <div class="head">
-      <div><p class="eyebrow"><span class="dot">●</span> En vecka</p><h2 id="h-red">Hundratals förändringar. Tre värda att agera på.</h2></div>
-      <p class="lead">Vi läser hela hyllan varje dag och avgör vad som är värt er tid den här veckan.</p>
-    </div>
-    <div class="counter"><span class="n" id="cnt" aria-hidden="true">2 700</span><span class="l" id="cntl" aria-live="polite">produkter · 11 e‑retailers</span></div>
-    <div class="scan"><div class="field" id="field" aria-hidden="true"></div></div>
-    <ol class="prio">
-      <li><em>01</em><h3>Intäkt i risk</h3><p>Topprodukt slut · Kedja A</p><span class="own">→ Supply + KAM</span></li>
-      <li><em>02</em><h3>Tappad synlighet</h3><p>Sök #3 → #14 · Kedja B</p><span class="own">→ Content + KAM</span></li>
-      <li><em>03</em><h3>Media mot tom hylla</h3><p>Kampanj live · produkten slut</p><span class="own">→ Media + Supply</span></li>
-    </ol>
-    <div class="reduce-foot"><span class="big">Ägare. Datum. Uppföljning tills det är stängt.</span><span class="ill">Illustrativa volymer — varierar med sortiment och vecka</span></div>
+    <p class="tag">● För varumärken som säljer via svenska e‑handlare</p>
+    <h1 id="h1">Mer försäljning.<br>Mindre magkänsla.</h1>
+    <p class="lead">Vi ser vad som händer med era produkter hos återförsäljarna, prioriterar det som faktiskt spelar roll och ser till att något blir gjort.</p>
+    <div class="hero-cta"><a class="btn" href="#start"><span class="a">Se det på era egna produkter</span><span class="m">→</span></a></div>
   </div>
 </section>
 
-<!-- 04 PROOF WOW3 -->
+<!-- 02 PAINS -->
+<section class="section" id="kanns-det-igen" style="border-top:0" aria-labelledby="h-pain">
+  <div class="container">
+    <h2 id="h-pain">Känns det igen?</h2>
+    <div class="pains">
+      <div class="pain">
+        <q>Vi har dålig koll på hur våra produkter faktiskt syns hos återförsäljarna.</q>
+        <div><h3>Vi håller koll åt er.</h3><p>Pris, lager, synlighet, kampanjer, sortiment och konkurrenter. Vi fångar förändringar löpande och lyfter det som kräver uppmärksamhet, i stället för att vänta på nästa rapport.</p></div>
+      </div>
+      <div class="pain">
+        <q>Vi har mycket data. Men vad ska vi göra?</q>
+        <div><h3>Vi visar vad som faktiskt spelar roll.</h3><p>Av hundratals förändringar är en handfull värda er tid. Ni får dem, med åtgärdsförslag.</p></div>
+      </div>
+      <div class="pain">
+        <q>Vi gör massor av saker men vet inte riktigt vad som fungerar.</q>
+        <div><h3>Vi ser till att det blir gjort.</h3><p>Vi driver frågan tillsammans med ert team och följer varje åtgärd till utfall.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CHAIN -->
+<section class="section" id="exempel" style="border-top:0;padding-top:0" aria-labelledby="h-chain">
+  <div class="container">
+    <div class="chain-head"><span class="chip">Illustrativt exempel</span></div>
+    <h2 id="h-chain">Ett ärende, från början till slut.</h2>
+    <ol class="chain">
+      <li><h3>Se</h3><p>Storsäljaren är slut hos Kedja A. Vi ser det samma dag.</p></li>
+      <li><h3>Förstå</h3><p>Topprodukt, kampanj på torsdag. Går först.</p></li>
+      <li><h3>Agera</h3><p>Till Supply och er KAM, med underlag och deadline.</p></li>
+      <li><h3>Mäta</h3><p>Dag 4: tillbaka i lager. Vi följer synligheten.</p></li>
+      <li><h3>Lära</h3><p>Nu vet vi hur snabbt den kedjan fyller på.</p></li>
+    </ol>
+    <div class="chain-foot"><span class="big">Ansvaret ligger kvar hos ert team. Vi håller i frågan tills den är löst.</span></div>
+  </div>
+</section>
+
+<!-- 04 PROOF -->
 <section class="section" id="bevis" aria-labelledby="h-proof">
   <div class="container">
-    <p class="eyebrow">Ur verkligheten</p>
-    <h2 id="h-proof">Det här är inte hypotetiskt. Tre verkliga fynd.</h2>
-    <p class="lead" style="margin:20px 0 48px">Verkliga observationer 2026, anonymiserade. Ingen av dem syns i en sell-out-rapport.</p>
+    <h2 id="h-proof" style="max-width:22ch">Tre saker vi såg. Ingen syntes i en säljrapport.</h2>
+    <p class="lead" style="margin:20px 0 48px">Verkliga observationer, september 2026. Anonymiserade.</p>
     <div class="proofs">
       <article class="proof">
-        <div class="num">11,0 %</div>
-        <div class="g-bar" role="img" aria-label="Elva procent av avläsningarna"><i></i></div>
-        <p class="what">av avläsningarna hos en kedja: tom hylla.</p>
-        <p class="meta">Samma sortiment · fem apotekskedjor · 11,0 / 7,9 / 1,3 / 0 / 0 %</p>
-        <p class="act">Åtgärd: <b>Supply + KAM</b> — påfyllnad hos kedjan.</p>
+        <div class="num">6,9 %</div>
+        <div class="g-bar" role="img" aria-label="6,9 procent mot 0,9 procent"><i></i><i></i></div>
+        <p class="what">tom hylla hos en kedja. 0,9 % hos en annan.</p>
+        <p class="meta">Samma varumärke · fem kedjor · 30 dagar · produkter slut hela perioden borträknade</p>
       </article>
       <article class="proof">
-        <div class="num">+80 %</div>
-        <div class="g-gap" role="img" aria-label="58,40 kr mot 105,00 kr"><i></i><i></i></div>
-        <p class="what">samma artikel, 58,40–105,00 kr.</p>
-        <p class="meta">Samma EAN · fyra kedjor · ingen kampanj</p>
-        <p class="act">Åtgärd: <b>KAM</b> — inför retailerdialogen.</p>
+        <div class="num">+62 %</div>
+        <div class="g-gap" role="img" aria-label="104 kr mot 169 kr"><i></i><i></i></div>
+        <p class="what">samma artikel, samma dag: 104–169 kr.</p>
+        <p class="meta">Fyra kedjor med varan i lager</p>
       </article>
       <article class="proof">
-        <div class="num">3,2 → 1,0</div>
-        <div class="g-sq" role="img" aria-label="Tre bilder mot en bild"><i></i><i></i><i></i><span>→</span><i></i><i class="dim"></i><i class="dim"></i></div>
-        <p class="what">bilder per produktsida mellan två kedjor.</p>
-        <p class="meta">Produktsidor · fyra kedjor · 3,2 / 2,8 / 2,0 / 1,0</p>
-        <p class="act">Åtgärd: <b>Content</b> — prioriterat efter värde.</p>
+        <div class="num">11 dagar</div>
+        <div class="g-sq" role="img" aria-label="Elva dagar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="what">slut hos en kedja. Fanns att köpa hos fyra andra.</p>
+        <p class="meta">En produkt · 31 augusti–10 september</p>
       </article>
     </div>
-    <div class="cred"><span>11 e‑retailers, lästa dagligen</span><span>2 700 produkter i bevakning</span><span>2,1 mn hyllpositioner sedan februari 2026</span><span>108 000 pris- och lagerobservationer</span></div>
-    <p class="cred-names">I dag inom apotek, skönhet och mode · uppgifter per 2026-08-22</p>
   </div>
 </section>
 
-<!-- 05 WOW4 SALES -->
-<section class="section sales" id="forsaljning" data-step="0" aria-labelledby="h-sales">
+<!-- 05 ENGINE -->
+<section class="section engine" id="under-huven" aria-labelledby="h-eng">
   <div class="container">
-    <div class="head">
-      <p class="eyebrow">Nästa nivå</p>
-      <h2 id="h-sales">Se varför försäljningen rör sig — inte bara att.</h2>
-      <p class="lead" style="margin-top:20px">Koppla på sell-out och mediaspend så sätter vi hyllan och utfallet på samma tidslinje.</p>
-    </div>
-    <div class="tl">
-      <figure>
-        <svg viewBox="0 0 720 300" role="img" aria-labelledby="tl-t" id="tlsvg">
-          <title id="tl-t">Illustrativ tidslinje över tolv veckor: försäljningen faller 18 procent; samtidigt slut i lager, sökposition från 3 till 11 och ökad mediaspend.</title>
-          <g class="grid"><line x1="40" y1="60" x2="700" y2="60"/><line x1="40" y1="150" x2="700" y2="150"/><line x1="40" y1="240" x2="700" y2="240"/></g>
-          <g class="axis"><text x="40" y="268">v1</text><text x="360" y="268">v6</text><text x="690" y="268" text-anchor="end">v12</text></g>
-          <g class="L L1"><rect class="oos" x="380" y="40" width="130" height="200"/><line class="oos-top" x1="380" y1="40" x2="510" y2="40"/><text class="lbl" x="386" y="30">Tillgänglighet: slut i lager · 3 veckor</text></g>
-          <g class="L L0"><path class="sell" id="sellpath" d="M40,88 C120,84 200,90 280,92 C340,94 370,100 400,128 C430,156 470,176 520,184 C580,192 650,190 700,192"/><text class="lbl" x="700" y="212" text-anchor="end">Sell-out −18 %</text></g>
-          <g class="L L2"><text x="300" y="118" text-anchor="middle">#3</text><line x1="318" y1="114" x2="452" y2="138"/><text x="470" y="142" text-anchor="start">#11</text><text class="lbl sub" x="385" y="152" text-anchor="middle">sökposition</text></g>
-          <g class="L L3"><path class="media" id="mediapath" d="M400,236 C440,232 480,210 520,180 C560,150 600,140 640,138"/><text class="lbl" x="640" y="126" text-anchor="end">Media: spend ↑</text></g>
-        </svg>
-        <div class="legend" aria-hidden="true"><span><i></i>Sell-out −18 %</span><span><i class="r"></i>Slut i lager</span><span>#3 → #11 sök</span><span><i class="b"></i>Media ↑</span></div>
-        <figcaption class="steps"><button class="btn btn-secondary" type="button" id="tlNext">Nästa</button><button class="lnk" type="button" id="tlAll">Visa allt</button><span class="ill">Illustrativ data</span></figcaption>
-      </figure>
-      <aside class="insight">
-        <dl>
-          <dt>Vad hände</dt><dd>Försäljning ↓</dd>
-          <dt>Vad ändrades</dt><dd>Tillgänglighet ↓ · Sök ↓ · Media ↑</dd>
-          <dt>Nästa steg</dt><dd class="next">Säkra lager och synlighet före nästa mediapush.</dd>
-        </dl>
-      </aside>
-    </div>
+    <h2 id="h-eng" style="max-width:20ch">Människor som gör jobbet. Ett system som gör det möjligt.</h2>
+    <p class="lead">Ingen hinner läsa varje produktsida hos varje återförsäljare varje dag. Vårt system gör det, och sparar vad vi såg, vad som gjordes och vad som hände efteråt. Det ger oss ett allt bättre beslutsunderlag för just er verksamhet.</p>
+    <p class="more">Längre fram kan ni koppla på egen försäljningsdata.</p>
+    <div class="cred"><span>9 e‑handlare</span><span>1 500 produkter senaste 30 dagarna</span><span>3,1 miljoner hyllpositioner sedan februari 2026</span><span>per 2026-09-17</span></div>
   </div>
 </section>
 
 <!-- HONESTY BAND -->
 <aside class="honest" aria-label="Ärlighet">
   <div class="container">
-    <p class="h"><span class="dot">●</span> Ärligheten är en del av produkten.</p>
-    <p>Retailern äger sista steget. Vi lovar arbete, inte KPI:er — och varje rekommendation bär sin bevisnivå: observerat, hypotes eller bevisat.</p>
+    <p class="h"><span class="dot">●</span> Vi kan inte lova en siffra.</p>
+    <p>Återförsäljaren äger sista steget. Vi lovar att ni vet vad som gjordes, vad som hände och hur säkra vi är.</p>
   </div>
 </aside>
 
-<!-- 06 BUY (dark) -->
-<section class="section dark" id="pris" aria-labelledby="h-buy">
+<!-- 06 START (dark) -->
+<section class="section dark" id="start" aria-labelledby="h-buy">
   <div class="container">
-    <div class="buy-grid">
-      <div class="cta-box">
-        <p class="tag">● Samarbete</p>
-        <h2 id="h-buy">En roll. Ett ansvar.</h2>
-        <p class="lead">Skicka 10–20 produkter och era viktigaste kedjor. Ni får en kostnadsfri audit av er digitala hylla — klar till första mötet, byggd på vår läsning av de kedjor vi bevakar.</p>
-        <div class="cta-row"><a class="btn" href="mailto:hello@invert.se?subject=Kostnadsfri%20hylla-audit&body=Hej%2C%0A%0AVarum%C3%A4rke%3A%20%0AViktigaste%20e-retailers%3A%20%0A10%E2%80%9320%20produkter%20(namn%20eller%20EAN)%3A%20%0A%0A"><span class="a">Få en kostnadsfri hylla-audit</span><span class="m">→</span></a><a class="mail" href="mailto:hello@invert.se">hello@invert.se</a></div>
-        <p class="cta-micro">Kostnadsfri · ingen förpliktelse · svar inom ett par arbetsdagar</p>
-      </div>
-      <div class="offer">
-        <div class="tag">Huvudtjänsten</div>
-        <h3>E‑retail Growth Lead</h3>
-        <ul class="ticks">
-          <li>Daglig bevakning av er hylla</li>
-          <li>Veckans prioriteringar</li>
-          <li>Er namngivna Growth Lead</li>
-          <li>Driver åtgärderna genom ert team — i era kanaler och möten</li>
-          <li>Följer upp vad som hände</li>
-        </ul>
-        <p class="fric">Inget nytt system för ert team. Ingen lång implementation.</p>
-        <div class="price">Från 50 000 kr/mån</div>
-        <div class="terms">exkl. moms · löpande månadsavtal · inget startarvode · inget årsavtal</div>
-        <p class="scope">Nivån styrs av antal kedjor, kategorier och hur mycket av genomförandet vi bär.</p>
-      </div>
-    </div>
-
-    <div class="founder">
-      <div>
-        <q>Alla ägde sin del. Ingen ägde hela loopen. Så vi byggde rollen — och tekniken som gör den möjlig varje dag.</q>
-        <p class="by"><b>Martin Tollde</b>, grundare · Stockholm</p>
-      </div>
-    </div>
-
-    <div class="faq">
-      <details><summary>Är Invert ett verktyg?</summary><p>Nej. Ett verktyg visar tusen saker. Ni köper arbetet: en Growth Lead som avgör vilka tre som spelar roll den här veckan, driver dem och följer upp. Tekniken är vår.</p></details>
-      <details><summary>Ersätter ni vår KAM, e-com eller mediabyrå?</summary><p>Nej. De får underlag, prioritet och uppföljning. Relationerna förblir era.</p></details>
-      <details><summary>Vad behöver ni för att börja?</summary><p>Era viktigaste kedjor och 10–20 produkter. Hyllan läser vi själva; försäljning per kedja kan komma senare. Från er: omkring 30 minuter i veckan.</p></details>
+    <div class="cta-box">
+      <h2 id="h-buy">Se det på era egna produkter.</h2>
+      <p class="lead">Skicka 10–20 produkter och era viktigaste återförsäljare. Ni får en genomgång, klar till första mötet.</p>
+      <div class="cta-row"><a class="btn" href="mailto:hello@invert.se?subject=Kostnadsfri%20genomg%C3%A5ng&body=Hej%2C%0A%0AVarum%C3%A4rke%3A%20%0AViktigaste%20%C3%A5terf%C3%B6rs%C3%A4ljare%3A%20%0A10%E2%80%9320%20produkter%20(namn%20eller%20EAN)%3A%20%0A%0A"><span class="a">Få en kostnadsfri genomgång</span><span class="m">→</span></a><a class="mail" href="mailto:hello@invert.se">hello@invert.se</a></div>
+      <p class="cta-micro">Ingen data krävs från er · Ni köper arbetet, inte en inloggning</p>
     </div>
   </div>
 </section>
@@ -518,74 +313,21 @@ html:not(.js) .tl .L{opacity:1}html:not(.js) .tl .sell,html:not(.js) .tl .media{
 
 <footer class="footer dark">
   <div class="container">
-    <div class="fgrid">
-      <div><a class="logo" href="#top"><svg viewBox="60 40 80 120" aria-hidden="true"><g fill="currentColor"><rect x="74" y="78" width="18" height="72"/><circle cx="83" cy="62" r="10"/><rect x="108" y="50" width="18" height="72"/><circle cx="117" cy="138" r="10"/></g></svg>Invert</a><p style="margin-top:10px">E‑retail Growth Lead för varumärken som säljer via svenska e‑retailers. Stockholm, grundat 2025.</p></div>
-      <div><p class="mono" style="margin-bottom:6px">Även</p><ul><li>Market Intelligence</li><li>Commercial Due Diligence</li></ul></div>
-      <div><p class="mono" style="margin-bottom:6px">Kontakt</p><ul><li><a href="mailto:hello@invert.se">hello@invert.se</a></li><li><a href="mailto:martin@invert.se">martin@invert.se</a></li></ul></div>
-    </div>
-    <div class="fbottom"><span>© 2026 Invert · Stockholm</span><span>Priser exkl. moms · Illustrativa exempel är märkta · Verkliga observationer är anonymiserade</span></div>
+    <div class="fbottom" style="margin-top:0;padding-top:0;border-top:0"><span>© 2026 Invert · Stockholm · <a href="mailto:hello@invert.se">hello@invert.se</a></span></div>
   </div>
 </footer>
 
-<div class="sticky" id="sticky" data-show="false" aria-hidden="true"><a class="btn" href="#pris" tabindex="-1"><span class="a">Kostnadsfri hylla-audit</span><span class="m">→</span></a></div>
+<div class="sticky" id="sticky" data-show="false" aria-hidden="true"><a class="btn" href="#start" tabindex="-1"><span class="a">Se era egna produkter</span><span class="m">→</span></a></div>
 
 <script>
 (function(){
-  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hasIO = 'IntersectionObserver' in window;
-  function once(el, cb, th){ if(!el) return; if(!hasIO||rm){cb(el);return;} var io=new IntersectionObserver(function(e){ if(e[0].isIntersecting){ io.unobserve(el); cb(el);} },{threshold:th||.35}); io.observe(el); }
-
-  /* WOW1 hero case */
-  var c=document.getElementById('case');
-  once(c,function(el){ if(rm){el.classList.add('done');return;} el.classList.add('in'); setTimeout(function(){el.classList.add('done');},3600); },.3);
-  setTimeout(function(){ if(c&&!c.classList.contains('in')&&!c.classList.contains('done')) c.classList.add('done'); },2500);
-
-  /* WOW2 reduce */
-  var red=document.getElementById('vecka'), field=document.getElementById('field'), cnt=document.getElementById('cnt'), cntl=document.getElementById('cntl');
-  if(field){
-    var mobile=window.matchMedia('(max-width:639px)').matches, cols=mobile?16:24, N=mobile?192:288, rows=N/cols;
-    var s1={}, s2={}, s3={}, n1=0, n2=0;
-    var seed=7; function rnd(){ seed=(seed*9301+49297)%233280; return seed/233280; }
-    var lastRow=(rows-1)*cols; var picks=mobile?[3,8,13]:[6,12,18];
-    picks.forEach(function(p){ s3[lastRow+p]=1; s2[lastRow+p]=1; s1[lastRow+p]=1; n1++; n2++; });
-    while(n1<(mobile?96:143)){ var i1=Math.floor(rnd()*N); if(!s1[i1]){ s1[i1]=1; n1++; } }
-    var keys=Object.keys(s1); while(n2<12){ var k=keys[Math.floor(rnd()*keys.length)]; if(!s2[k]){ s2[k]=1; n2++; } }
-    var frag=document.createDocumentFragment();
-    for(var i=0;i<N;i++){ var t=document.createElement('i'); t.style.setProperty('--c', i%cols); var cl=[]; if(s1[i]) cl.push('s1'); if(s2[i]) cl.push('s2'); if(s3[i]) cl.push('s3'); t.className=cl.join(' '); frag.appendChild(t); }
-    field.appendChild(frag);
-  }
-  function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' '); }
-  function roll(from,to,ms){ var t0=performance.now(); (function f(n){ var p=Math.min(1,(n-t0)/ms); cnt.textContent=fmt(Math.round(from+(to-from)*(1-Math.pow(1-p,3)))); if(p<1) requestAnimationFrame(f); })(t0); }
-  once(red,function(el){
-    if(rm){ el.setAttribute('data-stage','4'); cnt.textContent='3'; cntl.textContent='prioriteringar den här veckan'; return; }
-    el.classList.add('playing');
-    setTimeout(function(){ el.setAttribute('data-stage','1'); roll(2700,143,900); cntl.textContent='förändringar sedan igår'; },800);
-    setTimeout(function(){ el.setAttribute('data-stage','2'); roll(143,12,800); cntl.textContent='kommersiellt relevanta'; },1900);
-    setTimeout(function(){ el.setAttribute('data-stage','3'); roll(12,3,600); cntl.textContent='prioriteringar den här veckan'; },3000);
-    setTimeout(function(){ el.setAttribute('data-stage','4'); },4300);
-  },.15);
-  setTimeout(function(){ if(red&&!red.classList.contains('playing')&&red.getAttribute('data-stage')==='0'){ red.setAttribute('data-stage','4'); cnt.textContent='3'; cntl.textContent='prioriteringar den här veckan'; } },15000);
-
-  /* WOW4 sales */
-  var sales=document.getElementById('forsaljning');
-  if(sales){
-    ['sellpath'].forEach(function(id){ var p=document.getElementById(id); if(p&&p.getTotalLength){ p.style.setProperty('--len',p.getTotalLength()); } });
-    var step=0, timer=null;
-    function go(n){ step=Math.min(4,n); sales.setAttribute('data-step',String(step)); if(step===4) clearTimeout(timer); }
-    function auto(){ timer=setTimeout(function(){ go(step+1); if(step<4) auto(); }, step===0?3700:1400); }
-    document.getElementById('tlNext').addEventListener('click',function(){ clearTimeout(timer); go(step+1); });
-    document.getElementById('tlAll').addEventListener('click',function(){ clearTimeout(timer); go(4); });
-    once(sales,function(el){ if(rm){ go(4); return; } el.classList.add('playing'); auto(); },.4);
-    setTimeout(function(){ if(!sales.classList.contains('playing')) go(4); },15000);
-  }
-
   /* Sticky CTA (mobile) */
-  var st=document.getElementById('sticky'), hero=document.getElementById('top'), pris=document.getElementById('pris');
-  if(st&&hasIO){
+  var st=document.getElementById('sticky'), hero=document.getElementById('top'), start=document.getElementById('start');
+  if(st&&'IntersectionObserver' in window){
     var hv=true, pv=false;
     function upd(){ var show=!hv&&!pv; st.setAttribute('data-show',String(show)); st.setAttribute('aria-hidden',String(!show)); st.querySelector('a').tabIndex=show?0:-1; }
     new IntersectionObserver(function(e){hv=e[0].isIntersecting;upd();},{threshold:.1}).observe(hero);
-    new IntersectionObserver(function(e){pv=e[0].isIntersecting;upd();},{threshold:.05}).observe(pris);
+    new IntersectionObserver(function(e){pv=e[0].isIntersecting;upd();},{threshold:.05}).observe(start);
   }
 })();
 </script>
