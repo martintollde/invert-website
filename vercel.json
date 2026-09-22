@@ -1,15 +1,6 @@
 {
-  "rewrites": [
-    {
-      "source": "/:path*",
-      "destination": "/site/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "app.invert.se"
-        }
-      ]
-    }
+  "redirects": [
+    { "source": "/site", "destination": "/", "permanent": true }
   ],
   "trailingSlash": false
 }
