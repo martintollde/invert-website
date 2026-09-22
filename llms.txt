@@ -1,20 +1,20 @@
 # Invert
 
-> Invert helps consumer brands that sell through Swedish e-retailers sell more with less guesswork. We see what happens to a brand's products at its retailers, prioritise what actually matters, and make sure something gets done — together with the client's existing team.
+> Invert helps consumer brands sell more at their retailers. Invert acts as the brand's E-retail Growth Lead: finds where the brand can grow, prioritises what is worth doing, and drives it to completion together with the client's existing team. Proprietary technology reads the retailers daily and gives better grounds for every decision.
 
 ## Core offering
 
-- [Invert — Site](https://invert.se/site): The problems we solve, how we work, real observations, contact.
+- [Invert — Site](https://invert.se/site): Outcome, the six commercial decision areas, how signals become a decision, the learning loop, real observations, how to start.
 
 ## Key facts
 
-- **What Invert is**: People who do the work, backed by a system built in-house. Not a dashboard, not a SaaS tool, not a media agency, not a report vendor.
+- **What Invert is**: An E-retail Growth Lead (a named senior person) working inside the client's commercial team, backed by a system built in-house. Not a dashboard, not a SaaS tool, not a media agency, not a report vendor.
 - **Target customers**: Consumer brands (pharmacy/health, beauty, fashion) selling via Swedish e-retailers, where the retailer owns checkout and the last implementation step.
-- **What we track**: Price, stock, visibility, campaigns, assortment and competitors at the client's retailers.
-- **How we work**: See → Understand → Act → Measure → Learn. A named person at Invert drives each issue together with the client's team; ownership stays with the client.
-- **Footprint** (verified 2026-09-17): 9 e-retailers under continuous monitoring; ~1 500 products read in the last 30 days; 3.1 million shelf-position readings since February 2026.
+- **Decision areas**: Existing retailers, expansion, visibility, price & promotion, assortment & launch, availability. Inputs read at the retailers: sales (when shared), assortment, availability, visibility, price, competitors.
+- **How we work**: Opportunity → Decision → Action → Outcome → Learning. Invert prepares the case, involves the right people and holds the issue until closed; ownership stays with the client. Every outcome is recorded so the next decision is better informed.
+- **Footprint** (verified 2026-09-17): 9 e-retailers under continuous monitoring, mainly pharmacy and beauty; ~1 500 products read in the last 30 days; 3.1 million shelf-position readings since February 2026.
 - **Evidence levels on every recommendation**: Observed → Hypothesis → Proven. Retailers own the final implementation step, so Invert gives no KPI guarantees.
-- **Entry point**: A free review of 10–20 of the brand's own products at its most important retailers, ready before the first meeting. No client data required.
+- **Entry point**: The brand sends its most important retailers and products; Invert comes to the first meeting with what it already sees. The engagement starts with a two-month calibration, then runs continuously. No integration required.
 - **Location**: Stockholm, Sweden. **Founded**: 2025 by Martin Tollde.
 - **Contact**: hello@invert.se
 - **Language**: Swedish (site), English (this file)
