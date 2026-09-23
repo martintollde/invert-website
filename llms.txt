@@ -12,7 +12,7 @@
 - **Target customers**: Consumer brands (pharmacy/health, beauty, fashion) selling via Swedish e-retailers, where the retailer owns checkout and the last implementation step.
 - **Decision areas**: Existing retailers, expansion, visibility, price & promotion, assortment & launch, availability. Inputs read at the retailers: sales (when shared), assortment, availability, visibility, price, competitors.
 - **How we work**: Opportunity → Decision → Action → Outcome → Learning. Invert prepares the case, involves the right people and holds the issue until closed; ownership stays with the client. Every outcome is recorded so the next decision is better informed.
-- **Footprint** (verified 2026-09-17): 9 e-retailers under continuous monitoring, mainly pharmacy and beauty; ~1 500 products read in the last 30 days; continuous readings since February 2026.
+- **Observations**: Continuous retailer observations across the Swedish e-retail market since 2026.
 - **Evidence levels on every recommendation**: Observed → Hypothesis → Proven. Retailers own the final implementation step, so Invert gives no KPI guarantees.
 - **Entry point**: The brand sends its most important retailers and products; Invert comes to the first meeting with what it already sees. The engagement starts with a two-month calibration, then runs continuously. No integration required.
 - **Location**: Stockholm, Sweden. **Founded**: 2025 by Martin Tollde.
