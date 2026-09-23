@@ -130,8 +130,18 @@ p{text-wrap:pretty}
 /* 03 three retailers: fixed tracks */
 .wow{padding:var(--sy) 0 calc(var(--sy) * .9)}
 .wow h2{max-width:16ch}
+.brand{margin-top:var(--s6);--branch:#57554f}
+.brand .lbl{display:block;color:var(--on-dark)}
+.brand + .tri{margin-top:var(--s2)}
 .tri{display:grid;gap:var(--s6) var(--s4);margin-top:var(--s6)}
-@media (min-width:1000px){.tri{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1000px){
+  .tri{grid-template-columns:repeat(3,1fr)}
+  .brand{position:relative;padding-bottom:10px}
+  .brand::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--branch);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+  .wow.in .brand::after{transform:none}
+  .brand + .tri{margin-top:0}
+  .brand + .tri .rt{border-top-color:transparent}
+}
 .rt{border-top:1px solid var(--on-dark-line);padding-top:12px;display:grid;grid-template-rows:auto auto auto auto auto;align-content:start}
 .rt .lbl{color:var(--on-dark-muted);margin-bottom:10px}
 .sig{display:grid;grid-auto-rows:26px;margin-bottom:var(--s3)}
@@ -147,8 +157,11 @@ p{text-wrap:pretty}
 .rt .d{font-size:var(--t-dec);font-weight:900;letter-spacing:-.04em;line-height:1;text-transform:uppercase;max-width:15ch;text-wrap:balance;opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease) .12s,transform .5s var(--ease) .12s}
 @media (min-width:1000px){.rt .d{min-height:3em}}
 .rt[data-step="4"] .d,.rt[data-step="5"] .d{opacity:1;transform:none}
-.rt .own{display:block;margin-top:10px;font-size:var(--t-small);color:var(--on-dark-muted);opacity:0;transition:opacity .35s var(--ease)}
+.rt .own{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:var(--t-strong);font-weight:800;letter-spacing:-.01em;line-height:1.2;color:var(--on-dark);opacity:0;transition:opacity .35s var(--ease)}
+.rt .own .mk{display:block;width:12px;height:12px;background:var(--signal);flex:none;transform:scale(0);transition:transform .35s var(--ease)}
+.rt .own .rl{color:var(--signal);font-weight:400;opacity:0;transform:translateX(-6px);transition:opacity .35s var(--ease) .15s,transform .45s var(--ease) .15s}
 .rt[data-step="5"] .own{opacity:1}
+.rt[data-step="5"] .own .mk,.rt[data-step="5"] .own .rl{opacity:1;transform:none}
 .tri-line{margin-top:var(--s6);font-size:var(--t-h1);font-weight:800;letter-spacing:-.045em;line-height:1;max-width:32ch;text-wrap:balance;opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .wow[data-done] .tri-line{opacity:1;transform:none}
 .act{margin-top:var(--s3);padding:var(--s3) var(--s3);background:var(--signal);color:#fff;font-size:var(--t-strong);font-weight:800;letter-spacing:-.01em;opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease) .35s,transform .5s var(--ease) .35s}
@@ -175,12 +188,14 @@ p{text-wrap:pretty}
 .ev .node{position:absolute;left:-40px;top:2px;width:12px;height:12px;background:var(--signal);opacity:0;transform:scale(.5);transition:opacity .35s var(--ease),transform .35s var(--ease),background .4s var(--ease)}
 .ev .node.ink{background:var(--ink)}
 .ev .lbl{display:block;margin-bottom:8px}
-.ctx{position:relative;display:flex;gap:14px;align-items:center;height:16px;margin-bottom:10px}
-.ctx::before{content:"";position:absolute;left:-39px;top:7px;width:28px;height:1px;background:var(--line)}
-.ctx li{display:inline-flex;align-items:center;gap:6px;height:16px;font-size:var(--t-label);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .3s var(--ease)}
+.ctx{position:relative;display:flex;gap:16px;align-items:center;height:18px;margin-bottom:10px}
+.ctx::before{content:"";position:absolute;left:-39px;top:8px;width:28px;height:1px;background:var(--line)}
+.ctx li{display:inline-flex;align-items:center;gap:6px;height:18px;font-size:var(--t-small);font-weight:700;letter-spacing:-.005em;color:var(--ink);opacity:0;transition:opacity .3s var(--ease)}
 .ctx .sq{display:block;width:12px;height:12px;background:var(--ink);flex:none}
 .ev .d{font-size:var(--t-h2);font-weight:800;letter-spacing:-.02em;line-height:1.2;max-width:28ch}
 .ev .out{margin-top:6px;font-size:var(--t-body);color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.ev .out .sq{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px;background:var(--signal);transition:background .4s var(--ease)}
+.ev .out .sq.ink{background:var(--ink)}
 .fly{position:absolute;width:12px;height:12px;background:var(--signal);z-index:2;pointer-events:none;transition:transform .6s var(--ease)}
 .tl-line{margin-top:var(--s4);font-size:var(--t-strong);font-weight:800;letter-spacing:-.015em;max-width:44ch;opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .tl-line span{font-weight:400;color:var(--muted)}
@@ -229,6 +244,7 @@ p{text-wrap:pretty}
   .sig li,.sig li i,.rt .d,.rt .own,.tri-line,.act,.ev,.ev .out,.ctx li,.tl-line{opacity:1!important;transform:none!important}
   .sig li:not([data-rel]){opacity:.22!important}
   .rt .line{transform:scaleX(1)!important}
+  .rt .own .mk,.rt .own .rl,.brand::after{opacity:1!important;transform:none!important}
   .ev .node{opacity:1;transform:none}
   .loop .tl::before{transform:scaleY(1)}
 }
@@ -290,6 +306,7 @@ p{text-wrap:pretty}
       <h2 id="h-wow" class="rise" style="--i:0">Var finns nästa tillväxt <em>hos era befintliga retailers?</em></h2>
       <span class="chip rise" style="--i:1">Illustrativt</span>
     </div>
+    <div class="brand rise" style="--i:2" aria-hidden="true"><span class="lbl">Ert varumärke</span></div>
     <ol class="tri" id="tri" aria-label="Tre retailers, tre beslut">
       <li class="rt rise" style="--i:2" data-step="0">
         <span class="lbl">Retailer A</span>
@@ -303,7 +320,7 @@ p{text-wrap:pretty}
         </ul>
         <span class="line" aria-hidden="true"></span>
         <p class="d">Få in artiklarna som saknas.</p>
-        <span class="own">→ KAM</span>
+        <span class="own"><i class="mk" aria-hidden="true"></i>Invert<span class="rl">→</span>KAM</span>
       </li>
       <li class="rt rise" style="--i:3" data-step="0">
         <span class="lbl">Retailer B</span>
@@ -317,7 +334,7 @@ p{text-wrap:pretty}
         </ul>
         <span class="line" aria-hidden="true"></span>
         <p class="d">Säkra hyllan innan nästa kampanj.</p>
-        <span class="own">→ Supply + KAM</span>
+        <span class="own"><i class="mk" aria-hidden="true"></i>Invert<span class="rl">→</span>Supply + KAM</span>
       </li>
       <li class="rt rise" style="--i:4" data-step="0">
         <span class="lbl">Retailer C</span>
@@ -331,10 +348,10 @@ p{text-wrap:pretty}
         </ul>
         <span class="line" aria-hidden="true"></span>
         <p class="d">Ta mer plats i kategorin.</p>
-        <span class="own">→ Media + KAM</span>
+        <span class="own"><i class="mk" aria-hidden="true"></i>Invert<span class="rl">→</span>Media + KAM</span>
       </li>
     </ol>
-    <p class="tri-line">Samma varumärke. Tre retailers. <em>Tre olika beslut.</em></p>
+    <p class="tri-line">Samma varumärke. Tre&nbsp;retailers. <em>Tre olika beslut.</em></p>
     <p class="act">Vi driver nästa steg med rätt personer i ert team.</p>
   </div>
 </section>
@@ -352,21 +369,21 @@ p{text-wrap:pretty}
         <i class="node" aria-hidden="true"></i>
         <span class="lbl">Beslut 01</span>
         <p class="d">Artiklarna in hos Retailer A.</p>
-        <p class="out">Utfall: 2 av 3 artiklar in.</p>
+        <p class="out"><i class="sq" aria-hidden="true"></i>Utfall: 2 av 3 artiklar in.</p>
       </li>
       <li class="ev" id="ev2">
         <i class="node" aria-hidden="true"></i>
         <span class="lbl">Beslut 02</span>
         <ul class="ctx" aria-label="Med lärdomar från"><li><i class="sq" aria-hidden="true"></i>2 av 3 in</li></ul>
         <p class="d">Kampanjen hos Retailer B.</p>
-        <p class="out">Utfall: hyllan höll kampanjen.</p>
+        <p class="out"><i class="sq" aria-hidden="true"></i>Utfall: hyllan höll kampanjen.</p>
       </li>
       <li class="ev" id="ev3">
         <i class="node" aria-hidden="true"></i>
         <span class="lbl">Beslut 03</span>
         <ul class="ctx" aria-label="Med lärdomar från"><li><i class="sq" aria-hidden="true"></i>2 av 3 in</li><li><i class="sq" aria-hidden="true"></i>Hyllan höll</li></ul>
         <p class="d">Förhandlingen med Retailer C.</p>
-        <p class="out">Utfall: mäts.</p>
+        <p class="out"><i class="sq" aria-hidden="true"></i>Utfall: mäts.</p>
       </li>
     </ol>
     <p class="tl-line" id="tlline">Vi sparar vad ni gjorde och vad som hände. <span>Nästa beslut börjar där det förra slutade.</span></p>
@@ -401,7 +418,7 @@ p{text-wrap:pretty}
         <p class="so">Vi ser det samma dag.</p>
       </article>
     </div>
-    <p class="strip mono rise" style="--i:5"><span>9 e-handlare, främst apotek och skönhet</span><span>3,1 miljoner hyllobservationer sedan februari 2026</span></p>
+    <p class="strip mono rise" style="--i:5"><span>9 e-handlare, främst apotek och skönhet</span><span>Löpande observationer sedan februari 2026</span></p>
   </div>
 </section>
 
@@ -473,21 +490,21 @@ p{text-wrap:pretty}
   }
   function runLoop(){
     var ev=[1,2,3].map(function(i){ return d.getElementById('ev'+i); });
-    var node=ev.map(function(e){ return e.querySelector('.node'); });
+    var node=ev.map(function(e){ return e.querySelector('.node'); }), sq=ev.map(function(e){ return e.querySelector('.out .sq'); });
     var acc=0; function at(ms,fn){ acc+=ms; setTimeout(fn,acc); }
     at(300,function(){ ev[0].classList.add('on'); });
     at(700,function(){ on('.out',ev[0]); });
     at(600,function(){ node[0].classList.add('on'); });
     at(700,function(){ ev[1].classList.add('on'); });
-    at(350,function(){ fly(node[0],ev[1].querySelector('.ctx li'),function(){ node[0].classList.add('ink'); }); });
+    at(350,function(){ fly(sq[0],ev[1].querySelector('.ctx li'),function(){ node[0].classList.add('ink'); sq[0].classList.add('ink'); }); });
     at(700,function(){ on('.out',ev[1]); });
     at(500,function(){ node[1].classList.add('on'); });
     at(700,function(){ ev[2].classList.add('on'); });
-    at(350,function(){ var c=ev[2].querySelectorAll('.ctx li'); fly(node[0],c[0]); setTimeout(function(){ fly(node[1],c[1],function(){ node[1].classList.add('ink'); }); },120); });
+    at(350,function(){ var c=ev[2].querySelectorAll('.ctx li'); fly(sq[0],c[0]); setTimeout(function(){ fly(sq[1],c[1],function(){ node[1].classList.add('ink'); sq[1].classList.add('ink'); }); },120); });
     at(700,function(){ on('.out',ev[2]); });
     at(500,function(){ node[2].classList.add('on'); d.getElementById('tlline').classList.add('on'); });
   }
-  function loopFinal(){ on('.ev,.out,.node,.ctx li,.tl-line',loop); loop.querySelectorAll('.node').forEach(function(nd,i){ if(i<2) nd.classList.add('ink'); }); }
+  function loopFinal(){ on('.ev,.out,.node,.ctx li,.tl-line',loop); loop.querySelectorAll('.node,.out .sq').forEach(function(nd){ if(!nd.closest('#ev3')) nd.classList.add('ink'); }); }
 
   /* MOMENT 4: proof numbers */
   function countUp(el){
